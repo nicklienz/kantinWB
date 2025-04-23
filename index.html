@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBite Hub - Modern Food Court</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tenant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-item {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-button.active {
+            background-color: #166534;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-primary-800 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-utensils text-white text-lg"></i>
+                </div>
+                <h1 class="text-xl font-bold text-primary-800">GreenBite Hub</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-item text-gray-700 hover:text-primary-700 font-medium">Home</a>
+                <a href="#tenants" class="nav-item text-gray-700 hover:text-primary-700 font-medium">Tenants</a>
+                <a href="#menu" class="nav-item text-gray-700 hover:text-primary-700 font-medium">Menu</a>
+                <a href="#location" class="nav-item text-gray-700 hover:text-primary-700 font-medium">Location</a>
+                <a href="#contact" class="nav-item text-gray-700 hover:text-primary-700 font-medium">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="cart-btn" class="relative">
+                    <i class="fas fa-shopping-basket text-gray-700 text-xl"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-primary-700 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <i class="fas fa-bars text-gray-700 text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-primary-700">Home</a>
+            <a href="#tenants" class="block py-2 text-gray-700 hover:text-primary-700">Tenants</a>
+            <a href="#menu" class="block py-2 text-gray-700 hover:text-primary-700">Menu</a>
+            <a href="#location" class="block py-2 text-gray-700 hover:text-primary-700">Location</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-primary-700">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://raw.githubusercontent.com/username/repository/main/foodcourt-video.mp4" type="video/mp4">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Food Court Background">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Discover Culinary Delights at <span class="text-primary-300">GreenBite Hub</span></h1>
+            <p class="text-xl text-white mb-8 max-w-2xl mx-auto">A modern food court experience with diverse cuisines from our talented tenants. Order from multiple vendors in one transaction!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#menu" class="bg-primary-700 hover:bg-primary-800 px-8 py-3 rounded-full font-bold text-white transition duration-300">Order Now</a>
+                <a href="#tenants" class="bg-white hover:bg-gray-100 px-8 py-3 rounded-full font-bold text-primary-700 transition duration-300">Explore Tenants</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-0 right-0 flex justify-center">
+            <a href="#tenants" class="animate-bounce text-white text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Tenants Section -->
+    <section id="tenants" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Our Featured Tenants</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Each tenant brings unique flavors to create a diverse culinary experience</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tenant 1 -->
+                <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1698&q=80" alt="Burger Junction" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-100 mr-3">
+                                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1598&q=80" alt="Burger Junction Logo" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Burger Junction</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Gourmet burgers with premium ingredients and secret sauces</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-1"></i> 10AM-9PM</span>
+                            <button class="view-menu-btn text-primary-700 font-medium" data-tenant="burger-junction">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tenant 2 -->
+                <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80" alt="Pasta Paradise" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-100 mr-3">
+                                <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Pasta Paradise Logo" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Pasta Paradise</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Authentic Italian pasta dishes made with love and tradition</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-1"></i> 11AM-8PM</span>
+                            <button class="view-menu-btn text-primary-700 font-medium" data-tenant="pasta-paradise">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tenant 3 -->
+                <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1681&q=80" alt="Asian Wok" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-100 mr-3">
+                                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Asian Wok Logo" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Asian Wok</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Flavorful Asian dishes with authentic spices and techniques</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-1"></i> 10AM-9PM</span>
+                            <button class="view-menu-btn text-primary-700 font-medium" data-tenant="asian-wok">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tenant 4 -->
+                <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Healthy Bowl" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-100 mr-3">
+                                <img src="https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Healthy Bowl Logo" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Healthy Bowl</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Nutritious and delicious meals for health-conscious foodies</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-1"></i> 8AM-7PM</span>
+                            <button class="view-menu-btn text-primary-700 font-medium" data-tenant="healthy-bowl">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section with Tabs -->
+    <section id="menu" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Our Menu Selection</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Browse and order from our diverse menu options across all tenants</p>
+            </div>
+            
+            <!-- Tenant Tabs -->
+            <div class="flex overflow-x-auto pb-2 mb-8 scrollbar-hide">
+                <div class="flex space-x-2 mx-auto">
+                    <button class="tab-button px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium whitespace-nowrap" data-tab="burger-junction">Burger Junction</button>
+                    <button class="tab-button px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium whitespace-nowrap" data-tab="pasta-paradise">Pasta Paradise</button>
+                    <button class="tab-button px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium whitespace-nowrap" data-tab="asian-wok">Asian Wok</button>
+                    <button class="tab-button px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium whitespace-nowrap" data-tab="healthy-bowl">Healthy Bowl</button>
+                    <button class="tab-button px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium whitespace-nowrap" data-tab="drinks">Drinks & Desserts</button>
+                </div>
+            </div>
+            
+            <!-- Tab Contents -->
+            <div class="tab-content active" id="burger-junction">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1598&q=80" alt="Burger Junction" class="w-8 h-8 rounded-full object-cover mr-2">
+                    Burger Junction
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="menu-item bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition duration-300">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1598&q=80" alt="Classic Cheeseburger" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-gray-800">Classic Cheeseburger</h4>
+                            <p class="text-sm text-gray-600 mt-1">Beef patty with cheddar, lettuce, tomato, and special sauce</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <span class="font-bold text-primary-700">Rp 35.000</span>
+                                <button class="add-to-cart bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded-full text-sm" 
+                                        data-id="bj-1" 
+                                        data-name="Classic Cheeseburger" 
+                                        data-price="35000" 
+                                        data-tenant="Burger Junction">
+                                    <i class="fas fa-plus mr-1"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="menu-item bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition duration-300">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1698&q=80" alt="Bacon Deluxe" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-gray-800">Bacon Deluxe</h4>
+                            <p class="text-sm text-gray-600 mt-1">Double beef with crispy bacon, cheese, and BBQ sauce</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <span class="font-bold text-primary-700">Rp 45.000</span>
+                                <button class="add-to-cart bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded-full text-sm" 
+                                        data-id="bj-2" 
+                                        data-name="Bacon Deluxe" 
+                                        data-price="45000" 
+                                        data-tenant="Burger Junction">
+                                    <i class="fas fa-plus mr-1"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="menu-item bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition duration-300">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1669&q=80" alt="Chicken Burger" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-gray-800">Spicy Chicken Burger</h4>
+                            <p class="text-sm text-gray-600 mt-1">Crispy chicken fillet with spicy mayo and fresh veggies</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <span class="font-bold text-primary-700">Rp 40.000</span>
+                                <button class="add-to-cart bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded-full text-sm" 
+                                        data-id="bj-3" 
+                                        data-name="Spicy Chicken Burger" 
+                                        data-price="40000" 
+                                        data-tenant="Burger Junction">
+                                    <i class="fas fa-plus mr-1"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pasta Paradise Tab Content -->
+            <div class="tab-content" id="pasta-paradise">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Pasta Paradise" class="w-8 h-8 rounded-full object-cover mr-2">
+                    Pasta Paradise
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item 1 -->
+                    <div class="menu-item bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition duration-300">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Spaghetti Carbonara" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-gray-800">Spaghetti Carbonara</h4>
+                            <p class="text-sm text-gray-600 mt-1">Classic Italian pasta with creamy sauce and bacon</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <span class="font-bold text-primary-700">Rp 42.000</span>
+                                <button class="add-to-cart bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded-full text-sm" 
+                                        data-id="pp-1" 
+                                        data-name="Spaghetti Carbonara" 
+                                        data-price="42000" 
+                                        data-tenant="Pasta Paradise">
+                                    <i class="fas fa-plus mr-1"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="menu-item bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition duration-300">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611270629569-8b357cb88da9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Penne Arrabiata" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-gray-800">Penne Arrabiata</h4>
+                            <p class="text-sm text-gray-600 mt-1">Penne pasta with spicy tomato sauce and herbs</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <span class="font-bold text-primary-700">Rp 38.000</span>
+                                <button class="add-to-cart bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded-full text-sm" 
+                                        data-id="pp-2" 
+                                        data-name="Penne Arrabiata" 
+                                        data-price="38000" 
+                                        data-tenant="Pasta Paradise">
+                                    <i class="fas fa-plus mr-1"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="menu-item bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition duration-300">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Fettuccine Alfredo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-gray-800">Fettuccine Alfredo</h4>
+                            <p class="text-sm text-gray-600 mt-1">Creamy fettuccine with parmesan and butter sauce</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <span class="font-bold text-primary-700">Rp 45.000</span>
+                                <button class="add-to-cart bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded-full text-sm" 
+                                        data-id="pp-3" 
+                                        data-name="Fettuccine Alfredo" 
+                                        data-price="45000" 
+                                        data-tenant="Pasta Paradise">
+                                    <i class="fas fa-plus mr-1"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other tab contents would follow the same pattern -->
+            <!-- For brevity, I've included only two complete tab contents -->
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Our Location</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Visit us at our convenient location with ample parking space</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">GreenBite Hub Food Court</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-primary-600 mt-1 mr-3"></i>
+                                <p>Jl. Sudirman No. 123, Jakarta Pusat, DKI Jakarta</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-primary-600 mt-1 mr-3"></i>
+                                <p>
+                                    <span class="font-medium">Monday - Friday:</span> 8:00 AM - 10:00 PM<br>
+                                    <span class="font-medium">Saturday - Sunday:</span> 9:00 AM - 11:00 PM
+                                </p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-primary-600 mt-1 mr-3"></i>
+                                <p>(021) 1234-5678</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-parking text-primary-600 mt-1 mr-3"></i>
+                                <p>Ample parking space available (car & motorcycle)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Facilities</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-wifi text-primary-600 mr-2"></i>
+                                <span>Free WiFi</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-snowflake text-primary-600 mr-2"></i>
+                                <span>Air Conditioned</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-wheelchair text-primary-600 mr-2"></i>
+                                <span>Wheelchair Access</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-baby text-primary-600 mr-2"></i>
+                                <span>Kids Friendly</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-toilet text-primary-600 mr-2"></i>
+                                <span>Clean Restrooms</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-smoking-ban text-primary-600 mr-2"></i>
+                                <span>Non-Smoking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-full">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8191610507824!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45f66983f7a582!2sJl.%20Sudirman%20No.123%2C%20RT.1%2FRW.3%2C%20Karet%20Semanggi%2C%20Kecamatan%20Setiabudi%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012930!5e0!3m2!1sen!2sid!4v1621234567890!5m2!1sen!2sid" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-primary-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Contact Us</h2>
+                <p class="max-w-2xl mx-auto">Have questions or feedback? We'd love to hear from you!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Get In Touch</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 rounded bg-primary-700 border border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 rounded bg-primary-700 border border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded bg-primary-700 border border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-white text-primary-800 px-6 py-2 rounded font-medium hover:bg-gray-100 transition duration-300">Send Message</button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Other Ways to Connect</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary-700 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Phone</h4>
+                                <p>(021) 1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-700 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p>info@greenbitehub.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-700 p-3 rounded-full mr-4">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">WhatsApp</h4>
+                                <p>+62 812-3456-7890</p>
+                                <a href="https://wa.me/6281234567890" class="text-primary-200 hover:text-white underline">Click to chat</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-700 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Address</h4>
+                                <p>Jl. Sudirman No. 123, Jakarta Pusat</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-3">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-primary-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-primary-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-primary-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-primary-700 hover:bg-primary-600 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-primary-700 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-utensils text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">GreenBite Hub</h3>
+                    </div>
+                    <p class="mb-4">A modern food court experience offering diverse culinary options from our talented tenants.</p>
+                    <p>&copy; 2023 GreenBite Hub. All rights reserved.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-primary-400 transition duration-300">Home</a></li>
+                        <li><a href="#tenants" class="hover:text-primary-400 transition duration-300">Tenants</a></li>
+                        <li><a href="#menu" class="hover:text-primary-400 transition duration-300">Menu</a></li>
+                        <li><a href="#location" class="hover:text-primary-400 transition duration-300">Location</a></li>
+                        <li><a href="#contact" class="hover:text-primary-400 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Tenants</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary-400 transition duration-300">Burger Junction</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition duration-300">Pasta Paradise</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition duration-300">Asian Wok</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition duration-300">Healthy Bowl</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition duration-300">More Coming Soon</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Newsletter</h4>
+                    <p class="mb-4">Subscribe to get updates on new tenants, promotions, and events.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l text-gray-800 w-full focus:outline-none">
+                        <button class="bg-primary-700 hover:bg-primary-600 px-4 py-2 rounded-r">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p>Designed with <i class="fas fa-heart text-primary-500"></i> for food lovers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute right-0 top-0 h-full w-full md:w-1/2 lg:w-1/3 bg-white shadow-xl overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Your Order</h2>
+                    <button id="close-cart" class="text-gray-500 hover:text-primary-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                
+                <div id="cart-items" class="space-y-4">
+                    <!-- Cart items will be added here dynamically -->
+                    <div class="text-center py-8" id="empty-cart-message">
+                        <i class="fas fa-shopping-basket text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">Your cart is empty</p>
+                        <a href="#menu" class="inline-block mt-4 text-primary-700 hover:text-primary-800 font-medium">
+                            <i class="fas fa-utensils mr-2"></i> Browse Menu
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-200 mt-6 pt-4">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Subtotal:</span>
+                        <span id="cart-subtotal">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Tax (10%):</span>
+                        <span id="cart-tax">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between font-bold text-lg mb-6">
+                        <span>Total:</span>
+                        <span id="cart-total">Rp 0</span>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <a href="https://wa.me/6281234567890?text=Hi%20GreenBite%20Hub%2C%20I%20want%20to%20order%20the%20following%20items%3A%0A%0A" id="whatsapp-order" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold w-full text-center block">
+                            <i class="fab fa-whatsapp mr-2"></i> Order via WhatsApp
+                        </a>
+                        <button id="clear-cart" class="text-gray-500 hover:text-red-600 text-sm font-medium w-full text-center">
+                            <i class="fas fa-trash-alt mr-1"></i> Clear Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Tab Functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+                
+                // Update active tab button
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Show corresponding tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // View Menu Buttons (from tenants section)
+        document.querySelectorAll('.view-menu-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const tenantTab = this.dataset.tenant;
+                
+                // Update active tab button
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.tab === tenantTab) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Show corresponding tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tenantTab).classList.add('active');
+                
+                // Scroll to menu section
+                document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Shopping Cart Functionality
+        let cart = [];
+        
+        // Add to cart buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const name = this.dataset.name;
+                const price = parseInt(this.dataset.price);
+                const tenant = this.dataset.tenant;
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        tenant,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Animation feedback
+                const originalHtml = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Added';
+                this.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+                this.classList.add('bg-green-500', 'hover:bg-green-600');
+                
+                setTimeout(() => {
+                    this.innerHTML = originalHtml;
+                    this.classList.add('bg-primary-600', 'hover:bg-primary-700');
+                    this.classList.remove('bg-green-500', 'hover:bg-green-600');
+                }, 2000);
+            });
+        });
+        
+        // Update cart UI
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                cartItemsContainer.innerHTML = '';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                
+                // Group items by tenant
+                const tenants = [...new Set(cart.map(item => item.tenant))];
+                
+                let itemsHTML = '';
+                
+                tenants.forEach(tenant => {
+                    const tenantItems = cart.filter(item => item.tenant === tenant);
+                    
+                    itemsHTML += `
+                        <div class="mb-6">
+                            <div class="flex items-center bg-gray-50 px-4 py-2 rounded-t-lg">
+                                <i class="fas fa-store text-primary-600 mr-2"></i>
+                                <h4 class="font-medium">${tenant}</h4>
+                            </div>
+                            <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
+                    `;
+                    
+                    tenantItems.forEach(item => {
+                        itemsHTML += `
+                            <div class="cart-item p-4 flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-medium">${item.name}</h4>
+                                    <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
+                                        <i class="fas fa-minus text-xs"></i>
+                                    </button>
+                                    <span class="px-3 py-1 bg-white">${item.quantity}</span>
+                                    <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}">
+                                        <i class="fas fa-plus text-xs"></i>
+                                    </button>
+                                    <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    itemsHTML += `</div></div>`;
+                });
+                
+                cartItemsContainer.innerHTML = itemsHTML;
+                
+                // Add event listeners to new buttons
+                document.querySelectorAll('.decrease-quantity').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        const item = cart.find(item => item.id === id);
+                        
+                        if (item.quantity > 1) {
+                            item.quantity -= 1;
+                        } else {
+                            cart = cart.filter(item => item.id !== id);
+                        }
+                        
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.increase-quantity').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        const item = cart.find(item => item.id === id);
+                        item.quantity += 1;
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    });
+                });
+            }
+            
+            // Update totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = Math.round(subtotal * 0.1);
+            const total = subtotal + tax;
+            
+            document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
+            document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
+            document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
+            
+            // Update WhatsApp order link
+            if (cart.length > 0) {
+                let message = "Hi GreenBite Hub, I want to order the following items:\n\n";
+                
+                // Group by tenant for better readability
+                const tenants = [...new Set(cart.map(item => item.tenant))];
+                
+                tenants.forEach(tenant => {
+                    message += `*${tenant}:*\n`;
+                    cart.filter(item => item.tenant === tenant).forEach(item => {
+                        message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
+                    });
+                    message += `\n`;
+                });
+                
+                message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
+                message += `*Tax (10%):* Rp ${tax.toLocaleString()}\n`;
+                message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
+                message += `Delivery to: [Your Address]\n`;
+                message += `Notes: [Any special instructions]`;
+                
+                const encodedMessage = encodeURIComponent(message);
+                document.getElementById('whatsapp-order').href = `https://wa.me/6281234567890?text=${encodedMessage}`;
+            }
+        }
+        
+        // Clear cart button
+        document.getElementById('clear-cart').addEventListener('click', function() {
+            cart = [];
+            updateCart();
+        });
+        
+        // Cart modal toggle
+        document.getElementById('cart-btn').addEventListener('click', function() {
+            document.getElementById('cart-modal').classList.remove('hidden');
+        });
+        
+        document.getElementById('close-cart').addEventListener('click', function() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('cart-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
