@@ -265,7 +265,7 @@
                <!-- Tenant 6 -->
                 <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_jusnaga" alt="Keno" class="w-full h-full object-cover">
+                        <img src="https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_jusnaga.jpeg" alt="Keno" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -797,22 +797,30 @@
         });
     });
     
-    // Update cart UI
+   // Fungsi untuk memperbarui tampilan keranjang belanja di modal
     function updateCart() {
         const cartItemsContainer = document.getElementById('cart-items');
-        const cartCount = document.getElementById('cart-count');
+        const cartCountElement = document.getElementById('cart-count'); // Elemen untuk menampilkan jumlah item (jika ada)
         const emptyCartMessage = document.getElementById('empty-cart-message');
-        
-        // Update cart count
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartCount.textContent = totalItems;
-        
-        // Update cart items
-        if (cart.length === 0) {
-            emptyCartMessage.style.display = 'block';
-            cartItemsContainer.innerHTML = '';
-        } else {
-            emptyCartMessage.style.display = 'none';
+        const cartSubtotalElement = document.getElementById('cart-subtotal');
+        const cartTaxElement = document.getElementById('cart-tax');
+        const cartTotalElement = document.getElementById('cart-total');
+
+        // Perbarui jumlah item di ikon keranjang (jika elemennya ada)
+        if (cartCountElement) {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+
+        // Tampilkan atau sembunyikan pesan keranjang kosong
+        if (emptyCartMessage) { // Tambahkan pengecekan apakah elemen ada
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                if (cartItemsContainer) {
+                    cartItemsContainer.innerHTML = ''; // Kosongkan tampilan item keranjang
+                }
+            } else {
+                emptyCartMessage.style.display = 'none';
             
             // Group items by tenant
             const tenants = [...new Set(cart.map(item => item.tenant))];
