@@ -840,13 +840,13 @@
             // Update cart count
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
-            
+            console.log(totalItems);
             // Update cart items
             if (cart.length === 0) {
                 emptyCartMessage.style.display = 'block';
                 cartItemsContainer.innerHTML = '';
             } else {
-                emptyCartMessage.style.display = 'none';
+                //emptyCartMessage.style.display = 'none';
                 
                 // Group items by tenant
                 const tenants = [...new Set(cart.map(item => item.tenant))];
