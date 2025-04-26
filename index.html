@@ -705,99 +705,10 @@
 </div>
     
 <script>
-    // Mobile Menu Toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-    });
-
-    // Tab Functionality
-    const tabButtons = document.querySelectorAll('.tab-button');
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const tabId = this.dataset.tab;
-            
-            // Update active tab button
-            tabButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            this.classList.add('active');
-            
-            // Show corresponding tab content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-
-    // View Menu Buttons (from tenants section)
-    document.querySelectorAll('.view-menu-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const tenantTab = this.dataset.tenant;
-            
-            // Update active tab button
-            tabButtons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.tab === tenantTab) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Show corresponding tab content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tenantTab).classList.add('active');
-            
-            // Scroll to menu section
-            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
     // Shopping Cart Functionality
     let cart = [];
     
-    // Add to cart buttons
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const id = this.dataset.id;
-            const name = this.dataset.name;
-            const price = parseInt(this.dataset.price);
-            const tenant = this.dataset.tenant;
-            
-            // Check if item already in cart
-            const existingItem = cart.find(item => item.id === id);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id,
-                    name,
-                    price,
-                    tenant,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
-            
-            // Animation feedback
-            const originalHtml = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-check"></i> Added';
-            this.classList.remove('bg-primary-600', 'hover:bg-primary-700');
-            this.classList.add('bg-green-500', 'hover:bg-green-600');
-            
-            setTimeout(() => {
-                this.innerHTML = originalHtml;
-                this.classList.add('bg-primary-600', 'hover:bg-primary-700');
-                this.classList.remove('bg-green-500', 'hover:bg-green-600');
-            }, 2000);
-        });
-    });
-    
-   // Fungsi untuk memperbarui tampilan keranjang belanja di modal
+    // Update Cart Function
     function updateCart() {
         const cartItemsContainer = document.getElementById('cart-items');
         const cartCountElement = document.getElementById('cart-count'); // Elemen untuk menampilkan jumlah item (jika ada)
@@ -806,14 +717,14 @@
         const cartTaxElement = document.getElementById('cart-tax');
         const cartTotalElement = document.getElementById('cart-total');
 
-        // Perbarui jumlah item di ikon keranjang (jika elemennya ada)
+        // Update jumlah item di ikon keranjang (jika elemennya ada)
         if (cartCountElement) {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCountElement.textContent = totalItems;
         }
 
         // Tampilkan atau sembunyikan pesan keranjang kosong
-        if (emptyCartMessage) { // Tambahkan pengecekan apakah elemen ada
+        if (emptyCartMessage) {
             if (cart.length === 0) {
                 emptyCartMessage.style.display = 'block';
                 if (cartItemsContainer) {
@@ -822,100 +733,98 @@
             } else {
                 emptyCartMessage.style.display = 'none';
             }
-            // Group items by tenant
-            const tenants = [...new Set(cart.map(item => item.tenant))];
-            
-            let itemsHTML = '';
-            
-            tenants.forEach(tenant => {
-                const tenantItems = cart.filter(item => item.tenant === tenant);
-                
-                itemsHTML += `
-                    <div class="mb-6">
-                        <div class="flex items-center bg-gray-50 px-4 py-2 rounded-t-lg">
-                            <i class="fas fa-store text-primary-600 mr-2"></i>
-                            <h4 class="font-medium">${tenant}</h4>
-                        </div>
-                        <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
-                `;
-                
-                tenantItems.forEach(item => {
-                    itemsHTML += `
-                        <div class="cart-item p-4 flex justify-between items-center">
-                            <div>
-                                <h4 class="font-medium">${item.name}</h4>
-                                <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
-                            </div>
-                            <div class="flex items-center">
-                                <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
-                                    <i class="fas fa-minus text-xs"></i>
-                                </button>
-                                <span class="px-3 py-1 bg-white">${item.quantity}</span>
-                                <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}">
-                                    <i class="fas fa-plus text-xs"></i>
-                                </button>
-                                <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                itemsHTML += `</div></div>`;
-            });
-            
-            cartItemsContainer.innerHTML = itemsHTML;
-            
-            // Add event listeners to new buttons
-            document.querySelectorAll('.decrease-quantity').forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.dataset.id;
-                    const item = cart.find(item => item.id === id);
-                    
-                    if (item.quantity > 1) {
-                        item.quantity -= 1;
-                    } else {
-                        cart = cart.filter(item => item.id !== id);
-                    }
-                    
-                    updateCart();
-                });
-            });
-            
-            document.querySelectorAll('.increase-quantity').forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.dataset.id;
-                    const item = cart.find(item => item.id === id);
-                    item.quantity += 1;
-                    updateCart();
-                });
-            });
-            
-            document.querySelectorAll('.remove-item').forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.dataset.id;
-                    cart = cart.filter(item => item.id !== id);
-                    updateCart();
-                });
-            });
         }
+
+        // Group items by tenant for better readability
+        const tenants = [...new Set(cart.map(item => item.tenant))];
         
-        // Update totals
+        let itemsHTML = '';
+        
+        tenants.forEach(tenant => {
+            const tenantItems = cart.filter(item => item.tenant === tenant);
+            
+            itemsHTML += `
+                <div class="mb-6">
+                    <div class="flex items-center bg-gray-50 px-4 py-2 rounded-t-lg">
+                        <i class="fas fa-store text-primary-600 mr-2"></i>
+                        <h4 class="font-medium">${tenant}</h4>
+                    </div>
+                    <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
+            `;
+            
+            tenantItems.forEach(item => {
+                itemsHTML += `
+                    <div class="cart-item p-4 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-medium">${item.name}</h4>
+                            <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
+                                <i class="fas fa-minus text-xs"></i>
+                            </button>
+                            <span class="px-3 py-1 bg-white">${item.quantity}</span>
+                            <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}">
+                                <i class="fas fa-plus text-xs"></i>
+                            </button>
+                            <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            itemsHTML += `</div></div>`;
+        });
+        
+        cartItemsContainer.innerHTML = itemsHTML;
+        
+        // Event listeners for quantity buttons and remove item button
+        document.querySelectorAll('.decrease-quantity').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const item = cart.find(item => item.id === id);
+                
+                if (item.quantity > 1) {
+                    item.quantity -= 1;
+                } else {
+                    cart = cart.filter(item => item.id !== id);
+                }
+                
+                updateCart();
+            });
+        });
+        
+        document.querySelectorAll('.increase-quantity').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const item = cart.find(item => item.id === id);
+                item.quantity += 1;
+                updateCart();
+            });
+        });
+        
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                cart = cart.filter(item => item.id !== id);
+                updateCart();
+            });
+        });
+        
+        // Update subtotal, tax, and total
         const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         const tax = Math.round(subtotal * 0.1);
         const total = subtotal + tax;
         
-        document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
-        document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
-        document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
+        cartSubtotalElement.textContent = `Rp ${subtotal.toLocaleString()}`;
+        cartTaxElement.textContent = `Rp ${tax.toLocaleString()}`;
+        cartTotalElement.textContent = `Rp ${total.toLocaleString()}`;
         
         // Update WhatsApp order link
         if (cart.length > 0) {
             let message = "Hi GreenBite Hub, I want to order the following items:\n\n";
-            
-            // Group by tenant for better readability
-            const tenants = [...new Set(cart.map(item => item.tenant))];
             
             tenants.forEach(tenant => {
                 message += `*${tenant}:*\n`;
@@ -930,7 +839,7 @@
             message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
             message += `Delivery to: [Your Address]\n`;
             message += `Notes: [Any special instructions]`;
-            
+                   
             const encodedMessage = encodeURIComponent(message);
             document.getElementById('whatsapp-order').href = `https://wa.me/6281234567890?text=${encodedMessage}`;
         }
