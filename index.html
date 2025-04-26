@@ -705,269 +705,272 @@
 </div>
     
        <script>
-            // Mobile Menu Toggle
-            document.getElementById('mobile-menu-button').addEventListener('click', function() {
-                const menu = document.getElementById('mobile-menu');
-                menu.classList.toggle('hidden');
-            });
 
-            // Tab Functionality
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const tabId = this.dataset.tab;
-                    
-                    // Update active tab button
-                    tabButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // Show corresponding tab content
-                    document.querySelectorAll('.tab-content').forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    document.getElementById(tabId).classList.add('active');
+           document.addEventListener('DOMContentLoaded', function() {
+                // Mobile Menu Toggle
+                document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                    const menu = document.getElementById('mobile-menu');
+                    menu.classList.toggle('hidden');
                 });
-            });
-
-            // View Menu Buttons (from tenants section)
-            document.querySelectorAll('.view-menu-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const tenantTab = this.dataset.tenant;
+    
+                // Tab Functionality
+                const tabButtons = document.querySelectorAll('.tab-button');
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const tabId = this.dataset.tab;
+                        
+                        // Update active tab button
+                        tabButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Show corresponding tab content
+                        document.querySelectorAll('.tab-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        document.getElementById(tabId).classList.add('active');
+                    });
+                });
+    
+                // View Menu Buttons (from tenants section)
+                document.querySelectorAll('.view-menu-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const tenantTab = this.dataset.tenant;
+                        
+                        // Update active tab button
+                        tabButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.dataset.tab === tenantTab) {
+                                btn.classList.add('active');
+                            }
+                        });
+                        
+                        // Show corresponding tab content
+                        document.querySelectorAll('.tab-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        document.getElementById(tenantTab).classList.add('active');
+                        
+                        // Scroll to menu section
+                        document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+    
+                // Shopping Cart Functionality
+                let cart = [];
+                
+                // Add to cart buttons
+                document.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                        const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                        
+                        const id = button.dataset.id;
+                        const name = button.dataset.name;
+                        const price = parseInt(button.dataset.price);
+                        const tenant = button.dataset.tenant;
+                        
+                        // Check if item already in cart
+                        const existingItem = cart.find(item => item.id === id);
+                        
+                        if (existingItem) {
+                            existingItem.quantity += 1;
+                        } else {
+                            cart.push({
+                                id,
+                                name,
+                                price,
+                                tenant,
+                                quantity: 1
+                            });
+                        }
+                        
+                        updateCart();
+                        
+                        // Animation feedback
+                        const originalHtml = button.innerHTML;
+                        button.innerHTML = '<i class="fas fa-check"></i> Added';
+                        button.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+                        button.classList.add('bg-green-500', 'hover:bg-green-600');
+                        
+                        setTimeout(() => {
+                            button.innerHTML = originalHtml;
+                            button.classList.add('bg-primary-600', 'hover:bg-primary-700');
+                            button.classList.remove('bg-green-500', 'hover:bg-green-600');
+                        }, 2000);
+                    }
                     
-                    // Update active tab button
-                    tabButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        if (btn.dataset.tab === tenantTab) {
-                            btn.classList.add('active');
+                    // Handle cart item quantity changes
+                    if (e.target.classList.contains('decrease-quantity') || e.target.closest('.decrease-quantity')) {
+                        const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
+                        const id = button.dataset.id;
+                        const item = cart.find(item => item.id === id);
+                        
+                        if (item.quantity > 1) {
+                            item.quantity -= 1;
+                        } else {
+                            cart = cart.filter(item => item.id !== id);
+                        }
+                        
+                        updateCart();
+                    }
+                    
+                    if (e.target.classList.contains('increase-quantity') || e.target.closest('.increase-quantity')) {
+                        const button = e.target.classList.contains('increase-quantity') ? e.target : e.target.closest('.increase-quantity');
+                        const id = button.dataset.id;
+                        const item = cart.find(item => item.id === id);
+                        item.quantity += 1;
+                        updateCart();
+                    }
+                    
+                    if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                        const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                        const id = button.dataset.id;
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    }
+                });
+                
+                // Update cart UI
+                function updateCart() {
+                    const cartItemsContainer = document.getElementById('cart-items');
+                    const cartCount = document.getElementById('cart-count');
+                    const emptyCartMessage = document.getElementById('empty-cart-message');
+                    
+                    // Update cart count
+                    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    cartCount.textContent = totalItems;
+                    
+                    // Update cart items
+                    if (cart.length === 0) {
+                        emptyCartMessage.style.display = 'block';
+                        cartItemsContainer.innerHTML = '';
+                    } else {
+                        emptyCartMessage.style.display = 'none';
+                        
+                        // Group items by tenant
+                        const tenants = [...new Set(cart.map(item => item.tenant))];
+                        
+                        let itemsHTML = '';
+                        
+                        tenants.forEach(tenant => {
+                            const tenantItems = cart.filter(item => item.tenant === tenant);
+                            
+                            itemsHTML += `
+                                <div class="mb-6">
+                                    <div class="flex items-center bg-gray-50 px-4 py-2 rounded-t-lg">
+                                        <i class="fas fa-store text-primary-600 mr-2"></i>
+                                        <h4 class="font-medium">${tenant}</h4>
+                                    </div>
+                                    <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
+                            `;
+                            
+                            tenantItems.forEach(item => {
+                                itemsHTML += `
+                                    <div class="cart-item p-4 flex justify-between items-center">
+                                        <div>
+                                            <h4 class="font-medium">${item.name}</h4>
+                                            <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
+                                                <i class="fas fa-minus text-xs"></i>
+                                            </button>
+                                            <span class="px-3 py-1 bg-white">${item.quantity}</span>
+                                            <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}">
+                                                <i class="fas fa-plus text-xs"></i>
+                                            </button>
+                                            <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            
+                            itemsHTML += `</div></div>`;
+                        });
+                        
+                        cartItemsContainer.innerHTML = itemsHTML;
+                    }
+                    
+                    // Update totals
+                    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    const tax = Math.round(subtotal * 0.1);
+                    const total = subtotal + tax;
+                    
+                    document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
+                    document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
+                    document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
+                    
+                    // Update WhatsApp order link
+                    if (cart.length > 0) {
+                        let message = "Hi GreenBite Hub, I want to order the following items:\n\n";
+                        
+                        // Group by tenant for better readability
+                        const tenants = [...new Set(cart.map(item => item.tenant))];
+                        
+                        tenants.forEach(tenant => {
+                            message += `*${tenant}:*\n`;
+                            cart.filter(item => item.tenant === tenant).forEach(item => {
+                                message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
+                            });
+                            message += `\n`;
+                        });
+                        
+                        message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
+                        message += `*Tax (10%):* Rp ${tax.toLocaleString()}\n`;
+                        message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
+                        message += `Delivery to: [Your Address]\n`;
+                        message += `Notes: [Any special instructions]`;
+                        
+                        const encodedMessage = encodeURIComponent(message);
+                        document.getElementById('whatsapp-order').href = `https://wa.me/6281234567890?text=${encodedMessage}`;
+                    }
+                }
+                
+                // Clear cart button
+                document.getElementById('clear-cart').addEventListener('click', function() {
+                    cart = [];
+                    updateCart();
+                });
+                
+                // Cart modal toggle
+                document.getElementById('cart-btn').addEventListener('click', function() {
+                    document.getElementById('cart-modal').classList.remove('hidden');
+                });
+                
+                document.getElementById('close-cart').addEventListener('click', function() {
+                    document.getElementById('cart-modal').classList.add('hidden');
+                });
+                
+                // Close modal when clicking outside
+                document.getElementById('cart-modal').addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.add('hidden');
+                    }
+                });
+                
+                // Smooth scrolling for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close mobile menu if open
+                            document.getElementById('mobile-menu').classList.add('hidden');
                         }
                     });
-                    
-                    // Show corresponding tab content
-                    document.querySelectorAll('.tab-content').forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    document.getElementById(tenantTab).classList.add('active');
-                    
-                    // Scroll to menu section
-                    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
                 });
-            });
-
-            // Shopping Cart Functionality
-            let cart = [];
-            
-            // Add to cart buttons
-            document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
-                    const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
-                    
-                    const id = button.dataset.id;
-                    const name = button.dataset.name;
-                    const price = parseInt(button.dataset.price);
-                    const tenant = button.dataset.tenant;
-                    
-                    // Check if item already in cart
-                    const existingItem = cart.find(item => item.id === id);
-                    
-                    if (existingItem) {
-                        existingItem.quantity += 1;
-                    } else {
-                        cart.push({
-                            id,
-                            name,
-                            price,
-                            tenant,
-                            quantity: 1
-                        });
-                    }
-                    
-                    updateCart();
-                    
-                    // Animation feedback
-                    const originalHtml = button.innerHTML;
-                    button.innerHTML = '<i class="fas fa-check"></i> Added';
-                    button.classList.remove('bg-primary-600', 'hover:bg-primary-700');
-                    button.classList.add('bg-green-500', 'hover:bg-green-600');
-                    
-                    setTimeout(() => {
-                        button.innerHTML = originalHtml;
-                        button.classList.add('bg-primary-600', 'hover:bg-primary-700');
-                        button.classList.remove('bg-green-500', 'hover:bg-green-600');
-                    }, 2000);
-                }
-                
-                // Handle cart item quantity changes
-                if (e.target.classList.contains('decrease-quantity') || e.target.closest('.decrease-quantity')) {
-                    const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
-                    const id = button.dataset.id;
-                    const item = cart.find(item => item.id === id);
-                    
-                    if (item.quantity > 1) {
-                        item.quantity -= 1;
-                    } else {
-                        cart = cart.filter(item => item.id !== id);
-                    }
-                    
-                    updateCart();
-                }
-                
-                if (e.target.classList.contains('increase-quantity') || e.target.closest('.increase-quantity')) {
-                    const button = e.target.classList.contains('increase-quantity') ? e.target : e.target.closest('.increase-quantity');
-                    const id = button.dataset.id;
-                    const item = cart.find(item => item.id === id);
-                    item.quantity += 1;
-                    updateCart();
-                }
-                
-                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
-                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
-                    const id = button.dataset.id;
-                    cart = cart.filter(item => item.id !== id);
-                    updateCart();
-                }
-            });
-            
-            // Update cart UI
-            function updateCart() {
-                const cartItemsContainer = document.getElementById('cart-items');
-                const cartCount = document.getElementById('cart-count');
-                const emptyCartMessage = document.getElementById('empty-cart-message');
-                
-                // Update cart count
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                cartCount.textContent = totalItems;
-                
-                // Update cart items
-                if (cart.length === 0) {
-                    emptyCartMessage.style.display = 'block';
-                    cartItemsContainer.innerHTML = '';
-                } else {
-                    emptyCartMessage.style.display = 'none';
-                    
-                    // Group items by tenant
-                    const tenants = [...new Set(cart.map(item => item.tenant))];
-                    
-                    let itemsHTML = '';
-                    
-                    tenants.forEach(tenant => {
-                        const tenantItems = cart.filter(item => item.tenant === tenant);
-                        
-                        itemsHTML += `
-                            <div class="mb-6">
-                                <div class="flex items-center bg-gray-50 px-4 py-2 rounded-t-lg">
-                                    <i class="fas fa-store text-primary-600 mr-2"></i>
-                                    <h4 class="font-medium">${tenant}</h4>
-                                </div>
-                                <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
-                        `;
-                        
-                        tenantItems.forEach(item => {
-                            itemsHTML += `
-                                <div class="cart-item p-4 flex justify-between items-center">
-                                    <div>
-                                        <h4 class="font-medium">${item.name}</h4>
-                                        <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
-                                            <i class="fas fa-minus text-xs"></i>
-                                        </button>
-                                        <span class="px-3 py-1 bg-white">${item.quantity}</span>
-                                        <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}">
-                                            <i class="fas fa-plus text-xs"></i>
-                                        </button>
-                                        <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            `;
-                        });
-                        
-                        itemsHTML += `</div></div>`;
-                    });
-                    
-                    cartItemsContainer.innerHTML = itemsHTML;
-                }
-                
-                // Update totals
-                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                const tax = Math.round(subtotal * 0.1);
-                const total = subtotal + tax;
-                
-                document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
-                document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
-                document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
-                
-                // Update WhatsApp order link
-                if (cart.length > 0) {
-                    let message = "Hi GreenBite Hub, I want to order the following items:\n\n";
-                    
-                    // Group by tenant for better readability
-                    const tenants = [...new Set(cart.map(item => item.tenant))];
-                    
-                    tenants.forEach(tenant => {
-                        message += `*${tenant}:*\n`;
-                        cart.filter(item => item.tenant === tenant).forEach(item => {
-                            message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
-                        });
-                        message += `\n`;
-                    });
-                    
-                    message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
-                    message += `*Tax (10%):* Rp ${tax.toLocaleString()}\n`;
-                    message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
-                    message += `Delivery to: [Your Address]\n`;
-                    message += `Notes: [Any special instructions]`;
-                    
-                    const encodedMessage = encodeURIComponent(message);
-                    document.getElementById('whatsapp-order').href = `https://wa.me/6281234567890?text=${encodedMessage}`;
-                }
-            }
-            
-            // Clear cart button
-            document.getElementById('clear-cart').addEventListener('click', function() {
-                cart = [];
-                updateCart();
-            });
-            
-            // Cart modal toggle
-            document.getElementById('cart-btn').addEventListener('click', function() {
-                document.getElementById('cart-modal').classList.remove('hidden');
-            });
-            
-            document.getElementById('close-cart').addEventListener('click', function() {
-                document.getElementById('cart-modal').classList.add('hidden');
-            });
-            
-            // Close modal when clicking outside
-            document.getElementById('cart-modal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.add('hidden');
-                }
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        document.getElementById('mobile-menu').classList.add('hidden');
-                    }
-                });
-            });
+           });
         </script>
     
 </body>
