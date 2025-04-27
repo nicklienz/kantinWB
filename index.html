@@ -170,9 +170,10 @@
                         const jsonUrl = 'https://github.com/nicklienz/kantinWB/raw/main/assets/data/datatenant.json';
                         console.log(jsonUrl);
             
+
                         // Mengambil data JSON
                         fetch(jsonUrl, { mode: 'no-cors' })
-                            .then(response => {
+                            .then(response => response.json())
                             .then(tenants => {
                                 let tenantListHtml = '';
                                 
