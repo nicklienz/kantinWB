@@ -1,6 +1,7 @@
 {
   "pak-domo": [
     "name": "Pak Domo",
+    "short":"DM",
     {
       "id": "dm-1",
       "name": "Ayam Sambel Ijo",
@@ -24,7 +25,8 @@
     }
   ],
   "masakan-medan": [
-  "name": "Masakan Medan",
+    "name": "Masakan Medan",
+    "short":"DM",
     {
       "id": "mm-1",
       "name": "Ayam Wijen",
@@ -49,6 +51,7 @@
   ],
   "pak-mul": [
   "name": "Pak Mul",
+  "short":"PM",
     {
       "id": "pm-1",
       "name": "Bubur Ayam",
@@ -85,8 +88,9 @@
       "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_soto betawi.jpeg"
     }
   ],
-  "rasa-keluarga": [
-"name": "Rasa Keluarga",
+"rasa-keluarga": [
+  "name": "Rasa Keluarga",
+  "short":"RK",
     {
       "id": "rk-1",
       "name": "Ayam Goreng Tepung",
@@ -118,6 +122,7 @@
   ],
   "mas-medi": [
   "name": "Mas Medi",
+    "short":"MD",
     {
       "id": "md-1",
       "name": "Kopi",
@@ -142,6 +147,7 @@
   ],
   "keno": [
   "name": "Keno",
+    "short":"KN",
     {
       "id": "kn-1",
       "name": "Jus Alpukat",
