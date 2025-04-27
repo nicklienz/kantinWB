@@ -1347,10 +1347,10 @@
 
             // Update cart items
             if (cart.length === 0) {
-                emptyCartMessage.classList.add('hidden');
+                
                 cartItemsContainer.innerHTML = '';
             } else {
-                emptyCartMessage.classList.remove('hidden');
+                
                 
                 // Group items by tenant
                 const tenants = [...new Set(cart.map(item => item.tenant))];
