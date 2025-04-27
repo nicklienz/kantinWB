@@ -1,0 +1,196 @@
+{
+  "pak-domo": [
+    {
+      "id": "dm-1",
+      "name": "Ayam Sambel Ijo",
+      "description": "Ayam goreng penyet dengan sambal cabe hijau yang gurih",
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_ayamsambelijo.jpeg",
+      "price": "20000"
+    },
+    {
+      "id": "dm-2",
+      "name": "Rawon Surabaya",
+      "description": "Kuah hitam gurih kluwek, daging sapi nikmat",
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_rawon.jpeg",
+      "price": "25000"
+    },
+    {
+      "id": "dm-3",
+      "name": "Sop Iga",
+      "description": "Iga sapi empuk, kuah segar, rempah menghangatkan!",
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_sopiga.jpeg",
+      "price": "30000"
+    }
+  ],
+  "masakan-medan": [
+    {
+      "id": "mm-1",
+      "name": "Ayam Wijen",
+      "description": "Ayam goreng renyah, taburan wijen gurih, saus manis lezat",
+      "price": 25000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_ayamwijen.jpeg"
+    },
+    {
+      "id": "mm-2",
+      "name": "Tumis Daun Pepaya",
+      "description": "Daun pepaya gurih ditumis bumbu, nikmat disantap",
+      "price": 38000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_daunpepaya.jpeg"
+    },
+    {
+      "id": "mm-3",
+      "name": "Tumis Tauge",
+      "description": "Tauge renyah segar ditumis dengan bumbu sederhana yang menggugah selera",
+      "price": 15000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_tauge.jpeg"
+    }
+  ],
+  "pak-mul": [
+    {
+      "id": "pm-1",
+      "name": "Bubur Ayam",
+      "description": "Bubur ayam gurih lembut, topping melimpah, sarapan nikmat khas Pekalongan",
+      "price": 12000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_bubur.jpeg"
+    },
+    {
+      "id": "pm-2",
+      "name": "Kwetiau Goreng",
+      "description": "Tersedia dalam pilihan goreng atau kuah",
+      "price": 15000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_kwetiau.jpeg"
+    },
+    {
+      "id": "pm-3",
+      "name": "Mie Instan",
+      "description": "Tersedia pilihan goreng atau kuah dengan telur",
+      "price": 12000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_mieinstan.jpeg"
+    },
+    {
+      "id": "pm-4",
+      "name": "Nasi Goreng",
+      "description": "Nasi gurih diorak-arik dengan ayam, sayuran, bumbu lezat meresap sempurna.",
+      "price": 15000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg"
+    },
+    {
+      "id": "pm-5",
+      "name": "Soto Betawi",
+      "description": "Soto Betawi gurih creamy, daging empuk, kuah susu kaya rempah",
+      "price": 12000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_soto betawi.jpeg"
+    }
+  ],
+  "rasa-keluarga": [
+    {
+      "id": "rk-1",
+      "name": "Ayam Goreng Tepung",
+      "description": "Ayam renyah berlapis tepung bumbu, kriuknya bikin nagih, rasa gurih memikat",
+      "price": 12000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_friedchicken.jpeg"
+    },
+    {
+      "id": "rk-2",
+      "name": "Ayam Katsu",
+      "description": "Ayam fillet berlapis tepung roti renyah, saus katsu gurih manis",
+      "price": 15000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_katsu.jpeg"
+    },
+    {
+      "id": "rk-3",
+      "name": "Dada Ayam Panggang",
+      "description": "Dada ayam juicy dipanggang sempurna, bumbu meresap, rendah lemak, sehat lezat",
+      "price": 12000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_steak.jpeg"
+    },
+    {
+      "id": "rk-4",
+      "name": "Ayam Goreng Taiwan Crispy",
+      "description": "Ayam goreng Taiwan super renyah, bumbu khas, aroma wangi, bikin nagih",
+      "price": 12000,
+      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_taiwan.jpeg"
+    }
+  ],
+  "mas-medi": [
+    {
+      "id": "md-1",
+      "name": "Kopi",
+      "description": "Kopi nikmat, aroma menggoda, rasa pahit manis menyegarkan, bikin semangat!",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_kopi.jpeg"
+    },
+    {
+      "id": "md-2",
+      "name": "Bakso Malang",
+      "description": "Bakso Malang komplit, kuah kaldu gurih, pangsit renyah, cita rasa khas.",
+      "price": 15000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_baksomalang.jpeg"
+    },
+    {
+      "id": "md-3",
+      "name": "Jeruk Peras",
+      "description": "Jeruk segar diperas, rasa manis asam menyegarkan, vitamin C alami.",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_jeruk.jpeg"
+    }
+  ],
+  "keno": [
+    {
+      "id": "kn-1",
+      "name": "Jus Alpukat",
+      "description": "Alpukat lembut diblender halus, manis alami, creamy, sehat dan mengenyangkan.",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_avocado.jpeg"
+    },
+    {
+      "id": "kn-2",
+      "name": "Jus Belimbing",
+      "description": "Belimbing segar diblender, rasa manis asam unik, segar dan kaya manfaat",
+      "price": 15000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_belimbing.jpeg"
+    },
+    {
+      "id": "kn-3",
+      "name": "Jus Buah Naga",
+      "description": "Buah naga segar diblender, warna merah/putih cerah, rasa manis segar alami.",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_jusnaga.jpeg"
+    },
+    {
+      "id": "kn-4",
+      "name": "Jus Sirsak",
+      "description": "Sirsak segar diblender, rasa manis asam menyegarkan, tekstur lembut creamy.",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_sirsak.jpeg"
+    },
+    {
+      "id": "kn-5",
+      "name": "Jus Wortel",
+      "description": "Wortel segar diblender, rasa manis alami, sehat untuk mata dan tubuh.",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_wortel.jpeg"
+    },
+    {
+      "id": "kn-6",
+      "name": "Jus Mangga",
+      "description": "Mangga matang diblender halus, manis legit menyegarkan, warna kuning cerah memikat",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_mangga.jpeg"
+    },
+    {
+      "id": "kn-7",
+      "name": "Jus Pisang",
+      "description": "Pisang matang lembut diblender, manis alami, tekstur kental mengenyangkan, sehat bernutrisi.",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_pisang.jpeg"
+    },
+    {
+      "id": "kn-8",
+      "name": "Buah Potong",
+      "description": "Aneka buah segar dipotong dadu, manis alami, warna-warni menggoda selera",
+      "price": 12000,
+      "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_buahpotong.jpeg"
+    }
+  ]
+}
