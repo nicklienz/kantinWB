@@ -197,21 +197,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    `
-                                   console.log(response);
-                                })
-                            .catch(error => {
-                                console.error('Error fetching JSON:', error);
+                                 `;
                             });
-            
-                                // Menambahkan elemen-elemen tenant ke dalam div dengan id "tenant-list"
-                                document.getElementById('tenant-list').innerHTML = tenantListHtml;
-                            })
-                            .catch(error => {
-                                console.error('Error fetching JSON:', error);
-                            });
-                    });
-                </script>
+        
+                            // Menambahkan elemen-elemen tenant ke dalam div dengan id "tenant-list"
+                            document.getElementById('tenant-list').innerHTML = tenantListHtml;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching JSON:', error);
+                        });
+                });
+            </script>
                 
             </div>
         </div>
