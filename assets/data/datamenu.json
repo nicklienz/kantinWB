@@ -1,5 +1,6 @@
 {
   "pak-domo": [
+    "name": "Pak Domo",
     {
       "id": "dm-1",
       "name": "Ayam Sambel Ijo",
@@ -23,6 +24,7 @@
     }
   ],
   "masakan-medan": [
+  "name": "Masakan Medan",
     {
       "id": "mm-1",
       "name": "Ayam Wijen",
@@ -46,6 +48,7 @@
     }
   ],
   "pak-mul": [
+  "name": "Pak Mul",
     {
       "id": "pm-1",
       "name": "Bubur Ayam",
@@ -83,6 +86,7 @@
     }
   ],
   "rasa-keluarga": [
+"name": "Rasa Keluarga",
     {
       "id": "rk-1",
       "name": "Ayam Goreng Tepung",
@@ -113,6 +117,7 @@
     }
   ],
   "mas-medi": [
+  "name": "Mas Medi",
     {
       "id": "md-1",
       "name": "Kopi",
@@ -136,6 +141,7 @@
     }
   ],
   "keno": [
+  "name": "Keno",
     {
       "id": "kn-1",
       "name": "Jus Alpukat",
