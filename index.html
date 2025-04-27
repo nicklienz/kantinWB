@@ -164,6 +164,22 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="tenant-list">
                 <script>
+
+                   // Mobile Menu Toggle
+                    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                        const menu = document.getElementById('mobile-menu');
+                        menu.classList.toggle('hidden');
+                    });
+                    
+                    // Show corresponding tab content
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tenantTab).classList.add('active');
+                    
+                    // Scroll to menu section
+                    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+                    
                     // Tunggu hingga seluruh konten halaman dimuat
                     document.addEventListener('DOMContentLoaded', () => {
                         // URL ke file JSON yang disimpan di server atau GitHub
@@ -212,6 +228,40 @@
                                 console.error('Error fetching JSON:', error);
                             });
                     });
+
+                  // Tab Functionality
+                    const tabButtons = document.querySelectorAll('.tab-button');
+                    tabButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const tabId = this.dataset.tab;
+                            
+                            // Update active tab button
+                            tabButtons.forEach(btn => {
+                                btn.classList.remove('active');
+                            });
+                            this.classList.add('active');
+                            
+                            // Show corresponding tab content
+                            document.querySelectorAll('.tab-content').forEach(content => {
+                                content.classList.remove('active');
+                            });
+                            document.getElementById(tabId).classList.add('active');
+                        });
+                    });
+                
+                    // View Menu Buttons (from tenants section)
+                    document.querySelectorAll('.view-menu-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const tenantTab = this.dataset.tenant;
+                
+                    // Update active tab button
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.tab === tenantTab) {
+                            btn.classList.add('active');
+                        }
+                    });
+                    
                 </script>
 
             </div>
@@ -1141,56 +1191,6 @@
     </div>
     
    <script>
-               // Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-    
-        // Tab Functionality
-        const tabButtons = document.querySelectorAll('.tab-button');
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const tabId = this.dataset.tab;
-                
-                // Update active tab button
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                // Show corresponding tab content
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-    
-        // View Menu Buttons (from tenants section)
-        document.querySelectorAll('.view-menu-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const tenantTab = this.dataset.tenant;
-                
-                // Update active tab button
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.dataset.tab === tenantTab) {
-                        btn.classList.add('active');
-                    }
-                });
-                
-                // Show corresponding tab content
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById(tenantTab).classList.add('active');
-                
-                // Scroll to menu section
-                document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    
         // Shopping Cart Functionality
         let cart = [];
         console.log(cart);
