@@ -171,8 +171,8 @@
                         console.log(jsonUrl);
             
                         // Mengambil data JSON
-                        fetch(jsonUrl)
-                            .then(response => response.json())
+                        fetch(jsonUrl, { mode: 'no-cors' })
+                            .then(response => {
                             .then(tenants => {
                                 let tenantListHtml = '';
                                 
@@ -196,8 +196,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    `;
-                                });
+                                    `
+                                   console.log(response);
+                                })
+                            .catch(error => {
+                                console.error('Error fetching JSON:', error);
+                            });
             
                                 // Menambahkan elemen-elemen tenant ke dalam div dengan id "tenant-list"
                                 document.getElementById('tenant-list').innerHTML = tenantListHtml;
