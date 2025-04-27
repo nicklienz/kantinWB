@@ -1175,12 +1175,9 @@
                 
                 <div id="cart-items" class="space-y-4">
                     <!-- Cart items will be added here dynamically -->
-                    <div class="text-center py-8" id="empty-cart-message">
+                    <div class="text-center py-8 hidden" id="empty-cart-message">
                         <i class="fas fa-shopping-basket text-4xl text-gray-300 mb-4"></i>
                         <p class="text-gray-500">Keranjang anda kosong</p>
-                        <a href="#menu" class="inline-block mt-4 text-primary-700 hover:text-primary-800 font-medium">
-                            <i class="fas fa-utensils mr-2"></i> Pilih Menu
-                        </a>
                     </div>
                 </div>
                 
@@ -1343,17 +1340,17 @@
             const cartItemsContainer = document.getElementById('cart-items');
             const cartCount = document.getElementById('cart-count');
             const emptyCartMessage = document.getElementById('empty-cart-message');
-            console.log(emptyCartMessage);
+
             // Update cart count
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
 
             // Update cart items
             if (cart.length === 0) {
-                emptyCartMessage.style.display = 'block';
+                emptyCartMessage.classList.add('hidden');
                 cartItemsContainer.innerHTML = '';
             } else {
-                //emptyCartMessage.style.display = 'none';
+                emptyCartMessage.classList.remove('hidden');
                 
                 // Group items by tenant
                 const tenants = [...new Set(cart.map(item => item.tenant))];
