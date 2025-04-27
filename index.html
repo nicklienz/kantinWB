@@ -237,6 +237,9 @@
                         const activeTab = document.getElementById(tenantId);
                         if (activeTab) {
                             activeTab.classList.add('active');
+                            
+                            // Scroll ke tab yang aktif
+                            activeTab.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }
                 
                         // Mengaktifkan tombol tab yang sesuai
