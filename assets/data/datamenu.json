@@ -10,7 +10,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_ayamsambelijo.jpeg",
         "price": 20000,
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -20,7 +20,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_rawon.jpeg",
         "price": 25000,
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -30,7 +30,8 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_sopiga.jpeg",
         "price": 30000,
         "variant1": [
-          ""
+          
+        ]
       },
       {
         "id": "dm-4",
@@ -39,7 +40,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_terong.jpeg",
         "price": 30000,
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -49,7 +50,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_tahutempe.jpeg",
         "price": 2000,
         "variant1": [
-          ""
+
         ]
       }
     ]
@@ -65,7 +66,7 @@
         "price": 25000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_ayamwijen.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -75,8 +76,7 @@
         "price": 38000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_daunpepaya.jpeg",
         "variant1": [
-          "nasi",
-          "ala carte"
+
         ]
       },
       {
@@ -86,7 +86,7 @@
         "price": 15000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_tauge.jpeg",
         "variant1": [
-          ""
+
         ]
       }
     ]
@@ -102,7 +102,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_bubur.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -112,7 +112,7 @@
         "price": 15000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_kwetiau.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -122,7 +122,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_mieinstan.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -142,7 +142,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_sotobetawi.jpeg",
         "variant1": [
-          ""
+
         ]
       }
     ]
@@ -223,7 +223,7 @@
         "price": 15000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_baksomalang.jpeg",
         "variant1": [
-          ""
+
       },
       {
         "id": "md-3",
@@ -249,7 +249,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_avocado.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -259,7 +259,7 @@
         "price": 15000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_belimbing.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -269,7 +269,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_jusnaga.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -279,7 +279,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_sirsak.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -289,7 +289,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_wortel.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -299,7 +299,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_mangga.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -309,7 +309,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_pisang.jpeg",
         "variant1": [
-          ""
+
         ]
       },
       {
@@ -319,7 +319,7 @@
         "price": 12000,
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_buahpotong.jpeg",
         "variant1": [
-          ""
+
         ]
       }
     ]
