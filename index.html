@@ -609,17 +609,16 @@
         </div>
     </div>
     
-   <script>
-               // Mobile Menu Toggle
+    <script>
+        // Mobile Menu Toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
-
     
         // Shopping Cart Functionality
-       let cart = [];
-      // Add to cart buttons
+        let cart = [];
+        // Add to cart buttons
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
                 const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
@@ -632,7 +631,7 @@
         
                 let variant = null;
         
-                // Jika varian diperlukan dan belum dipilih
+                // If variant is required and not selected
                 if (requiresVariant) {
                     const variantSelect = document.getElementById(`variant-${id}`);
                     if (variantSelect && variantSelect.value) {
@@ -643,7 +642,7 @@
                     }
                 }
         
-                // Cek jika item sudah ada di keranjang dengan varian yang sama
+                // Check if the item already exists in the cart with the same variant
                 const existingItem = cart.find(item => item.id === id && item.variant === variant);
         
                 if (existingItem) {
@@ -655,13 +654,12 @@
                         price,
                         tenant,
                         quantity: 1,
-                        variant  // Menambahkan varian ke dalam item
+                        variant  // Add variant to the item
                     });
                 }
         
-                updateCart(); // Memperbarui keranjang setelah menambah item
+                updateCart(); // Update cart after adding the item
             
-                
                 // Animation feedback
                 const originalHtml = button.innerHTML;
                 button.innerHTML = '<i class="fas fa-check"></i> Added';
@@ -674,117 +672,114 @@
                     button.classList.remove('bg-green-500', 'hover:bg-green-600');
                 }, 2000);
             }
-            
+    
             // Handle cart item quantity changes
             if (e.target.classList.contains('decrease-quantity') || e.target.closest('.decrease-quantity')) {
                 const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
                 const id = button.dataset.id;
                 const variant = button.dataset.variant;
                 
-                // Pastikan `variant` ada
+                // Ensure `variant` exists
                 if (variant) {
-                    // Mencari item berdasarkan id dan variant
+                    // Find item based on id and variant
                     const item = cart.find(item => item.id === id && item.variant === variant);
                 
-                    // Jika item ditemukan dan kuantitas lebih dari 1, kurangi kuantitas
+                    // If item found and quantity is more than 1, decrease quantity
                     if (item && item.quantity > 1) {
                         item.quantity -= 1;
                     } else {
-                        // Jika item ditemukan dan kuantitas sama dengan 1, hapus item dari keranjang
+                        // If item found and quantity is 1, remove the item from cart
                         cart = cart.filter(item => item.id !== id || item.variant !== variant);
                     }
                 
-                    // Memperbarui UI keranjang setelah perubahan
+                    // Update cart UI after the change
                     updateCart();
                 } else {
-                    // Untuk item tanpa varian
+                    // For items without a variant
                     const item = cart.find(item => item.id === id);
                     
                     if (item && item.quantity > 1) {
-                        item.quantity -= 1; // Kurangi kuantitas
+                        item.quantity -= 1; // Decrease quantity
                     } else {
-                        // Hapus item jika kuantitas 1
+                        // Remove item if quantity is 1
                         cart = cart.filter(item => item.id !== id);
                     }
                 }
             }
             
-            // Fungsi untuk meningkatkan kuantitas (increase quantity)
+            // Function to increase quantity
             if (e.target.classList.contains('increase-quantity') || e.target.closest('.increase-quantity')) {
                 const button = e.target.classList.contains('increase-quantity') ? e.target : e.target.closest('.increase-quantity');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant || null; // Ambil varian jika ada
+                const variant = button.dataset.variant || null; // Get variant if exists
             
-                // Jika item memiliki varian
+                // If item has a variant
                 if (variant) {
                     const item = cart.find(item => item.id === id && item.variant === variant);
                     if (item) {
-                        item.quantity += 1; // Meningkatkan kuantitas untuk item dengan varian
+                        item.quantity += 1; // Increase quantity for item with variant
                     }
                 } else {
-                    // Jika item tanpa varian
+                    // If item without variant
                     const item = cart.find(item => item.id === id && item.variant === null);
                     if (item) {
-                        item.quantity += 1; // Meningkatkan kuantitas untuk item tanpa varian
+                        item.quantity += 1; // Increase quantity for item without variant
                     }
                 }
             
                 updateCart();
             }
             
-            // Fungsi untuk menghapus item dari keranjang
+            // Function to remove item from cart
             if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
                 const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant || null; // Ambil varian jika ada
+                const variant = button.dataset.variant || null; // Get variant if exists
             
-                // Jika item memiliki varian
+                // If item has a variant
                 if (variant) {
                     cart = cart.filter(item => !(item.id === id && item.variant === variant));
                 } else {
-                    // Jika item tanpa varian
+                    // If item without variant
                     cart = cart.filter(item => item.id !== id && item.variant === null);
                 }
             
                 updateCart();
             }
         
-        // Update cart UI
-        function updateCart() {
-            console.log(cart);
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
-            const emptyCartMessage = document.getElementById('empty-cart-message');
-
-            // Update cart count
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
-
-            // Update cart items
-            if (cart.length === 0) {
-                
-                cartItemsContainer.innerHTML = '';
-            } else {
-                
-                
-                // Group items by tenant
-                const tenants = [...new Set(cart.map(item => item.tenant))];
-                
-                let itemsHTML = '';
-                
-                tenants.forEach(tenant => {
-                    const tenantItems = cart.filter(item => item.tenant === tenant);
+            // Update cart UI
+            function updateCart() {
+                console.log(cart);
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartCount = document.getElementById('cart-count');
+                const emptyCartMessage = document.getElementById('empty-cart-message');
+    
+                // Update cart count
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+    
+                // Update cart items
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '';
+                } else {
+                    // Group items by tenant
+                    const tenants = [...new Set(cart.map(item => item.tenant))];
                     
-                    itemsHTML += `
-                        <div class="mb-6">
-                            <div class="flex items-center bg-gray-50 px-4 py-2 rounded-t-lg">
-                                <i class="fas fa-store text-primary-600 mr-2"></i>
-                                <h4 class="font-medium">${tenant}</h4>
-                            </div>
-                            <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
-                    `;
+                    let itemsHTML = '';
                     
-                   tenantItems.forEach(item => {
+                    tenants.forEach(tenant => {
+                        const tenantItems = cart.filter(item => item.tenant === tenant);
+                        
+                        itemsHTML += `
+                            <div class="mb-6">
+                                <div class="flex items-center bg-gray-50 px-4 py-2 rounded-t-lg">
+                                    <i class="fas fa-store text-primary-600 mr-2"></i>
+                                    <h4 class="font-medium">${tenant}</h4>
+                                </div>
+                                <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
+                        `;
+                        
+                       tenantItems.forEach(item => {
                             itemsHTML += `
                                 <div class="cart-item p-4 flex justify-between items-center">
                                     <div>
@@ -792,105 +787,68 @@
                                         <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
                                         ${item.variant ? `<p class="text-sm text-gray-500">Varian: ${item.variant}</p>` : ''}
                                     </div>
-                                <div class="flex items-center">
-                                    <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
-                                        <i class="fas fa-minus text-xs"></i>
-                                    </button>
-                                    <span class="px-3 py-1 bg-white">${item.quantity}</span>
-                                    <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}">
-                                        <i class="fas fa-plus text-xs"></i>
-                                    </button>
-                                    <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    <div class="flex items-center">
+                                        <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
+                                            <i class="fas fa-minus text-xs"></i>
+                                        </button>
+                                        <span class="px-3 py-1 bg-white">${item.quantity}</span>
+                                        <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}">
+                                            <i class="fas fa-plus text-xs"></i>
+                                        </button>
+                                        <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
+                        });
+                        
+                        itemsHTML += `</div></div>`;
                     });
                     
-                    itemsHTML += `</div></div>`;
-                });
-                
-                cartItemsContainer.innerHTML = itemsHTML;
-            }
-            
-            // Update totals
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const tax = Math.round(subtotal * 0.1);
-            const total = subtotal + tax;
-            
-            document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
-            document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
-            document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
-            
-            // Update WhatsApp order link
-            if (cart.length > 0) {
-                let message = "Halo, saya mau pesan:\n\n";
-                
-                // Group by tenant for better readability
-                const tenants = [...new Set(cart.map(item => item.tenant))];
-                
-                tenants.forEach(tenant => {
-                    message += `*${tenant}:*\n`;
-                    cart.filter(item => item.tenant === tenant).forEach(item => {
-                        message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n Varian:${item.variant}`;
-                    });
-                    message += `\n`;
-                });
-                
-                message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
-                message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
-                message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
-                message += `Kirim ke: [Alamat]\n`;
-                message += `Catatan: [Instruksi khusus]`;
-                
-                const encodedMessage = encodeURIComponent(message);
-                document.getElementById('whatsapp-order').href = `https://wa.me/6285245498100?text=${encodedMessage}`;
-            }
-        }
-        
-        // Clear cart button
-        document.getElementById('clear-cart').addEventListener('click', function() {
-            cart = [];
-            updateCart();
-        });
-        
-        // Cart modal toggle
-        document.getElementById('cart-btn').addEventListener('click', function() {
-            document.getElementById('cart-modal').classList.remove('hidden');
-        });
-        
-        document.getElementById('close-cart').addEventListener('click', function() {
-            document.getElementById('cart-modal').classList.add('hidden');
-        });
-        
-        // Close modal when clicking outside
-        document.getElementById('cart-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.add('hidden');
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    document.getElementById('mobile-menu').classList.add('hidden');
+                    cartItemsContainer.innerHTML = itemsHTML;
                 }
-            });
+                
+                // Update totals
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const tax = Math.round(subtotal * 0.1);
+                const total = subtotal + tax;
+                
+                document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
+                document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
+                document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
+                
+                // Update WhatsApp order link
+                if (cart.length > 0) {
+                    let message = "Halo, saya mau pesan:\n\n";
+                    
+                    // Group by tenant for better readability
+                    const tenants = [...new Set(cart.map(item => item.tenant))];
+                    
+                    tenants.forEach(tenant => {
+                        message += `*${tenant}:*\n`;
+                        cart.filter(item => item.tenant === tenant).forEach(item => {
+                            message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n Varian:${item.variant}`;
+                        });
+                        message += `\n`;
+                    });
+                    
+                    message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
+                    message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
+                    message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
+                    message += `Kirim ke: [Alamat]\n`;
+    
+                    const whatsappLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
+                    document.getElementById('whatsapp-link').setAttribute('href', whatsappLink);
+                    
+                    emptyCartMessage.style.display = 'none';
+                } else {
+                    emptyCartMessage.style.display = 'block';
+                }
+            }
         });
-   </script>
+    </script>
+
     
 </body>
 </html>
