@@ -818,65 +818,64 @@
                 document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
                 document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
                 
-                  // Update WhatsApp order link
-            if (cart.length > 0) {
-                let message = "Halo, saya mau pesan:\n\n";
-                const tenants = [...new Set(cart.map(item => item.tenant))];
-                
-                tenants.forEach(tenant => {
-                    message += `*${tenant}:*\n`;
-                    cart.filter(item => item.tenant === tenant).forEach(item => {
-                        message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()} Varian: ${item.variant ? item.variant : 'Tidak Ada'}\n`;
-                    });
-                    message += `\n`;
-                });
-                
-                message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
-                message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
-                message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
-                message += `Kirim ke: [Alamat]\n`;
-                message += `Catatan: [Instruksi khusus]`;
-
-                const encodedMessage = encodeURIComponent(message);
-                document.getElementById('whatsapp-order').href = `https://wa.me/6285245498100?text=${encodedMessage}`;
-            }
-        });
-        
-        // Clear cart button
-        document.getElementById('clear-cart').addEventListener('click', function() {
-            cart = [];
-            updateCart();
-        });
-        
-        // Cart modal toggle
-        document.getElementById('cart-btn').addEventListener('click', function() {
-            document.getElementById('cart-modal').classList.remove('hidden');
-        });
-        
-        document.getElementById('close-cart').addEventListener('click', function() {
-            document.getElementById('cart-modal').classList.add('hidden');
-        });
-        
-        // Close modal when clicking outside
-        document.getElementById('cart-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.add('hidden');
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                // Update WhatsApp order link
+                if (cart.length > 0) {
+                    let message = "Halo, saya mau pesan:\n\n";
+                    const tenants = [...new Set(cart.map(item => item.tenant))];
+                    
+                    tenants.forEach(tenant => {
+                        message += `*${tenant}:*\n`;
+                        cart.filter(item => item.tenant === tenant).forEach(item => {
+                            message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()} Varian: ${item.variant ? item.variant : 'Tidak Ada'}\n`;
+                        });
+                        message += `\n`;
+                    });
+                    
+                    message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
+                    message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
+                    message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
+                    message += `Kirim ke: [Alamat]\n`;
+                    message += `Catatan: [Instruksi khusus]`;
+    
+                    const encodedMessage = encodeURIComponent(message);
+                    document.getElementById('whatsapp-order').href = `https://wa.me/6285245498100?text=${encodedMessage}`;
+                }
+            
+                    // Clear cart button
+                    document.getElementById('clear-cart').addEventListener('click', function() {
+                        cart = [];
+                        updateCart();
                     });
+                    
+                    // Cart modal toggle
+                    document.getElementById('cart-btn').addEventListener('click', function() {
+                        document.getElementById('cart-modal').classList.remove('hidden');
+                    });
+                    
+                    document.getElementById('close-cart').addEventListener('click', function() {
+                        document.getElementById('cart-modal').classList.add('hidden');
+                    });
+                    
+                    // Close modal when clicking outside
+                    document.getElementById('cart-modal').addEventListener('click', function(e) {
+                        if (e.target === this) {
+                            this.classList.add('hidden');
+                        }
+                    });
+                    
+                    // Smooth scrolling for anchor links
+                    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                        anchor.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            
+                            const targetId = this.getAttribute('href');
+                            const targetElement = document.querySelector(targetId);
+                            
+                            if (targetElement) {
+                                window.scrollTo({
+                                    top: targetElement.offsetTop - 80,
+                                    behavior: 'smooth'
+                                });
                     
                     // Close mobile menu if open
                     document.getElementById('mobile-menu').classList.add('hidden');
