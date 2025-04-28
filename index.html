@@ -328,6 +328,15 @@
                                                             <div class="p-4">
                                                                 <h4 class="font-bold text-gray-800">${menu.name}</h4>
                                                                 <p class="text-sm text-gray-600 mt-1">${menu.description}</p>
+                                                                <!-- Menampilkan dropdown jika ada variant -->
+                                                                ${variantHtml ? `
+                                                                    <div class="mt-3">
+                                                                        <label for="variant-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih Variasi:</label>
+                                                                        <select id="variant-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
+                                                                            ${variantHtml}
+                                                                        </select>
+                                                                    </div>
+                                                                ` : ''}
                                                                 <div class="mt-3 flex justify-between items-center">
                                                                     <span class="font-bold text-primary-700">Rp ${menu.price.toLocaleString('id-ID')}</span>
                                                                     <button class="add-to-cart bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded-full text-sm" 
@@ -339,15 +348,7 @@
                                                                         <i class="fas fa-plus mr-1"></i> Add
                                                                     </button>
                                                                 </div>
-                                                                <!-- Menampilkan dropdown jika ada variant -->
-                                                                ${variantHtml ? `
-                                                                    <div class="mt-3">
-                                                                        <label for="variant-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih Variasi:</label>
-                                                                        <select id="variant-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
-                                                                            ${variantHtml}
-                                                                        </select>
-                                                                    </div>
-                                                                ` : ''}
+                                                                
                                                             </div>
                                                         </div>
                                                     `;
