@@ -833,7 +833,7 @@ variant = 'default';}
                 
                 // Update totals
                 const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                const tax = Math.round(subtotal * 0.1);
+                const tax = Math.round(subtotal * 0.0);
                 const total = subtotal + tax;
                 
                 document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
@@ -843,16 +843,19 @@ variant = 'default';}
                 // Update WhatsApp order link
                 if (cart.length > 0) {
                     let message = "Halo, saya mau pesan:\n\n";
-                    const tenants = [...new Set(cart.map(item => item.tenant))];
-                    
-                    tenants.forEach(tenant => {
-                        message += `*${tenant}:*\n`;
-                        cart.filter(item => item.tenant === tenant).forEach(item => {
-                            message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()} Varian: ${item.variant ? item.variant : 'Tidak Ada'}\n`;
-                        });
-                        message += `\n`;
-                    });
-                    
+                    const tenants = [...new Set(cart.map(item => item.tenant))];
+                        tenants.forEach(tenant => {
+                            message += `*${tenant}:*\n`;
+                        
+                            cart
+                              .filter(item => item.tenant === tenant)
+                              .forEach(item => {
+                                  message += `- ${item.name} ${item.variant && item.variant !== "default" ? `(Varian: ${item.variant})` : ""} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
+                              });
+                        
+                            message += `\n`;
+                        });
+                    
                     message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
                     message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
                     message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
