@@ -344,8 +344,7 @@
                                                                             data-name="${menu.name}" 
                                                                             data-price="${menu.price}" 
                                                                             data-tenant="${tenant.name}"
-                                                                            data-variant="${variantHtml}"
-                                                                            data-requires-variant="${requiresVariant}">
+                                                                            data-requires-variant="${requiresVariant}"
                                                                         <i class="fas fa-plus mr-1"></i> Add
                                                                     </button>
                                                                 </div>
@@ -666,6 +665,7 @@
                 button.innerHTML = '<i class="fas fa-check"></i> Added';
                 button.classList.remove('bg-primary-600', 'hover:bg-primary-700');
                 button.classList.add('bg-green-500', 'hover:bg-green-600');
+                button.dataset.variant= variant;
                 
                 setTimeout(() => {
                     button.innerHTML = originalHtml;
