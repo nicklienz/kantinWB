@@ -826,7 +826,7 @@
                 const tenants = [...new Set(cart.map(item => item.tenant))];
                 
                 tenants.forEach(tenant => {
-                    message += *${tenant}:*\n;
+                    message += `*${tenant}:*\n;
                     cart.filter(item => item.tenant === tenant).forEach(item => {
                         message += - ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n Varian:${item.variant};
                     });
