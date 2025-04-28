@@ -821,8 +821,6 @@
              // Update WhatsApp order link
             if (cart.length > 0) {
                 let message = "Halo, saya mau pesan:\n\n";
-                
-                // Group by tenant for better readability
                 const tenants = [...new Set(cart.map(item => item.tenant))];
                 
                 tenants.forEach(tenant => {
@@ -838,7 +836,7 @@
                 message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
                 message += `Kirim ke: [Alamat]\n`;
                 message += `Catatan: [Instruksi khusus]`;
-                
+
                 const encodedMessage = encodeURIComponent(message);
                 document.getElementById('whatsapp-order').href = `https://wa.me/6285245498100?text=${encodedMessage}`;
             }
