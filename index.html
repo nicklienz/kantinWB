@@ -47,14 +47,14 @@
             font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
-        
+
         /* Light Mode */
         body {
             background-color: white;
             color: black;
         }
 
-        header, section, footer {
+        header, section, footer, .custom-div {
             background-color: white;
             transition: background-color 0.3s, color 0.3s;
         }
@@ -64,8 +64,8 @@
             color: #F9FAFB; /* Light text */
         }
 
-        .dark header, .dark section, .dark footer {
-            background-color: #1f2937; /* Dark background for header, section, footer */
+        .dark header, .dark section, .dark footer, .dark .custom-div {
+            background-color: #1f2937; /* Dark background for header, section, footer, div */
         }
 
         #theme-toggle {
@@ -90,7 +90,7 @@
             object-fit: cover;
             z-index: -1;
         }
-        
+
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -892,7 +892,7 @@ variant = '';}
                         });
                     
                     message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
-                    message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
+                    message += `*Pajak (0%):* Rp ${tax.toLocaleString()}\n`;
                     message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
                     message += `Kirim ke: [Alamat]\n`;
                     message += `Catatan: [Instruksi khusus]`;
