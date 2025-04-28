@@ -841,46 +841,45 @@
                     document.getElementById('whatsapp-order').href = `https://wa.me/6285245498100?text=${encodedMessage}`;
                 }
             
-                    // Clear cart button
-                    document.getElementById('clear-cart').addEventListener('click', function() {
-                        cart = [];
-                        updateCart();
-                    });
-                    
-                    // Cart modal toggle
-                    document.getElementById('cart-btn').addEventListener('click', function() {
-                        document.getElementById('cart-modal').classList.remove('hidden');
-                    });
-                    
-                    document.getElementById('close-cart').addEventListener('click', function() {
-                        document.getElementById('cart-modal').classList.add('hidden');
-                    });
-                    
-                    // Close modal when clicking outside
-                    document.getElementById('cart-modal').addEventListener('click', function(e) {
-                        if (e.target === this) {
-                            this.classList.add('hidden');
-                        }
-                    });
-                    
-                    // Smooth scrolling for anchor links
-                    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                        anchor.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            
-                            const targetId = this.getAttribute('href');
-                            const targetElement = document.querySelector(targetId);
-                            
-                            if (targetElement) {
-                                window.scrollTo({
-                                    top: targetElement.offsetTop - 80,
-                                    behavior: 'smooth'
-                                });
-                    
-                    // Close mobile menu if open
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
-            });
+                // Clear cart button
+                document.getElementById('clear-cart').addEventListener('click', function() {
+                    cart = [];
+                    updateCart();
+                });
+                
+                // Cart modal toggle
+                document.getElementById('cart-btn').addEventListener('click', function() {
+                    document.getElementById('cart-modal').classList.remove('hidden');
+                });
+                
+                document.getElementById('close-cart').addEventListener('click', function() {
+                    document.getElementById('cart-modal').classList.add('hidden');
+                });
+                
+                // Close modal when clicking outside
+                document.getElementById('cart-modal').addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.add('hidden');
+                    }
+                });
+                
+                // Smooth scrolling for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
         });
     </script>
 
