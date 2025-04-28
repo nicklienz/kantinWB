@@ -650,7 +650,8 @@
                         name,
                         price,
                         tenant,
-                        quantity: 1
+                        quantity: 1,
+                        variant
                     });
                 }
                 
@@ -735,13 +736,14 @@
                             <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
                     `;
                     
-                    tenantItems.forEach(item => {
-                        itemsHTML += `
-                            <div class="cart-item p-4 flex justify-between items-center">
-                                <div>
-                                    <h4 class="font-medium">${item.name}</h4>
-                                    <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
-                                </div>
+                   tenantItems.forEach(item => {
+                            itemsHTML += `
+                                <div class="cart-item p-4 flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-medium">${item.name}</h4>
+                                        <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
+                                        ${item.variant ? `<p class="text-sm text-gray-500">Varian: ${item.variant}</p>` : ''}
+                                    </div>
                                 <div class="flex items-center">
                                     <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}">
                                         <i class="fas fa-minus text-xs"></i>
@@ -783,7 +785,7 @@
                 tenants.forEach(tenant => {
                     message += `*${tenant}:*\n`;
                     cart.filter(item => item.tenant === tenant).forEach(item => {
-                        message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
+                        message += `- ${item.name} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n Varian:${item.variant}`;
                     });
                     message += `\n`;
                 });
