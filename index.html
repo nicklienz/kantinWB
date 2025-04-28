@@ -713,17 +713,23 @@
                 const id = button.dataset.id;
                 const variant = button.dataset.variant || null; // Get variant if exists
             
+                console.log('Increase button clicked:', { id, variant }); // Debugging log to check values
+            
                 // If item has a variant
                 if (variant) {
                     const item = cart.find(item => item.id === id && item.variant === variant);
+                    console.log('Item found (with variant):', item); // Debugging log
                     if (item) {
                         item.quantity += 1; // Increase quantity for item with variant
+                        console.log('Item updated:', item); // Debugging log
                     }
                 } else {
                     // If item without variant
                     const item = cart.find(item => item.id === id && item.variant === null);
+                    console.log('Item found (without variant):', item); // Debugging log
                     if (item) {
                         item.quantity += 1; // Increase quantity for item without variant
+                        console.log('Item updated:', item); // Debugging log
                     }
                 }
             
@@ -737,11 +743,12 @@
                 const variant = button.dataset.variant || null; // Get variant if exists
             
                 // If item has a variant
-                if (variant) {
+                if (variant !== null) {
+                    // Remove item by both ID and variant
                     cart = cart.filter(item => !(item.id === id && item.variant === variant));
                 } else {
-                    // If item without variant
-                    cart = cart.filter(item => item.id !== id && item.variant === null);
+                    // If item without variant, only match by ID and null variant
+                    cart = cart.filter(item => !(item.id === id && item.variant === null));
                 }
             
                 updateCart();
