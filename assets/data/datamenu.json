@@ -1,8 +1,8 @@
 {
   "pak-domo": {
     "name": "Pak Domo",
-    "short":"DM",
-    "menus":[
+    "short": "DM",
+    "menus": [
       {
         "id": "dm-1",
         "name": "Ayam Sambel Ijo",
@@ -39,11 +39,11 @@
         "price": 2000
       }
     ]
-},
+  },
   "masakan-medan": {
     "name": "Masakan Medan",
-    "short":"DM",
-    "menus":[
+    "short": "DM",
+    "menus": [
       {
         "id": "mm-1",
         "name": "Ayam Wijen",
@@ -68,84 +68,84 @@
     ]
   },
   "pak-mul": {
-  "name": "Pak Mul",
-  "short":"PM",
-    "menus":[
+    "name": "Pak Mul",
+    "short": "PM",
+    "menus": [
       {
         "id": "pm-1",
         "name": "Bubur Ayam",
         "description": "Bubur ayam gurih lembut, topping melimpah, sarapan nikmat khas Pekalongan",
         "price": 12000,
-        "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_bubur.jpeg"
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_bubur.jpeg"
       },
       {
         "id": "pm-2",
         "name": "Kwetiau Goreng",
         "description": "Tersedia dalam pilihan goreng atau kuah",
         "price": 15000,
-        "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_kwetiau.jpeg"
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_kwetiau.jpeg"
       },
       {
         "id": "pm-3",
         "name": "Mie Instan",
         "description": "Tersedia pilihan goreng atau kuah dengan telur",
         "price": 12000,
-        "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_mieinstan.jpeg"
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_mieinstan.jpeg"
       },
       {
         "id": "pm-4",
         "name": "Nasi Goreng",
         "description": "Nasi gurih diorak-arik dengan ayam, sayuran, bumbu lezat meresap sempurna.",
         "price": 15000,
-        "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg"
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg"
       },
       {
         "id": "pm-5",
         "name": "Soto Betawi",
         "description": "Soto Betawi gurih creamy, daging empuk, kuah susu kaya rempah",
         "price": 12000,
-        "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_soto betawi.jpeg"
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_sotobetawi.jpeg"
       }
     ]
   },
-"rasa-keluarga": {
-  "name": "Rasa Keluarga",
-  "short":"RK",
-  "menus":[
-    {
-      "id": "rk-1",
-      "name": "Ayam Goreng Tepung",
-      "description": "Ayam renyah berlapis tepung bumbu, kriuknya bikin nagih, rasa gurih memikat",
-      "price": 12000,
-      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_friedchicken.jpeg"
-    },
-    {
-      "id": "rk-2",
-      "name": "Ayam Katsu",
-      "description": "Ayam fillet berlapis tepung roti renyah, saus katsu gurih manis",
-      "price": 15000,
-      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_katsu.jpeg"
-    },
-    {
-      "id": "rk-3",
-      "name": "Dada Ayam Panggang",
-      "description": "Dada ayam juicy dipanggang sempurna, bumbu meresap, rendah lemak, sehat lezat",
-      "price": 12000,
-      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_steak.jpeg"
-    },
-    {
-      "id": "rk-4",
-      "name": "Ayam Goreng Taiwan Crispy",
-      "description": "Ayam goreng Taiwan super renyah, bumbu khas, aroma wangi, bikin nagih",
-      "price": 12000,
-      "image_url": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_taiwan.jpeg"
-    }
-  ]
-},
+  "rasa-keluarga": {
+    "name": "Rasa Keluarga",
+    "short": "RK",
+    "menus": [
+      {
+        "id": "rk-1",
+        "name": "Ayam Goreng Tepung",
+        "description": "Ayam renyah berlapis tepung bumbu, kriuknya bikin nagih, rasa gurih memikat",
+        "price": 12000,
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_friedchicken.jpeg"
+      },
+      {
+        "id": "rk-2",
+        "name": "Ayam Katsu",
+        "description": "Ayam fillet berlapis tepung roti renyah, saus katsu gurih manis",
+        "price": 15000,
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_katsu.jpeg"
+      },
+      {
+        "id": "rk-3",
+        "name": "Dada Ayam Panggang",
+        "description": "Dada ayam juicy dipanggang sempurna, bumbu meresap, rendah lemak, sehat lezat",
+        "price": 12000,
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_steak.jpeg"
+      },
+      {
+        "id": "rk-4",
+        "name": "Ayam Goreng Taiwan Crispy",
+        "description": "Ayam goreng Taiwan super renyah, bumbu khas, aroma wangi, bikin nagih",
+        "price": 12000,
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_taiwan.jpeg"
+      }
+    ]
+  },
   "mas-medi": {
-  "name": "Mas Medi",
-    "short":"MD",
-    "menus":[
+    "name": "Mas Medi",
+    "short": "MD",
+    "menus": [
       {
         "id": "md-1",
         "name": "Kopi",
@@ -170,9 +170,9 @@
     ]
   },
   "keno": {
-  "name": "Keno",
-    "short":"KN",
-    "menus":[
+    "name": "Keno",
+    "short": "KN",
+    "menus": [
       {
         "id": "kn-1",
         "name": "Jus Alpukat",
