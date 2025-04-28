@@ -42,7 +42,20 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    
+        
+        html {
+            background-color: white;
+            color: black;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .dark html {
+            background-color: #111827; /* Tailwind dark background */
+            color: #F9FAFB; /* Tailwind light text */
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
@@ -147,13 +160,7 @@
                 document.addEventListener('DOMContentLoaded', function () {
                   const themeToggle = document.getElementById('theme-toggle');
                   const themeIcon = document.getElementById('theme-toggle-icon');
-                
-                  // Cek default browser setting
-                  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.classList.add('dark');
-                    themeIcon.textContent = '🌙';
-                  }
-                
+                            
                   themeToggle.addEventListener('click', () => {
                     document.documentElement.classList.toggle('dark');
                 
