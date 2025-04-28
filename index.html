@@ -19,6 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/favicon_barito1.png">
     <script>
         tailwind.config = {
+            darkMode: 'class', 
             theme: {
                 extend: {
                     colors: {
@@ -112,6 +113,31 @@
                 <h1 class="text-xl font-bold text-primary-800">Kantin Wisma Barito</h1>
             </div>
             
+            <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+              <span id="theme-toggle-icon">🌞</span>
+            </button>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  const themeToggle = document.getElementById('theme-toggle');
+                  const themeIcon = document.getElementById('theme-toggle-icon');
+                
+                  // Cek default browser setting
+                  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                    themeIcon.textContent = '🌙';
+                  }
+                
+                  themeToggle.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                
+                    if (document.documentElement.classList.contains('dark')) {
+                      themeIcon.textContent = '🌙';
+                    } else {
+                      themeIcon.textContent = '🌞';
+                    }
+                  });
+                });
+            </script>
             <nav class="hidden md:flex space-x-8">
                 <a href="#home" class="nav-item text-gray-700 hover:text-primary-700 font-medium">Home</a>
                 <a href="#tenants" class="nav-item text-gray-700 hover:text-primary-700 font-medium">Tenants</a>
