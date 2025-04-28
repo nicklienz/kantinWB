@@ -678,7 +678,8 @@
                 const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
                 const id = button.dataset.id;
                 const variant = button.dataset.variant;
-                
+                console.log(variant);
+      
                 // Ensure `variant` exists
                 if (variant) {
                     // Find item based on id and variant
