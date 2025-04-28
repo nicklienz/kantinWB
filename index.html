@@ -833,11 +833,11 @@
                     message += `\n`;  // Added newline after each tenant
                 });
                 
-                message += *Subtotal:* Rp ${subtotal.toLocaleString()}\n;
-                message += *Pajak (10%):* Rp ${tax.toLocaleString()}\n;
-                message += *Total:* Rp ${total.toLocaleString()}\n\n;
-                message += Kirim ke: [Alamat]\n;
-                message += Catatan: [Instruksi khusus];
+                message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
+                message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
+                message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
+                message += `Kirim ke: [Alamat]\n`;
+                message += `Catatan: [Instruksi khusus]`;
                 
                 const encodedMessage = encodeURIComponent(message);
                 document.getElementById('whatsapp-order').href = https://wa.me/6285245498100?text=${encodedMessage};
