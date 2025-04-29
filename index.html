@@ -664,7 +664,7 @@
 
                 
                 // Check if the item already exists in the cart with the same variant
-                const existingItem = cart.find(item => item.id === id && item.variant === variant);
+                const existingItem = cart.find(item => item.id === id && item.variant === variant &&item.takeaway === takeaway);
         
                 if (existingItem) {
                     existingItem.quantity += 1;
