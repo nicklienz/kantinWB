@@ -714,8 +714,8 @@ variant = '';}
                     if (item && item.quantity > 1) {
                         item.quantity -= 1; // Decrease quantity
                     } else {
-                        // Remove item if quantity is 1
-                        cart = cart.filter(item => item.id !== id);
+                    // If item without variant, only match by ID and null variant
+                    cart = cart.filter(item => !(item.id === id && item.variant === null));
                     }
                 }
             }
