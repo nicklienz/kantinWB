@@ -695,71 +695,37 @@
                 }, 2000);
             }
     
-            // Handle cart item quantity changes
+            // decrase qty
             if (e.target.classList.contains('decrease-quantity') || e.target.closest('.decrease-quantity')) {
                 const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant;
-                console.log(variant);
-      
-                // Ensure `variant` exists
-                if (variant !== null) {
-                    // Find item based on id and variant
-                    const item = cart.find(item => item.id === id && item.variant === variant);
-                
-                    // If item found and quantity is more than 1, decrease quantity
-                    if (item && item.quantity > 1) {
-                        item.quantity -= 1;
-                    } else {
-                        // If item found and quantity is 1, remove the item from cart
-                        cart = cart.filter(item => item.id !== id || item.variant !== variant);
-                    }
-                
-                    // Update cart UI after the change
-                    updateCart();
-                } else {
-                    // For items without a variant
-                    const item = cart.find(item => item.id === id && item.variant === null);
-                    console.log('Item found (without variant):', item); // Debugging log
-             
-                    if (item && item.quantity > 1) {
-                        item.quantity -= 1; // Decrease quantity
-                    } else {
-                    // If item without variant, only match by ID and null variant
-                    cart = cart.filter(item => !(item.id === id && item.variant === null));
-                    }
-                }
-            }
+                const variant = button.dataset.variant || '';
+                const takeaway = button.dataset.takeaway === 'true'; // Ambil status bawa pulang
             
-            // Function to increase quantity
+                const item = cart.find(item => item.id === id && item.variant === variant && item.takeaway === takeaway);
+            
+                if (item && item.quantity > 1) {
+                    item.quantity -= 1;
+                } else if (item) {
+                    cart = cart.filter(item => !(item.id === id && item.variant === variant && item.takeaway === takeaway));
+                }
+            
+                updateCart();
+            }
+
+            //increase qty
             if (e.target.classList.contains('increase-quantity') || e.target.closest('.increase-quantity')) {
                 const button = e.target.classList.contains('increase-quantity') ? e.target : e.target.closest('.increase-quantity');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant || ''; // Default to null if no variant
-                
-                console.log('Increase button clicked:', { id, variant }); // Debugging log
-                
-                if (variant !== null) {
-                    // Find item based on id and variant
-                    const item = cart.find(item => item.id === id && item.variant === variant);
-                    console.log('Item found (with variant):', item); // Debugging log
-                    
-                    if (item) {
-                        item.quantity += 1; // Increase quantity for item with variant
-                        console.log('Item updated (increased quantity):', item); // Debugging log
-                    }
-                } else {
-                    // For items without a variant (variant === null)
-                    const item = cart.find(item => item.id === id && item.variant === null);
-                    console.log('Item found (without variant):', item); // Debugging log
+                const variant = button.dataset.variant || '';
+                const takeaway = button.dataset.takeaway === 'true';
             
-                    if (item) {
-                        item.quantity += 1; // Increase quantity for item without variant
-                        console.log('Item updated (increased quantity):', item); // Debugging log
-                    }
+                const item = cart.find(item => item.id === id && item.variant === variant && item.takeaway === takeaway);
+            
+                if (item) {
+                    item.quantity += 1;
                 }
             
-                // Update cart UI after the change
                 updateCart();
             }
             
@@ -767,20 +733,14 @@
             if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
                 const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant || ''; // Get variant if exists
+                const variant = button.dataset.variant || '';
+                const takeaway = button.dataset.takeaway === 'true';
             
-                // If item has a variant
-                if (variant !== null) {
-                    // Remove item by both ID and variant
-                    cart = cart.filter(item => !(item.id === id && item.variant === variant));
-                } else {
-                    // If item without variant, only match by ID and null variant
-                    cart = cart.filter(item => !(item.id === id && item.variant === null));
-                }
+                cart = cart.filter(item => !(item.id === id && item.variant === variant && item.takeaway === takeaway));
             
                 updateCart();
             }
-        
+                    
             // Update cart UI
             function updateCart() {
                 console.log(cart);
