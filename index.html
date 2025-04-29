@@ -336,7 +336,8 @@
                                                         variantHtml = menu.variant1.map(variant => `<option value="${variant}">${variant}</option>`).join('');
                                                     }
                                                 
-                                                    const isAvailable = isMenuAvailableToday(menu);
+                                                    const isAvailable = isMenuAvailableToday(menu.day);
+                                                    console.log(isAvailable);
                                                 
                                                     return `
                                                         <div class="menu-item bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition duration-300">
