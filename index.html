@@ -376,7 +376,7 @@
                                                                             data-price="${menu.price}" 
                                                                             data-tenant="${tenant.name}"
                                                                             data-requires-variant="${requiresVariant}"
-                                                                            data-variantPrice= ${variant.harga}? "${variant.harga}" : "">
+                                                                            data-variant-price="${variant?.harga ?? ''}">>
                                                                             <i class="fas fa-plus mr-1"></i> Pesan
                                                                         </button>
                                                                     ` : `<span class="text-sm text-gray-400 italic">Tidak tersedia hari ini</span>`}
