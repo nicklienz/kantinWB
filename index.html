@@ -692,7 +692,7 @@ variant = '';}
                 console.log(variant);
       
                 // Ensure `variant` exists
-                if (variant) {
+                if (variant !== null) {
                     // Find item based on id and variant
                     const item = cart.find(item => item.id === id && item.variant === variant);
                 
@@ -708,8 +708,9 @@ variant = '';}
                     updateCart();
                 } else {
                     // For items without a variant
-                    const item = cart.find(item => item.id === id);
-                    
+                    const item = cart.find(item => item.id === id && item.variant === null);
+                    console.log('Item found (without variant):', item); // Debugging log
+             
                     if (item && item.quantity > 1) {
                         item.quantity -= 1; // Decrease quantity
                     } else {
