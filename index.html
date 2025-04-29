@@ -340,7 +340,6 @@
                                                         requiresVariant = 'true';
                                                         variantHtml = menu.variant1.map(variant => `<option value="${variant.item}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
                                                     }
-                                                    console.log(variantHtml);
                                                     const isAvailable = isMenuAvailableToday(menu);
                                                 
                                                     return `
@@ -376,7 +375,8 @@
                                                                             data-name="${menu.name}" 
                                                                             data-price="${menu.price}" 
                                                                             data-tenant="${tenant.name}"
-                                                                            data-requires-variant="${requiresVariant}">
+                                                                            data-requires-variant="${requiresVariant}"
+                                                                            data-variantPrice= ${variant.harga}? "${variant.harga}" : "">
                                                                             <i class="fas fa-plus mr-1"></i> Pesan
                                                                         </button>
                                                                     ` : `<span class="text-sm text-gray-400 italic">Tidak tersedia hari ini</span>`}
@@ -661,8 +661,10 @@
                 const price = parseInt(button.dataset.price);
                 const tenant = button.dataset.tenant;
                 const requiresVariant = button.dataset.requiresVariant === 'true';
+                const variantPrice = button.dataset.variantPrice
         
                 let variant = null;
+
         
                 // If variant is required and not selected
                 if (requiresVariant) {
@@ -675,7 +677,6 @@
                     }
                 } else {
                     variant = '';}
-                console.log(variant);
 
                 const takeawayCheckbox = document.getElementById(`takeaway-${id}`);
                 const takeaway = takeawayCheckbox ? takeawayCheckbox.checked : false;
@@ -694,12 +695,13 @@
                         tenant,
                         quantity: 1,
                         variant,
-                        takeaway
+                        takeaway,
+                        variantPrice
                     });
                 }
         
                 updateCart(); // Update cart after adding the item
-            
+                console.log(cart);
                 // Animation feedback
                 const originalHtml = button.innerHTML;
                 button.innerHTML = '<i class="fas fa-check"></i> Berhasil dipesan';
