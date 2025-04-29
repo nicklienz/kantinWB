@@ -780,6 +780,7 @@
                                         <h4 class="font-medium">${item.name}</h4>
                                         <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
                                         ${item.variant ? `<p class="text-sm text-gray-500">Varian: ${item.variant}</p>` : ''}
+                                        ${item.takeaway ? `<p class="text-sm text-gray-500">Bawa Pulang</p>` : ''}                                        
                                     </div>
                                     <div class="flex items-center">
                                         <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}" data-variant="${item.variant}" data-takeaway="${item.takeaway}">
