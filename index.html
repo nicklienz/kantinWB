@@ -355,7 +355,7 @@
                                                                             data-price="${menu.price}" 
                                                                             data-tenant="${tenant.name}"
                                                                             data-requires-variant="${requiresVariant}"
-                                                                        <i class="fas fa-plus mr-1"></i> Add
+                                                                        <i class="fas fa-plus mr-1"></i> Pesan
                                                                     </button>
                                                                 </div>
                                                                 
@@ -837,8 +837,8 @@ variant = '';}
                 const tax = Math.round(subtotal * 0.0);
                 const total = subtotal + tax;
                 
-                document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
-                document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
+                //document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
+                //document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
                 document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
                 
                 // Update WhatsApp order link
@@ -857,8 +857,6 @@ variant = '';}
                             message += `\n`;
                         });
                     
-                    message += `*Subtotal:* Rp ${subtotal.toLocaleString()}\n`;
-                    message += `*Pajak (10%):* Rp ${tax.toLocaleString()}\n`;
                     message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
                     message += `Kirim ke: [Alamat]\n`;
                     message += `Catatan: [Instruksi khusus]`;
