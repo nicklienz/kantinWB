@@ -143,6 +143,9 @@
         "name": "Nasi Goreng",
         "description": "Nasi gurih diorak-arik dengan ayam, sayuran, bumbu lezat meresap sempurna.",
         "price": 15000,
+        "day":[
+          "all"
+        ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg",
         "variant1": []
       },
