@@ -313,7 +313,12 @@
                             let tenantListHtml = '';
 
                             function isMenuAvailableToday(menu) {
-                                const today = new Date().getDay(); // Minggu = 0, Senin = 1, ...
+                                if (!Array.isArray(menu.day)) {
+                                    console.warn('menu.day is not valid:', menu.name, menu.day);
+                                    return false;
+                                }
+                            
+                                const today = new Date().getDay();
                                 return menu.day.includes("all") || menu.day.includes(today.toString());
                             }
 
