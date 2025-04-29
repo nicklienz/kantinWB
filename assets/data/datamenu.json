@@ -10,7 +10,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_ayamsambelijo.jpeg",
         "price": 20000,
         "day":[
-          "all"
+          "5"
         ],
         "variant1": []
       },
@@ -21,7 +21,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_rawon.jpeg",
         "price": 25000,        
         "day":[
-          "all"
+          "4"
         ],
         "variant1": []
       },
@@ -32,7 +32,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_sopiga.jpeg",
         "price": 30000,
         "day":[
-          "all"
+          "6"
         ],
         "variant1": []
       },
