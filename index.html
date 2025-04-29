@@ -338,7 +338,7 @@
                                                     let requiresVariant = 'false'; // Default tidak memerlukan varian
                                                     if (menu.variant1 && menu.variant1.length > 0) {
                                                         requiresVariant = 'true';
-                                                        variantHtml = menu.variant1.map(variant => `<option value="${variant.item}">${variant.item}</option>`).join('');
+                                                        variantHtml = menu.variant1.map(variant => `<option value="${variant.item}">${variant.item} (${variant.harga})</option>`).join('');
                                                     }
                                                     console.log(variantHtml);
                                                     const isAvailable = isMenuAvailableToday(menu);
