@@ -176,9 +176,9 @@
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_friedchicken.jpeg",
         "variant1": [
-          "nasi",
-          "kentang",
-          "ala carte"
+          { "item": "nasi", "harga": 5000 },
+          { "item": "kentang", "harga": 6000 },
+          { "item": "ala carte", "harga": 8000 }
         ]
       },
       {
