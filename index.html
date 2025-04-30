@@ -805,6 +805,7 @@
                                         <h4 class="font-medium">${item.name}</h4>
                                         <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
                                         ${item.variant ? `<p class="text-sm text-gray-500">Varian: ${item.variant} (+Rp.${item.variantPrice})</p>` : ''}
+                                        <p class="text-sm text-gray-700">Rp ${(item.price+item.variantPrice).toLocaleString()}</p>
                                         ${item.takeaway ? `<p class="text-sm text-gray-500">Bawa Pulang</p>` : ''}                                        
                                     </div>
                                     <div class="flex items-center">
@@ -822,7 +823,6 @@
                                 </div>
                             `;
                         });
-                        
                         itemsHTML += `</div></div>`;
                     });
                     
