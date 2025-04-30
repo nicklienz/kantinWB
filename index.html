@@ -847,7 +847,7 @@
                             cart
                               .filter(item => item.tenant === tenant)
                               .forEach(item => {
-                                  message += `- ${item.name} ${item.variant && item.variant !== "" ? `(Varian: ${item.variant})` : ""} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
+                                  message += `- ${item.name} ${item.variant && item.variant !== "" ? `(Varian: ${item.variant}(+Rp.${item.variantPrice}))` : ""} (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString()}\n`;
                                   if (item.takeaway) message += `  (Bawa Pulang)\n`
                               });
                         
