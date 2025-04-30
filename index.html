@@ -621,7 +621,7 @@
                         <span id="cart-subtotal">Rp 0</span>
                     </div>
                     <div class="flex justify-between mb-2">
-                        <span class="font-medium">Tax (10%):</span>
+                        <span class="font-medium">Tax (0%):</span>
                         <span id="cart-tax">Rp 0</span>
                     </div>
                     <div class="flex justify-between font-bold text-lg mb-6">
@@ -804,7 +804,7 @@
                                     <div>
                                         <h4 class="font-medium">${item.name}</h4>
                                         <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString()}</p>
-                                        ${item.variant ? `<p class="text-sm text-gray-500">Varian: ${item.variant}</p>` : ''}
+                                        ${item.variant ? `<p class="text-sm text-gray-500">Varian: ${item.variant} (+Rp.${item.variantPrice})</p>` : ''}
                                         ${item.takeaway ? `<p class="text-sm text-gray-500">Bawa Pulang</p>` : ''}                                        
                                     </div>
                                     <div class="flex items-center">
