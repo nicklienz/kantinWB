@@ -338,7 +338,7 @@
                                                     let requiresVariant = 'false'; // Default tidak memerlukan varian
                                                     if (menu.variant1 && menu.variant1.length > 0) {
                                                         requiresVariant = 'true';
-                                                        variantHtml = menu.variant1.map(variant => `<option value="${variant.item}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        variantHtml = menu.variant1.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
                                                     }
                                                     console.log(variantHtml);
                                                     const isAvailable = isMenuAvailableToday(menu);
@@ -663,12 +663,13 @@
                 const requiresVariant = button.dataset.requiresVariant === 'true';
         
                 let variant = null;
-        
+                let variantPrice = 0;
                 // If variant is required and not selected
                 if (requiresVariant) {
                     const variantSelect = document.getElementById(`variant-${id}`);
                     if (variantSelect && variantSelect.value) {
                         variant = variantSelect.value;
+                        variantPrice = parseInt(selectedOption.dataset.variantharga || "0");
                     } else {
                         alert('Pilih varian terlebih dahulu!');
                         return;
@@ -683,7 +684,9 @@
                 
                 // Check if the item already exists in the cart with the same variant
                 const existingItem = cart.find(item => item.id === id && item.variant === variant &&item.takeaway === takeaway);
-        
+                
+                const finalPrice = price + variantPrice;
+                
                 if (existingItem) {
                     existingItem.quantity += 1;
                 } else {
@@ -691,9 +694,11 @@
                         id,
                         name,
                         price,
+                        finalPrice,
                         tenant,
                         quantity: 1,
                         variant,
+                        variantPrice:variantPrice,
                         takeaway
                     });
                 }
@@ -823,7 +828,7 @@
                 }
                 
                 // Update totals
-                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const subtotal = cart.reduce((sum, item) => sum + ((item.price+item.variantPrice) * item.quantity), 0);
                 const tax = Math.round(subtotal * 0.0);
                 const total = subtotal + tax;
                 
