@@ -667,6 +667,8 @@
                 // If variant is required and not selected
                 if (requiresVariant) {
                     const variantSelect = document.getElementById(`variant-${id}`);
+                    const selectedOption = variantSelect.options[variantSelect.selectedIndex];
+                    
                     if (variantSelect && variantSelect.value) {
                         variant = variantSelect.value;
                         variantPrice = parseInt(selectedOption.dataset.variantharga || "0");
