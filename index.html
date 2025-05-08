@@ -349,11 +349,11 @@
                                                         menu.variant5 && menu.variant5.lenght > 0 || 
                                                        ) {
                                                         requiresVariant = 'true';
-                                                        variantHtml1 = menu.variant1.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
-                                                        variantHtml2 = menu.variant2.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
-                                                        variantHtml3 = menu.variant3.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
-                                                        variantHtml4 = menu.variant4.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
-                                                        variantHtml5 = menu.variant5.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        variantHtml1 = menu.variant1.map(variant1 => `<option value="${variant1.item}" data-variantharga1="${variant1.harga}">${variant1.item} (+Rp.${variant1.harga},-)</option>`).join('');
+                                                        variantHtml2 = menu.variant2.map(variant2 => `<option value="${variant2.item}" data-variantharga2="${variant2.harga}">${variant2.item} (+Rp.${variant2.harga},-)</option>`).join('');
+                                                        variantHtml3 = menu.variant3.map(variant3 => `<option value="${variant3.item}" data-variantharga3="${variant3.harga}">${variant3.item} (+Rp.${variant3.harga},-)</option>`).join('');
+                                                        variantHtml4 = menu.variant4.map(variant4 => `<option value="${variant4.item}" data-variantharga4="${variant4.harga}">${variant4.item} (+Rp.${variant4.harga},-)</option>`).join('');
+                                                        variantHtml5 = menu.variant5.map(variant5 => `<option value="${variant5.item}" data-variantharga5="${variant5.harga}">${variant5.item} (+Rp.${variant5.harga},-)</option>`).join('');
                                                         
                                                     }
                                    
@@ -370,9 +370,45 @@
                                                 
                                                                 ${variantHtml1 ? `
                                                                     <div class="mt-3">
-                                                                        <label for="variant-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih Variasi:</label>
-                                                                        <select id="variant-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
+                                                                        <label for="variant1-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih:</label>
+                                                                        <select id="variant1-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
                                                                             ${variantHtml1}
+                                                                        </select>
+                                                                    </div>
+                                                                ` : ''}
+
+                                                                ${variantHtml2 ? `
+                                                                    <div class="mt-3">
+                                                                        <label for="variant2-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih:</label>
+                                                                        <select id="variant2-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
+                                                                            ${variantHtml2}
+                                                                        </select>
+                                                                    </div>
+                                                                ` : ''}
+
+                                                                ${variantHtml3 ? `
+                                                                    <div class="mt-3">
+                                                                        <label for="variant3-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih:</label>
+                                                                        <select id="variant3-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
+                                                                            ${variantHtml3}
+                                                                        </select>
+                                                                    </div>
+                                                                ` : ''}
+
+                                                                ${variantHtml4 ? `
+                                                                    <div class="mt-3">
+                                                                        <label for="variant4-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih:</label>
+                                                                        <select id="variant4-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
+                                                                            ${variantHtml4}
+                                                                        </select>
+                                                                    </div>
+                                                                ` : ''}
+
+                                                                ${variantHtml5 ? `
+                                                                    <div class="mt-3">
+                                                                        <label for="variant5-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih:</label>
+                                                                        <select id="variant5-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
+                                                                            ${variantHtml5}
                                                                         </select>
                                                                     </div>
                                                                 ` : ''}
@@ -693,32 +729,101 @@
                 const tenant = button.dataset.tenant;
                 const requiresVariant = button.dataset.requiresVariant === 'true';
         
-                let variant = null;
-                let variantPrice = 0;
+                let variant1 = null;
+                let variant2 = null;
+                let variant3 = null;
+                let variant4 = null;
+                let variant5 = null;
+                let variantPrice1 = 0;
+                let variantPrice2 = 0;
+                let variantPrice3 = 0;
+                let variantPrice4 = 0;
+                let variantPrice5 = 0;
+
+                
+
+
+                
                 // If variant is required and not selected
                 if (requiresVariant) {
-                    const variantSelect = document.getElementById(`variant-${id}`);
-                    const selectedOption = variantSelect.options[variantSelect.selectedIndex];
                     
-                    if (variantSelect && variantSelect.value) {
-                        variant = variantSelect.value;
-                        variantPrice = parseInt(selectedOption.dataset.variantharga || "0");
+                    const variantSelect1 = document.getElementById(`variant1-${id}`);
+                    const selectedOption1 = variantSelect1.options[variantSelect.selectedIndex];
+                    
+                    if (variantSelect1 && variantSelect1.value) {
+                        variant1 = variantSelect1.value;
+                        variantPrice1 = parseInt(selectedOption.dataset.variantharga1 || "0");
                     } else {
                         alert('Pilih varian terlebih dahulu!');
                         return;
                     }
+                    
+                    const variantSelect2 = document.getElementById(`variant2-${id}`);
+                    const selectedOption2 = variantSelect2.options[variantSelect2.selectedIndex];
+                
+                    if (variantSelect2 && variantSelect2.value) {
+                        variant2 = variantSelect2.value;
+                        variantPrice2 = parseInt(selectedOption2.dataset.variantharga2 || "0");
+                    } else {
+                        alert('Pilih varian terlebih dahulu!');
+                        return;
+                    }
+                    
+                    const variantSelect3 = document.getElementById(`variant3-${id}`);
+                    const selectedOption3 = variantSelect3.options[variantSelect3.selectedIndex];
+                
+                    if (variantSelect3 && variantSelect3.value) {
+                        variant3 = variantSelect3.value;
+                        variantPrice3 = parseInt(selectedOption2.dataset.variantharga3 || "0");
+                    } else {
+                        alert('Pilih varian terlebih dahulu!');
+                        return;
+                    }
+                    
+                        const variantSelect4 = document.getElementById(`variant4-${id}`);
+                    const selectedOption4 = variantSelect4.options[variantSelect4.selectedIndex];
+                
+                    if (variantSelect4 && variantSelect4.value) {
+                        variant4 = variantSelect4.value;
+                        variantPrice4 = parseInt(selectedOption2.dataset.variantharga4 || "0");
+                    } else {
+                        alert('Pilih varian terlebih dahulu!');
+                        return;
+                    }
+                    
+                    const variantSelect5 = document.getElementById(`variant5-${id}`);
+                    const selectedOption5 = variantSelect5.options[variantSelect5.selectedIndex];
+                
+                    if (variantSelect5 && variantSelect5.value) {
+                        variant5 = variantSelect5.value;
+                        variantPrice5 = parseInt(selectedOption5.dataset.variantharga5 || "0");
+                    } else {
+                        alert('Pilih varian terlebih dahulu!');
+                        return;
+                    }
+                    
                 } else {
-                    variant = '';}
-                console.log(variant);
+                    variant1 = '';}
+                    variant2 = '';
+                    variant3 = '';
+                    variant4 = '';
+                    variant5 = '';
 
                 const takeawayCheckbox = document.getElementById(`takeaway-${id}`);
                 const takeaway = takeawayCheckbox ? takeawayCheckbox.checked : false;
 
                 
                 // Check if the item already exists in the cart with the same variant
-                const existingItem = cart.find(item => item.id === id && item.variant === variant &&item.takeaway === takeaway);
-                
-                const finalPrice = price + variantPrice;
+                const existingItem = cart.find(item =>
+                    item.id === id &&
+                    item.variant1 === variant1 &&
+                    item.variant2 === variant2 &&
+                    item.variant3 === variant3 &&
+                    item.variant4 === variant4 &&
+                    item.variant5 === variant5 &&
+                    item.takeaway === takeaway
+                );
+                const finalPrice = price + variantPrice1 + variantPrice2 + variantPrice3 + variantPrice4 + variantPrice5;
                 
                 if (existingItem) {
                     existingItem.quantity += 1;
@@ -730,8 +835,16 @@
                         finalPrice,
                         tenant,
                         quantity: 1,
-                        variant,
-                        variantPrice:variantPrice,
+                        variant1,
+                        variant2,
+                        variant3,
+                        variant4,
+                        variant5,
+                        variantPrice1:variantPrice1,
+                        variantPrice2:variantPrice2,
+                        variantPrice3:variantPrice3,
+                        variantPrice4:variantPrice4,
+                        variantPrice5:variantPrice5,
                         takeaway
                     });
                 }
@@ -755,15 +868,35 @@
             if (e.target.classList.contains('decrease-quantity') || e.target.closest('.decrease-quantity')) {
                 const button = e.target.classList.contains('decrease-quantity') ? e.target : e.target.closest('.decrease-quantity');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant || '';
+                const variant1 = button.dataset.variant1 || '';
+                const variant2 = button.dataset.variant2 || '';
+                const variant3 = button.dataset.variant3 || '';
+                const variant4 = button.dataset.variant4 || '';
+                const variant5 = button.dataset.variant5 || '';
                 const takeaway = button.dataset.takeaway === 'true'; // Ambil status bawa pulang
             
-                const item = cart.find(item => item.id === id && item.variant === variant && item.takeaway === takeaway);
+                const item = cart.find(item =>
+                    item.id === id &&
+                    item.variant1 === variant1 &&
+                    item.variant2 === variant2 &&
+                    item.variant3 === variant3 &&
+                    item.variant4 === variant4 &&
+                    item.variant5 === variant5 &&
+                    item.takeaway === takeaway
+                );
             
                 if (item && item.quantity > 1) {
                     item.quantity -= 1;
                 } else if (item) {
-                    cart = cart.filter(item => !(item.id === id && item.variant === variant && item.takeaway === takeaway));
+                    cart = cart.filter(item =>
+                        !(item.id === id &&
+                          item.variant1 === variant1 &&
+                          item.variant2 === variant2 &&
+                          item.variant3 === variant3 &&
+                          item.variant4 === variant4 &&
+                          item.variant5 === variant5 &&
+                          item.takeaway === takeaway)
+                    );
                 }
             
                 updateCart();
@@ -773,10 +906,22 @@
             if (e.target.classList.contains('increase-quantity') || e.target.closest('.increase-quantity')) {
                 const button = e.target.classList.contains('increase-quantity') ? e.target : e.target.closest('.increase-quantity');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant || '';
+                const variant1 = button.dataset.variant1 || '';
+                const variant2 = button.dataset.variant2 || '';
+                const variant3 = button.dataset.variant3 || '';
+                const variant4 = button.dataset.variant4 || '';
+                const variant5 = button.dataset.variant5 || '';
                 const takeaway = button.dataset.takeaway === 'true';
             
-                const item = cart.find(item => item.id === id && item.variant === variant && item.takeaway === takeaway);
+                const item = cart.find(item =>
+                    item.id === id &&
+                    item.variant1 === variant1 &&
+                    item.variant2 === variant2 &&
+                    item.variant3 === variant3 &&
+                    item.variant4 === variant4 &&
+                    item.variant5 === variant5 &&
+                    item.takeaway === takeaway
+                );
             
                 if (item) {
                     item.quantity += 1;
@@ -789,10 +934,22 @@
             if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
                 const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
                 const id = button.dataset.id;
-                const variant = button.dataset.variant || '';
+                const variant1 = button.dataset.variant1 || '';
+                const variant2 = button.dataset.variant2 || '';
+                const variant3 = button.dataset.variant3 || '';
+                const variant4 = button.dataset.variant4 || '';
+                const variant5 = button.dataset.variant5 || '';
                 const takeaway = button.dataset.takeaway === 'true';
             
-                cart = cart.filter(item => !(item.id === id && item.variant === variant && item.takeaway === takeaway));
+                cart = cart.filter(item =>
+                    !(item.id === id &&
+                      item.variant1 === variant1 &&
+                      item.variant2 === variant2 &&
+                      item.variant3 === variant3 &&
+                      item.variant4 === variant4 &&
+                      item.variant5 === variant5 &&
+                      item.takeaway === takeaway)
+                );
             
                 updateCart();
             }
@@ -829,24 +986,54 @@
                                 <div class="border border-gray-100 rounded-b-lg divide-y divide-gray-100">
                         `;
                         
-                       tenantItems.forEach(item => {
+                        tenantItems.forEach(item => {
+                            const variantInfo = [item.variant1, item.variant2, item.variant3, item.variant4, item.variant5]
+                                .filter(v => v) // hanya ambil varian yang terisi
+                                .map((v, i) => `Varian ${i + 1}: ${v}`)
+                                .join('<br>');
+                        
+                            const totalVariantPrice = (item.variantPrice1 || 0) + (item.variantPrice2 || 0) +
+                                                      (item.variantPrice3 || 0) + (item.variantPrice4 || 0) +
+                                                      (item.variantPrice5 || 0);
+                        
                             itemsHTML += `
                                 <div class="cart-item p-4 flex justify-between items-center">
                                     <div>
-                                        <h4 class="font-medium">${item.name}  Rp.${item.price.toLocaleString()}</h4>
-                                        ${item.variant ? `<p class="text-sm text-gray-500">Varian: ${item.variant} (+Rp.${item.variantPrice})</p>` : ''}
-                                        <p class="text-sm text-gray-900 font-bold">Rp ${(item.price+item.variantPrice).toLocaleString()}</p>
+                                        <h4 class="font-medium">${item.name} Rp.${item.price.toLocaleString()}</h4>
+                                        ${variantInfo ? `<p class="text-sm text-gray-500">${variantInfo} (+Rp.${totalVariantPrice})</p>` : ''}
+                                        <p class="text-sm text-gray-900 font-bold">Rp ${(item.price + totalVariantPrice).toLocaleString()}</p>
                                         ${item.takeaway ? `<p class="text-sm text-gray-500">Bawa Pulang</p>` : ''}                                        
                                     </div>
                                     <div class="flex items-center">
-                                        <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" data-id="${item.id}" data-variant="${item.variant}" data-takeaway="${item.takeaway}">
+                                        <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l"
+                                            data-id="${item.id}"
+                                            data-variant1="${item.variant1 || ''}"
+                                            data-variant2="${item.variant2 || ''}"
+                                            data-variant3="${item.variant3 || ''}"
+                                            data-variant4="${item.variant4 || ''}"
+                                            data-variant5="${item.variant5 || ''}"
+                                            data-takeaway="${item.takeaway}">
                                             <i class="fas fa-minus text-xs"></i>
                                         </button>
                                         <span class="px-3 py-1 bg-white">${item.quantity}</span>
-                                        <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" data-id="${item.id}" data-variant="${item.variant}" data-takeaway="${item.takeaway}">
+                                        <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r"
+                                            data-id="${item.id}"
+                                            data-variant1="${item.variant1 || ''}"
+                                            data-variant2="${item.variant2 || ''}"
+                                            data-variant3="${item.variant3 || ''}"
+                                            data-variant4="${item.variant4 || ''}"
+                                            data-variant5="${item.variant5 || ''}"
+                                            data-takeaway="${item.takeaway}">
                                             <i class="fas fa-plus text-xs"></i>
                                         </button>
-                                        <button class="remove-item ml-4 text-red-500 hover:text-red-600" data-id="${item.id}" data-variant="${item.variant}" data-takeaway="${item.takeaway}">
+                                        <button class="remove-item ml-4 text-red-500 hover:text-red-600"
+                                            data-id="${item.id}"
+                                            data-variant1="${item.variant1 || ''}"
+                                            data-variant2="${item.variant2 || ''}"
+                                            data-variant3="${item.variant3 || ''}"
+                                            data-variant4="${item.variant4 || ''}"
+                                            data-variant5="${item.variant5 || ''}"
+                                            data-takeaway="${item.takeaway}">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
@@ -860,12 +1047,19 @@
                 }
                 
                 // Update totals
-                const subtotal = cart.reduce((sum, item) => sum + ((item.price+item.variantPrice) * item.quantity), 0);
-                const tax = Math.round(subtotal * 0.0);
-                const total = subtotal + tax;
+                const subtotal = cart.reduce((sum, item) => {
+                    const totalVariantPrice = 
+                        (item.variantPrice1 || 0) +
+                        (item.variantPrice2 || 0) +
+                        (item.variantPrice3 || 0) +
+                        (item.variantPrice4 || 0) +
+                        (item.variantPrice5 || 0);
                 
-                //document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
-                //document.getElementById('cart-tax').textContent = `Rp ${tax.toLocaleString()}`;
+                    return sum + ((item.price + totalVariantPrice) * item.quantity);
+                }, 0);
+                
+                const tax = Math.round(subtotal * 0.0); // ubah persentase jika pajak ingin dihitung
+                const total = subtotal + tax;
                 document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
           document.getElementById('whatsapp-order').addEventListener('click', function (e) {
     const name = document.getElementById('user-name').value.trim();
@@ -878,23 +1072,42 @@
         return;
     }
 
-    let message = `Halo, saya mau pesan:\n\n`;
+    let message = `Halo, saya ${name} mau pesan:\n\n`;
     const tenants = [...new Set(cart.map(item => item.tenant))];
-
+    
     tenants.forEach(tenant => {
         message += `*${tenant}:*\n`;
         cart
             .filter(item => item.tenant === tenant)
             .forEach(item => {
-                message += `- ${item.name} ${item.variant ? `(Varian: ${item.variant})` : ''} (${item.quantity}x) = Rp ${((item.price+item.variantPrice) * item.quantity).toLocaleString()}\n`;
+                const variantLabels = [item.variant1, item.variant2, item.variant3, item.variant4, item.variant5]
+                    .filter(v => v)
+                    .map((v, i) => `Varian ${i + 1}: ${v}`)
+                    .join(', ');
+    
+                const totalVariantPrice = 
+                    (item.variantPrice1 || 0) +
+                    (item.variantPrice2 || 0) +
+                    (item.variantPrice3 || 0) +
+                    (item.variantPrice4 || 0) +
+                    (item.variantPrice5 || 0);
+    
+                message += `- ${item.name}${variantLabels ? ` (${variantLabels})` : ''} (${item.quantity}x) = Rp ${(item.price + totalVariantPrice) * item.quantity.toLocaleString()}\n`;
                 if (item.takeaway) message += `  (Bawa Pulang)\n`;
             });
         message += `\n`;
     });
-
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    
+    const total = cart.reduce((sum, item) => {
+        const variantTotal = 
+            (item.variantPrice1 || 0) +
+            (item.variantPrice2 || 0) +
+            (item.variantPrice3 || 0) +
+            (item.variantPrice4 || 0) +
+            (item.variantPrice5 || 0);
+        return sum + (item.price + variantTotal) * item.quantity;
+    }, 0);
     message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
-    message += `Nama: ${name}\n`;
     message += `Nomor WhatsApp: ${phone}\n`;
     message += `Waktu Pengambilan: ${new Date(pickupTime).toLocaleString('id-ID')}`;
 
