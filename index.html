@@ -335,13 +335,28 @@
                                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                                 ${tenant.menus.map(menu => {
                                                     // Mengecek jika variant1 kosong
-                                                    let variantHtml = '';
+                                                    let variantHtml1 = '';
+                                                    let variantHtml2 = '';
+                                                    let variantHtml3 = '';
+                                                    let variantHtml4 = '';
+                                                    let variantHtml5 = '';
+                                                    
                                                     let requiresVariant = 'false'; // Default tidak memerlukan varian
-                                                    if (menu.variant1 && menu.variant1.length > 0) {
+                                                    if (menu.variant1 && menu.variant1.length > 0 ||
+                                                        menu.variant2 && menu.variant2.lenght > 0 ||
+                                                        menu.variant3 && menu.variant3.lenght > 0 ||
+                                                        menu.variant4 && menu.variant4.lenght > 0 ||
+                                                        menu.variant5 && menu.variant5.lenght > 0 || 
+                                                       ) {
                                                         requiresVariant = 'true';
-                                                        variantHtml = menu.variant1.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        variantHtml1 = menu.variant1.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        variantHtml2 = menu.variant2.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        variantHtml3 = menu.variant3.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        variantHtml4 = menu.variant4.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        variantHtml5 = menu.variant5.map(variant => `<option value="${variant.item}" data-variantharga="${variant.harga}">${variant.item} (+Rp.${variant.harga},-)</option>`).join('');
+                                                        
                                                     }
-                                                    console.log(variantHtml);
+                                   
                                                     const isAvailable = isMenuAvailableToday(menu);
                                                 
                                                     return `
@@ -353,11 +368,11 @@
                                                                 <h4 class="font-bold text-gray-800">${menu.name}</h4>
                                                                 <p class="text-sm text-gray-600 mt-1">${menu.description}</p>
                                                 
-                                                                ${variantHtml ? `
+                                                                ${variantHtml1 ? `
                                                                     <div class="mt-3">
                                                                         <label for="variant-${menu.id}" class="block text-sm font-medium text-gray-600">Pilih Variasi:</label>
                                                                         <select id="variant-${menu.id}" class="w-full mt-1 border border-gray-300 rounded-md py-2 px-3">
-                                                                            ${variantHtml}
+                                                                            ${variantHtml1}
                                                                         </select>
                                                                     </div>
                                                                 ` : ''}
