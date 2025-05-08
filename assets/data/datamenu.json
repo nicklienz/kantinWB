@@ -170,60 +170,60 @@
         "id": "rk-1",
         "name": "Ayam Goreng Tepung",
         "description": "Ayam renyah berlapis tepung bumbu, kriuknya bikin nagih, rasa gurih memikat",
-        "price": 12000,
+        "price": 20000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_friedchicken.jpeg",
         "variant1": [
-          { "item": "nasi", "harga": 5000 },
-          { "item": "kentang", "harga": 6000 },
-          { "item": "ala carte", "harga": 8000 }
+          { "item": "nasi", "harga": 0 },
+          { "item": "kentang", "harga": 0 },
+          { "item": "ala carte", "harga": 0 }
         ]
       },
       {
         "id": "rk-2",
         "name": "Ayam Katsu",
         "description": "Ayam fillet berlapis tepung roti renyah, saus katsu gurih manis",
-        "price": 15000,
+        "price": 20000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_katsu.jpeg",
         "variant1": [
-          { "item": "nasi", "harga": 5000 },
-          { "item": "kentang", "harga": 6000 },
-          { "item": "ala carte", "harga": 8000 }
+          { "item": "nasi", "harga": 0 },
+          { "item": "kentang", "harga": 0 },
+          { "item": "ala carte", "harga": 0 }
         ]
       },
       {
         "id": "rk-3",
         "name": "Dada Ayam Panggang",
         "description": "Dada ayam juicy dipanggang sempurna, bumbu meresap, rendah lemak, sehat lezat",
-        "price": 12000,
+        "price": 20000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_steak.jpeg",
         "variant1": [
           { "item": "nasi", "harga": 0 },
-          { "item": "kentang", "harga": 1000 },
-          { "item": "ala carte", "harga": 5000 }
+          { "item": "kentang", "harga": 0 },
+          { "item": "ala carte", "harga": 0 }
         ]
       },
       {
         "id": "rk-4",
         "name": "Ayam Goreng Taiwan Crispy",
         "description": "Ayam goreng Taiwan super renyah, bumbu khas, aroma wangi, bikin nagih",
-        "price": 12000,
+        "price": 20000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_taiwan.jpeg",
         "variant1": [
-          { "item": "nasi", "harga": 5000 },
-          { "item": "kentang", "harga": 6000 },
-          { "item": "ala carte", "harga": 8000 }
+          { "item": "nasi", "harga": 0 },
+          { "item": "kentang", "harga": 0 },
+          { "item": "ala carte", "harga": 0 }
         ]
       }
     ]
