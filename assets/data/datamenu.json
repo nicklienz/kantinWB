@@ -251,7 +251,11 @@
           { "item": "kentang", "harga": 6000 },
           { "item": "ala carte", "harga": 8000 }
         ],
-        "variant2": [],
+        "variant2": [
+          { "item": "regular", "harga": 0 },
+          { "item": "large", "harga": 8000 },
+          { "item": "xtra large", "harga": 15000 }
+        ],
         "variant3": [],
         "variant4": [],
         "variant5": []
@@ -270,7 +274,11 @@
           { "item": "kentang", "harga": 1000 },
           { "item": "ala carte", "harga": 5000 }
         ],
-        "variant2": [],
+        "variant2": [
+          { "item": "regular", "harga": 0 },
+          { "item": "large", "harga": 8000 },
+          { "item": "xtra large", "harga": 15000 }
+        ],
         "variant3": [],
         "variant4": [],
         "variant5": []
@@ -289,7 +297,11 @@
           { "item": "kentang", "harga": 6000 },
           { "item": "ala carte", "harga": 8000 }
         ],
-        "variant2": [],
+        "variant2": [
+          { "item": "regular", "harga": 0 },
+          { "item": "large", "harga": 8000 },
+          { "item": "xtra large", "harga": 15000 }
+        ],
         "variant3": [],
         "variant4": [],
         "variant5": []
