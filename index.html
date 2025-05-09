@@ -1061,12 +1061,14 @@
               const name = document.getElementById('user-name').value.trim();
               const phone = document.getElementById('user-whatsapp').value.trim();
               const pickupTime = document.getElementById('pickup-time').value;
-
+              
+              console.log('Validating form:', { name, phone, pickupTime });
               if (!name || !phone || !pickupTime) {
-                  e.preventDefault();
+                  e.preventDefault();  // Mencegah form submit
+                  console.log('Form validation failed');
                   alert('Mohon isi nama, nomor WhatsApp, dan waktu pengambilan!');
                   return;
-              }
+              }   
               
               let message = `Halo, saya ${name} mau pesan:\n\n`;
               const tenants = [...new Set(cart.map(item => item.tenant))];
