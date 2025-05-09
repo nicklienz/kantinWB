@@ -748,9 +748,9 @@
                 if (requiresVariant) {
                     
                     const variantSelect1 = document.getElementById(`variant1-${id}`);
-                    const selectedOption1 = variantSelect1.options[variantSelect1.selectedIndex];
                     
                     if (variantSelect1 && variantSelect1.value) {
+                        const selectedOption1 = variantSelect1.options[variantSelect1.selectedIndex];
                         variant1 = variantSelect1.value;
                         variantPrice1 = parseInt(selectedOption1.dataset.variantharga1 || "0");
                     } else {
@@ -759,9 +759,9 @@
                     }
                     
                     const variantSelect2 = document.getElementById(`variant2-${id}`);
-                    const selectedOption2 = variantSelect2.options[variantSelect2.selectedIndex];
                 
                     if (variantSelect2 && variantSelect2.value) {
+                        const selectedOption2 = variantSelect2.options[variantSelect2.selectedIndex];
                         variant2 = variantSelect2.value;
                         variantPrice2 = parseInt(selectedOption2.dataset.variantharga2 || "0");
                     } else {
@@ -770,9 +770,9 @@
                     }
                     
                     const variantSelect3 = document.getElementById(`variant3-${id}`);
-                    const selectedOption3 = variantSelect3.options[variantSelect3.selectedIndex];
                 
                     if (variantSelect3 && variantSelect3.value) {
+                    const selectedOption3 = variantSelect3.options[variantSelect3.selectedIndex];
                         variant3 = variantSelect3.value;
                         variantPrice3 = parseInt(selectedOption3.dataset.variantharga3 || "0");
                     } else {
@@ -781,9 +781,9 @@
                     }
                     
                         const variantSelect4 = document.getElementById(`variant4-${id}`);
-                    const selectedOption4 = variantSelect4.options[variantSelect4.selectedIndex];
                 
                     if (variantSelect4 && variantSelect4.value) {
+                   const selectedOption4 = variantSelect4.options[variantSelect4.selectedIndex];
                         variant4 = variantSelect4.value;
                         variantPrice4 = parseInt(selectedOption4.dataset.variantharga4 || "0");
                     } else {
@@ -792,9 +792,9 @@
                     }
                     
                     const variantSelect5 = document.getElementById(`variant5-${id}`);
-                    const selectedOption5 = variantSelect5.options[variantSelect5.selectedIndex];
                 
                     if (variantSelect5 && variantSelect5.value) {
+                    const selectedOption5 = variantSelect5.options[variantSelect5.selectedIndex];
                         variant5 = variantSelect5.value;
                         variantPrice5 = parseInt(selectedOption5.dataset.variantharga5 || "0");
                     } else {
