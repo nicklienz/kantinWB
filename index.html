@@ -741,71 +741,62 @@
                 let variantPrice5 = 0;
 
                 
-                // If variant is required and not selected
+
                 if (requiresVariant) {
-                    
-                    const variantSelect1 = document.getElementById(`variant1-${id}`);
-                    
-                    if (variantSelect1 && variantSelect1.value) {
-                        const selectedOption1 = variantSelect1.options[variantSelect1.selectedIndex];
-                        variant1 = variantSelect1.value;
-                        variantPrice1 = parseInt(selectedOption1.dataset.variantharga1 || "0");
-                    } else {
-                        alert('Pilih varian 1 terlebih dahulu!');
-                        return;
-                    }
-                    
-                    const variantSelect2 = document.getElementById(`variant2-${id}`);
-                
-                    if (variantSelect2 && variantSelect2.value) {
-                        const selectedOption2 = variantSelect2.options[variantSelect2.selectedIndex];
-                        variant2 = variantSelect2.value;
-                        variantPrice2 = parseInt(selectedOption2.dataset.variantharga2 || "0");
-                    } else {
-                        alert('Pilih varian 2 terlebih dahulu!');
-                        return;
-                    }
-                    
-                    const variantSelect3 = document.getElementById(`variant3-${id}`);
-                
-                    if (variantSelect3 && variantSelect3.value) {
-                    const selectedOption3 = variantSelect3.options[variantSelect3.selectedIndex];
-                        variant3 = variantSelect3.value;
-                        variantPrice3 = parseInt(selectedOption3.dataset.variantharga3 || "0");
-                    } else {
-                        alert('Pilih varian 3 terlebih dahulu!');
-                        return;
-                    }
-                    
+                        const variantSelect1 = document.getElementById(`variant1-${id}`);
+                        if (variantSelect1 && variantSelect1.value) {
+                                    const selectedOption1 = variantSelect1.options[variantSelect1.selectedIndex];
+                                    variant1 = variantSelect1.value;
+                                    variantPrice1 = parseInt(selectedOption1.dataset.variantharga1 || "0");
+                        } else if (variantSelect1) {
+                                    alert('Pilih varian 1 terlebih dahulu!');
+                                    return;
+                        }
+
+                        const variantSelect2 = document.getElementById(`variant2-${id}`);
+                        if (variantSelect2 && variantSelect2.value) {
+                                    const selectedOption2 = variantSelect2.options[variantSelect2.selectedIndex];
+                                    variant2 = variantSelect2.value;
+                                    variantPrice2 = parseInt(selectedOption2.dataset.variantharga2 || "0");
+                        } else if (variantSelect2) {
+                                    alert('Pilih varian 2 terlebih dahulu!');
+                                    return;
+                        }
+
+                        const variantSelect3 = document.getElementById(`variant3-${id}`);
+                        if (variantSelect3 && variantSelect3.value) {
+                                    const selectedOption3 = variantSelect3.options[variantSelect3.selectedIndex];
+                                    variant3 = variantSelect3.value;
+                                    variantPrice3 = parseInt(selectedOption3.dataset.variantharga3 || "0");
+                        } else if (variantSelect3) {
+                                    alert('Pilih varian 3 terlebih dahulu!');
+                                    return;
+                        }
+
                         const variantSelect4 = document.getElementById(`variant4-${id}`);
-                
-                    if (variantSelect4 && variantSelect4.value) {
-                   const selectedOption4 = variantSelect4.options[variantSelect4.selectedIndex];
-                        variant4 = variantSelect4.value;
-                        variantPrice4 = parseInt(selectedOption4.dataset.variantharga4 || "0");
-                    } else {
-                        alert('Pilih varian 4 terlebih dahulu!');
-                        return;
-                    }
-                    
-                    const variantSelect5 = document.getElementById(`variant5-${id}`);
-                
-                    if (variantSelect5 && variantSelect5.value) {
-                    const selectedOption5 = variantSelect5.options[variantSelect5.selectedIndex];
-                        variant5 = variantSelect5.value;
-                        variantPrice5 = parseInt(selectedOption5.dataset.variantharga5 || "0");
-                    } else {
-                        alert('Pilih varian 5 terlebih dahulu!');
-                        return;
-                    }
-                    
+                        if (variantSelect4 && variantSelect4.value) {
+                                    const selectedOption4 = variantSelect4.options[variantSelect4.selectedIndex];
+                                    variant4 = variantSelect4.value;
+                                    variantPrice4 = parseInt(selectedOption4.dataset.variantharga4 || "0");
+                        } else if (variantSelect4) {
+                                    alert('Pilih varian 4 terlebih dahulu!');
+                                    return;
+                        }
+
+                        const variantSelect5 = document.getElementById(`variant5-${id}`);
+                        if (variantSelect5 && variantSelect5.value) {
+                                    const selectedOption5 = variantSelect5.options[variantSelect5.selectedIndex];
+                                    variant5 = variantSelect5.value;
+                                    variantPrice5 = parseInt(selectedOption5.dataset.variantharga5 || "0");
+                        } else if (variantSelect5) {
+                                    alert('Pilih varian 5 terlebih dahulu!');
+                                    return;
+                        }
                 } else {
-                    variant1 = '';
-                    variant2 = '';
-                    variant3 = '';
-                    variant4 = '';
-                    variant5 = '';
+                        variant1 = variant2 = variant3 = variant4 = variant5 = '';
+                        variantPrice1 = variantPrice2 = variantPrice3 = variantPrice4 = variantPrice5 = 0;
                 }
+                
 
 
                 const takeawayCheckbox = document.getElementById(`takeaway-${id}`);
