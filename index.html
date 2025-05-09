@@ -977,61 +977,66 @@
                         `;
                         
                         tenantItems.forEach(item => {
-                            const variantInfo = [item.variant1, item.variant2, item.variant3, item.variant4, item.variant5]
-                                .filter(v => v) // hanya ambil varian yang terisi
-                                .map((v, i) => `Varian ${i + 1}: ${v}`)
-                                .join('<br>');
-                        
-                            const totalVariantPrice = (item.variantPrice1 || 0) + (item.variantPrice2 || 0) +
-                                                      (item.variantPrice3 || 0) + (item.variantPrice4 || 0) +
-                                                      (item.variantPrice5 || 0);
-                        
-                            itemsHTML += `
-                                <div class="cart-item p-4 flex justify-between items-center">
-                                    <div>
-                                        <h4 class="font-medium">${item.name} Rp.${item.price.toLocaleString()}</h4>
-                                        ${variantInfo ? `<p class="text-sm text-gray-500">${variantInfo} (+Rp.${totalVariantPrice})</p>` : ''}
-                                        <p class="text-sm text-gray-900 font-bold">Rp ${(item.price + totalVariantPrice).toLocaleString()}</p>
-                                        ${item.takeaway ? `<p class="text-sm text-gray-500">Bawa Pulang</p>` : ''}                                        
-                                    </div>
-                                    <div class="flex items-center">
-                                        <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l"
-                                            data-id="${item.id}"
-                                            data-variant1="${item.variant1 || ''}"
-                                            data-variant2="${item.variant2 || ''}"
-                                            data-variant3="${item.variant3 || ''}"
-                                            data-variant4="${item.variant4 || ''}"
-                                            data-variant5="${item.variant5 || ''}"
-                                            data-takeaway="${item.takeaway}">
-                                            <i class="fas fa-minus text-xs"></i>
-                                        </button>
-                                        <span class="px-3 py-1 bg-white">${item.quantity}</span>
-                                        <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r"
-                                            data-id="${item.id}"
-                                            data-variant1="${item.variant1 || ''}"
-                                            data-variant2="${item.variant2 || ''}"
-                                            data-variant3="${item.variant3 || ''}"
-                                            data-variant4="${item.variant4 || ''}"
-                                            data-variant5="${item.variant5 || ''}"
-                                            data-takeaway="${item.takeaway}">
-                                            <i class="fas fa-plus text-xs"></i>
-                                        </button>
-                                        <button class="remove-item ml-4 text-red-500 hover:text-red-600"
-                                            data-id="${item.id}"
-                                            data-variant1="${item.variant1 || ''}"
-                                            data-variant2="${item.variant2 || ''}"
-                                            data-variant3="${item.variant3 || ''}"
-                                            data-variant4="${item.variant4 || ''}"
-                                            data-variant5="${item.variant5 || ''}"
-                                            data-takeaway="${item.takeaway}">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            `;
-                        });
-                        itemsHTML += `</div></div>`;
-                    });
+       const variants = [
+        { name: item.variant1, price: item.variantPrice1 },
+        { name: item.variant2, price: item.variantPrice2 },
+        { name: item.variant3, price: item.variantPrice3 },
+        { name: item.variant4, price: item.variantPrice4 },
+        { name: item.variant5, price: item.variantPrice5 },
+    ];
+
+    const variantInfo = variants
+        .filter(v => v.name) // hanya varian yang terisi
+        .map((v, i) => `${i + 1}: ${v.name} (+Rp.${(v.price || 0).toLocaleString()})`)
+        .join('<br>');
+
+    const totalVariantPrice = variants.reduce((sum, v) => sum + (v.price || 0), 0);
+
+    itemsHTML += `
+        <div class="cart-item p-4 flex justify-between items-center">
+            <div>
+                <h4 class="font-medium">${item.name} Rp.${item.price.toLocaleString()}</h4>
+                ${variantInfo ? `<p class="text-sm text-gray-500">${variantInfo}</p>` : ''}
+                <p class="text-sm text-gray-900 font-bold">Rp ${(item.price + totalVariantPrice).toLocaleString()}</p>
+                ${item.takeaway ? `<p class="text-sm text-gray-500">Bawa Pulang</p>` : ''}
+            </div>
+            <div class="flex items-center">
+                <button class="decrease-quantity px-2 py-1 bg-gray-100 rounded-l" 
+                    data-id="${item.id}" 
+                    data-variant1="${item.variant1}" 
+                    data-variant2="${item.variant2}" 
+                    data-variant3="${item.variant3}" 
+                    data-variant4="${item.variant4}" 
+                    data-variant5="${item.variant5}" 
+                    data-takeaway="${item.takeaway}">
+                    <i class="fas fa-minus text-xs"></i>
+                </button>
+                <span class="px-3 py-1 bg-white">${item.quantity}</span>
+                <button class="increase-quantity px-2 py-1 bg-gray-100 rounded-r" 
+                    data-id="${item.id}" 
+                    data-variant1="${item.variant1}" 
+                    data-variant2="${item.variant2}" 
+                    data-variant3="${item.variant3}" 
+                    data-variant4="${item.variant4}" 
+                    data-variant5="${item.variant5}" 
+                    data-takeaway="${item.takeaway}">
+                    <i class="fas fa-plus text-xs"></i>
+                </button>
+                <button class="remove-item ml-4 text-red-500 hover:text-red-600" 
+                    data-id="${item.id}" 
+                    data-variant1="${item.variant1}" 
+                    data-variant2="${item.variant2}" 
+                    data-variant3="${item.variant3}" 
+                    data-variant4="${item.variant4}" 
+                    data-variant5="${item.variant5}" 
+                    data-takeaway="${item.takeaway}">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `;
+});
+
                     
                     cartItemsContainer.innerHTML = itemsHTML;
                 }
