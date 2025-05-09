@@ -232,8 +232,20 @@
           { "item": "kentang", "harga": 0 },
           { "item": "ala carte", "harga": 0 }
         ],
-        "variant2": [],
-        "variant3": [],
+        "variant2": [
+          { "item": "size regular", "harga": 0 },
+          { "item": "size large", "harga": 8000 },
+          { "item": "size xtra large", "harga": 15000 }
+        ],
+        "variant3": [
+          { "item": "mushroom", "harga": 0 },
+          { "item": "blackpepper", "harga": 0 },
+          { "item": "spicy barbeque", "harga": 0 },
+          { "item": "barbeque", "harga": 0 },
+          { "item": "buldak", "harga": 0 },
+          { "item": "teriyaki", "harga": 0 },
+          { "item": "padang", "harga": 0 }
+        ],
         "variant4": [],
         "variant5": []
       },
@@ -252,9 +264,9 @@
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [
-          { "item": "regular", "harga": 0 },
-          { "item": "large", "harga": 8000 },
-          { "item": "xtra large", "harga": 15000 }
+          { "item": "size regular", "harga": 0 },
+          { "item": "size large", "harga": 8000 },
+          { "item": "size xtra large", "harga": 15000 }
         ],
         "variant3": [
           { "item": "mushroom", "harga": 0 },
@@ -283,11 +295,19 @@
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [
-          { "item": "regular", "harga": 0 },
-          { "item": "large", "harga": 8000 },
-          { "item": "xtra large", "harga": 15000 }
+          { "item": "size regular", "harga": 0 },
+          { "item": "size large", "harga": 8000 },
+          { "item": "size xtra large", "harga": 15000 }
         ],
-        "variant3": [],
+        "variant3": [
+          { "item": "mushroom", "harga": 0 },
+          { "item": "blackpepper", "harga": 0 },
+          { "item": "spicy barbeque", "harga": 0 },
+          { "item": "barbeque", "harga": 0 },
+          { "item": "buldak", "harga": 0 },
+          { "item": "teriyaki", "harga": 0 },
+          { "item": "padang", "harga": 0 }
+        ],
         "variant4": [],
         "variant5": []
       },
@@ -306,11 +326,15 @@
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [
-          { "item": "regular", "harga": 0 },
-          { "item": "large", "harga": 8000 },
-          { "item": "xtra large", "harga": 15000 }
+          { "item": "size regular", "harga": 0 },
+          { "item": "size large", "harga": 8000 },
+          { "item": "size xtra large", "harga": 15000 }
         ],
-        "variant3": [],
+        "variant3": [
+          { "item": "balado", "harga": 0 },
+          { "item": "jagung bakar", "harga": 0 },
+          { "item": "barbeque", "harga": 0 }
+        ],
         "variant4": [],
         "variant5": []
       }
@@ -331,7 +355,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_kopi.jpeg",
         "variant1": [
           { "item": "panas", "harga": 0 },
-          { "item": "dingin", "harga": 0 }
+          { "item": "dingin", "harga": 2000 }
         ],
         "variant2": [],
         "variant3": [],
