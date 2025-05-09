@@ -1036,8 +1036,10 @@
                                 </div>
                             `;
                         });
+                        itemsHTML += `</div></div>`;
+                    });
                     cartItemsContainer.innerHTML = itemsHTML;
-                });
+                }
                 
                 // Update totals
                 const subtotal = cart.reduce((sum, item) => {
