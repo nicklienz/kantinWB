@@ -263,8 +263,7 @@
           { "item": "barbeque", "harga": 0 },
           { "item": "buldak", "harga": 0 },
           { "item": "teriyaki", "harga": 0 },
-          { "item": "padang", "harga": 0 },
-
+          { "item": "padang", "harga": 0 }
         ],
         "variant4": [],
         "variant5": []
