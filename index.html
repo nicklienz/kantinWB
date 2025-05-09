@@ -1080,7 +1080,7 @@
                             .forEach(item => {
                                 const variantLabels = [item.variant1, item.variant2, item.variant3, item.variant4, item.variant5]
                                     .filter(v => v)
-                                    .map((v, i) => `Varian ${i + 1}: ${v}`)
+                                    .map((v, i) => `${v}`)
                                     .join(', ');
                                 
                                 const totalVariantPrice = 
@@ -1090,7 +1090,7 @@
                                     (item.variantPrice4 || 0) +
                                     (item.variantPrice5 || 0);
                                 
-                                message += `- ${item.name}${variantLabels ? ` (${variantLabels})` : ''} (${item.quantity}x) = Rp ${(item.price + totalVariantPrice) * item.quantity.toLocaleString()}\n`;
+                                message += `- ${item.name}${variantLabels ? ` (${variantLabels})` : ''} \n(${item.quantity}x) = Rp ${(item.price + totalVariantPrice) * item.quantity.toLocaleString()}\n`;
                                 if (item.takeaway) message += `  (Bawa Pulang)\n`;
                             });
                         message += `\n`;
