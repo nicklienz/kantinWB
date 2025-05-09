@@ -256,7 +256,16 @@
           { "item": "large", "harga": 8000 },
           { "item": "xtra large", "harga": 15000 }
         ],
-        "variant3": [],
+        "variant3": [
+          { "item": "mushroom", "harga": 0 },
+          { "item": "blackpepper", "harga": 0 },
+          { "item": "spicy barbeque", "harga": 0 },
+          { "item": "barbeque", "harga": 0 },
+          { "item": "buldak", "harga": 0 },
+          { "item": "teriyaki", "harga": 0 },
+          { "item": "padang", "harga": 0 },
+
+        ],
         "variant4": [],
         "variant5": []
       },
