@@ -610,9 +610,17 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
+
+        //clear wa container  
+        function clearWhatsAppLinks() {
+            const container = document.getElementById('whatsapp-links-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+        } 
+        
     
         // Shopping Cart Functionality
-clearWhatsAppLinks();
         let cart = [];
         // Add to cart buttons
         document.addEventListener('click', function(e) {
@@ -837,6 +845,7 @@ clearWhatsAppLinks();
                     
             // Update cart UI
             function updateCart() {
+                clearWhatsAppLinks();
                 console.log(cart);
                 const cartItemsContainer = document.getElementById('cart-items');
                 const cartCount = document.getElementById('cart-count');
@@ -953,7 +962,7 @@ clearWhatsAppLinks();
                 
                     if (cartLength === 0) {
                         alert('Keranjang masih kosong!');
-clearWhatsAppLinks();
+                        clearWhatsAppLinks();
                         return;
                     }
                 
@@ -964,35 +973,36 @@ clearWhatsAppLinks();
                     if (!name || !pickupTime) {
                         e.preventDefault();
                         alert('Mohon isi nama dan waktu pengambilan!');
-clearWhatsAppLinks();
+                        clearWhatsAppLinks();
                         return;
                     }
-const pickupDate = new Date(pickupTime);
-const now = new Date();
-
-// Validasi tanggal kemarin
-if (pickupDate < now.setHours(0, 0, 0, 0)) {
-    alert('Tanggal pengambilan tidak boleh di hari kemarin!');
-clearWhatsAppLinks();
-    return;
-}
-
-// Validasi lebih dari 7 hari ke depan
-const oneWeekLater = new Date();
-oneWeekLater.setDate(oneWeekLater.getDate() + 7);
-if (pickupDate > oneWeekLater) {
-    alert('Tanggal pengambilan tidak boleh lebih dari 7 hari ke depan!');
-clearWhatsAppLinks();
-    return;
-}
-
-// Validasi jam pengambilan (antara 08:00 dan 18:00)
-const pickupHour = pickupDate.getHours();
-if (pickupHour < 8 || pickupHour > 18) {
-    alert('Waktu pengambilan hanya boleh antara jam 08:00 sampai 18:00!');
-clearWhatsAppLinks();
-    return;
-}                
+                     
+                    const pickupDate = new Date(pickupTime);
+                    const now = new Date();
+                    
+                    // Validasi tanggal kemarin
+                    if (pickupDate < now.setHours(0, 0, 0, 0)) {
+                        alert('Tanggal pengambilan tidak boleh di hari kemarin!');
+                        clearWhatsAppLinks();
+                        return;
+                    }
+                    
+                    // Validasi lebih dari 7 hari ke depan
+                    const oneWeekLater = new Date();
+                    oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+                    if (pickupDate > oneWeekLater) {
+                        alert('Tanggal pengambilan tidak boleh lebih dari 7 hari ke depan!');
+                        clearWhatsAppLinks();
+                        return;
+                    }
+                    
+                    // Validasi jam pengambilan (antara 08:00 dan 18:00)
+                    const pickupHour = pickupDate.getHours();
+                    if (pickupHour < 8 || pickupHour > 18) {
+                        alert('Waktu pengambilan hanya boleh antara jam 08:00 sampai 18:00!');
+                        clearWhatsAppLinks();
+                        return;
+                    }                
                     const tenants = [...new Set(cart.map(item => item.tenant))];
                 
                     const container = document.getElementById('whatsapp-links-container');
@@ -1050,14 +1060,7 @@ clearWhatsAppLinks();
                         container.appendChild(button);
                     });
                 });
-
-//clear wa container  
-function clearWhatsAppLinks() {
-    const container = document.getElementById('whatsapp-links-container');
-    if (container) {
-        container.innerHTML = '';
-    }
-}          
+         
                 // Clear cart button
                 document.getElementById('clear-cart').addEventListener('click', function() {
                     cart = [];
