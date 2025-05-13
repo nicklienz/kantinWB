@@ -40,6 +40,10 @@
             }
         }
     </script>
+    <script>
+        window.tenantWhatsappNumbers = {};
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
@@ -173,7 +177,7 @@
                 <script>
                   document.addEventListener('DOMContentLoaded', () => {
                     const jsonUrl = 'https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/data/datatenant.json';
-                    let tenantWhatsappNumbers = {};    
+  
                     // Mengambil data JSON
                     fetch(jsonUrl)
                         .then(response => {
@@ -186,8 +190,7 @@
                             let tenantListHtml = '';
                         
                             tenants.forEach(tenant => {                               
-                                tenantWhatsappNumbers[tenant.name]=tenant.contact;
-                                console.log(tenantWhatsappNumbers[tenant.name]);
+                                window.tenantWhatsappNumbers[tenant.name]=tenant.contact;
                                 tenantListHtml += `
                                     <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
                                         <div class="h-48 overflow-hidden">
@@ -1002,7 +1005,7 @@
                 
                         message += `\n*Total:* Rp ${total.toLocaleString()}\n`;
                         message += `Waktu Pengambilan: ${new Date(pickupTime).toLocaleString('id-ID')}`;
-                        const contact = tenantWhatsappNumbers[tenant];
+                        const contact = window.tenantWhatsappNumbers[tenant];
                         if (!contact) {
                             console.warn(`Nomor WhatsApp untuk tenant ${tenant} tidak ditemukan.`);
                             return;
