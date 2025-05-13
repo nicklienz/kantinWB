@@ -964,7 +964,29 @@
                         alert('Mohon isi nama dan waktu pengambilan!');
                         return;
                     }
-                
+const pickupDate = new Date(pickupTime);
+const now = new Date();
+
+// Validasi tanggal kemarin
+if (pickupDate < now.setHours(0, 0, 0, 0)) {
+    alert('Tanggal pengambilan tidak boleh di hari kemarin!');
+    return;
+}
+
+// Validasi lebih dari 7 hari ke depan
+const oneWeekLater = new Date();
+oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+if (pickupDate > oneWeekLater) {
+    alert('Tanggal pengambilan tidak boleh lebih dari 7 hari ke depan!');
+    return;
+}
+
+// Validasi jam pengambilan (antara 08:00 dan 18:00)
+const pickupHour = pickupDate.getHours();
+if (pickupHour < 8 || pickupHour > 18) {
+    alert('Waktu pengambilan hanya boleh antara jam 08:00 sampai 18:00!');
+    return;
+}                
                     const tenants = [...new Set(cart.map(item => item.tenant))];
                 
                     const container = document.getElementById('whatsapp-links-container');
