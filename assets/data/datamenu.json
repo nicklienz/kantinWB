@@ -154,7 +154,7 @@
       },
       {
         "id": "pm-2",
-        "name": "Kwetiau Goreng",
+        "name": "Kwetiau",
         "description": "Tersedia dalam pilihan goreng atau kuah",
         "price": 15000,
         "day":[
@@ -169,7 +169,7 @@
       },
       {
         "id": "pm-3",
-        "name": "Mie Instan",
+        "name": "Indomie",
         "description": "Tersedia pilihan goreng atau kuah dengan telur",
         "price": 8000,
         "day":[
@@ -230,16 +230,72 @@
       },
       {
         "id": "pm-6",
-        "name": "Bakmi Jawa",
+        "name": "Mie Jawa",
         "description": "tes",
         "price": 18000,
         "day":[
           "all"
         ],
-        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_soto%20betawi.jpeg",
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_miejawa.jpeg",
         "variant1": [
           { "item": "goreng", "harga": 0 },
           { "item": "kuah", "harga": 0 }
+        ],
+        "variant2": [],
+        "variant3": [],
+        "variant4": [],
+        "variant5": []
+      },
+      {
+        "id": "pm-7",
+        "name": "Bihun",
+        "description": "tes",
+        "price": 18000,
+        "day":[
+          "all"
+        ],
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_bihun.jpeg",
+        "variant1": [
+          { "item": "goreng", "harga": 0 },
+          { "item": "kuah", "harga": 0 }
+        ],
+        "variant2": [],
+        "variant3": [],
+        "variant4": [],
+        "variant5": []
+      },
+      {
+        "id": "pm-8",
+        "name": "Pecel Ayam",
+        "description": "tes",
+        "price": 18000,
+        "day":[
+          "all"
+        ],
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_pecelayam.jpeg",
+        "variant1": [
+          { "item": "tahu", "harga": 2000 },
+          { "item": "tempe", "harga": 2000 },
+          { "item": "ala carte", "harga": 0 }
+        ],
+        "variant2": [],
+        "variant3": [],
+        "variant4": [],
+        "variant5": []
+      },
+      {
+        "id": "pm-9",
+        "name": "Pecel Lele",
+        "description": "tes",
+        "price": 18000,
+        "day":[
+          "all"
+        ],
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_pecellele.jpeg",
+        "variant1": [
+          { "item": "tahu", "harga": 2000 },
+          { "item": "tempe", "harga": 2000 },
+          { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [],
         "variant3": [],
