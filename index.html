@@ -186,8 +186,9 @@
                         })
                         .then(tenants => {
                             let tenantListHtml = '';
-                
-                            let tenantWhatsappNumbers = '';                            tenants.forEach(tenant => {                               tenantWhatsappNumbers [tenant.name]=tenant.contact;
+                            let tenantWhatsappNumbers = '';                            
+                            tenants.forEach(tenant => {                               
+                                tenantWhatsappNumbers[tenant.name]=tenant.contact;
                                 tenantListHtml += `
                                     <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
                                         <div class="h-48 overflow-hidden">
@@ -209,7 +210,8 @@
                                     </div>
                                 `;
                             });
-                
+
+                            console.log(tenantWhatsappNumbers);
                             // Menambahkan elemen-elemen tenant ke dalam div dengan id "tenant-list"
                             document.getElementById('tenant-list').innerHTML = tenantListHtml;
                 
