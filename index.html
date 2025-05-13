@@ -148,7 +148,7 @@
         <div class="hero-overlay"></div>
         
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Laper atau pengen Ngopi? <br> yuk ke <span class="text-primary-300">Kantin Wisma Barito</span></h1>
+            <h1 class="text-3xl md:text-5xl font-bold text-white mb-6">Laper atau pengen Ngopi? <br> yuk ke <span class="text-primary-300">Kantin Wisma Barito</span></h1>
             <p class="text-xl text-white mb-8 max-w-2xl mx-auto">tempat ideal untuk kamu yang ingin menikmati hidangan lezat dengan harga bersahabat, tanpa harus keluar kantor</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#menu" class="bg-primary-700 hover:bg-primary-800 px-8 py-3 rounded-full font-bold text-white transition duration-300">Pesan Sekarang</a>
@@ -590,6 +590,8 @@
                         <a href="" id="whatsapp-order" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold w-full text-center block">
                             <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
                         </a>
+                        <!-- Container untuk link WhatsApp -->
+                        <div id="whatsapp-links-container" class="mt-4 space-y-2"></div>
                         <button id="clear-cart" class="text-gray-500 hover:text-red-600 text-sm font-medium w-full text-center">
                             <i class="fas fa-trash-alt mr-1"></i> Kosongkan keranjang
                         </button>
@@ -942,67 +944,83 @@
                 const total = subtotal + tax;
                 document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString()}`;
                 
-                document.getElementById('whatsapp-order').addEventListener('click', function (e) {
+                 document.getElementById('whatsapp-order').addEventListener('click', function (e) {
                     const cartLength = cart.length;
-
+                
                     if (cartLength === 0) {
                         alert('Keranjang masih kosong!');
                         return;
                     }
-                    
+                
                     const name = document.getElementById('user-name').value.trim();
                     const pickupTime = document.getElementById('pickup-time').value;
-                    
-                    console.log('Validating form:', { name, phone, pickupTime });
+                
+                    console.log('Validating form:', { name, pickupTime });
                     if (!name || !pickupTime) {
-                        e.preventDefault();  // Mencegah form submit
-                        console.log('Form validation failed');
+                        e.preventDefault();
                         alert('Mohon isi nama dan waktu pengambilan!');
                         return;
-                    }   
-                    
-                    let message = `Halo, saya ${name} mau pesan:\n\n`;
+                    }
+                
                     const tenants = [...new Set(cart.map(item => item.tenant))];
-                    
+                
+                    const container = document.getElementById('whatsapp-links-container');
+                    if (!container) {
+                        alert('Container untuk link WhatsApp tidak ditemukan!');
+                        return;
+                    }
+                    container.innerHTML = '';
+                
                     tenants.forEach(tenant => {
-                        message += `*${tenant}:*\n`;
-                        cart
-                            .filter(item => item.tenant === tenant)
-                            .forEach(item => {
-                                const variantLabels = [item.variant1, item.variant2, item.variant3, item.variant4, item.variant5]
-                                    .filter(v => v)
-                                    .map((v, i) => `${v}`)
-                                    .join(', ');
-                                
-                                const totalVariantPrice = 
-                                    (item.variantPrice1 || 0) +
-                                    (item.variantPrice2 || 0) +
-                                    (item.variantPrice3 || 0) +
-                                    (item.variantPrice4 || 0) +
-                                    (item.variantPrice5 || 0);
-                                
-                                message += `- ${item.name}${variantLabels ? ` (${variantLabels})` : ''} \n(${item.quantity}x) = Rp ${(item.price + totalVariantPrice) * item.quantity.toLocaleString()}\n`;
-                                if (item.takeaway) message += `  (Bawa Pulang)\n`;
-                            });
-                        message += `\n`;
+                        let message = `Halo, saya ${name} mau pesan:\n\n*${tenant}:*\n`;
+                
+                        cart.filter(item => item.tenant === tenant).forEach(item => {
+                            const variantLabels = [item.variant1, item.variant2, item.variant3, item.variant4, item.variant5]
+                                .filter(v => v)
+                                .join(', ');
+                
+                            const variantTotal =
+                                (item.variantPrice1 || 0) +
+                                (item.variantPrice2 || 0) +
+                                (item.variantPrice3 || 0) +
+                                (item.variantPrice4 || 0) +
+                                (item.variantPrice5 || 0);
+                
+                            message += `- ${item.name}${variantLabels ? ` (${variantLabels})` : ''}\n(${item.quantity}x) = Rp ${(item.price + variantTotal) * item.quantity}\n`;
+                            if (item.takeaway) message += `  (Bawa Pulang)\n`;
+                        });
+                
+                        const total = cart.filter(item => item.tenant === tenant).reduce((sum, item) => {
+                            const variantTotal =
+                                (item.variantPrice1 || 0) +
+                                (item.variantPrice2 || 0) +
+                                (item.variantPrice3 || 0) +
+                                (item.variantPrice4 || 0) +
+                                (item.variantPrice5 || 0);
+                            return sum + (item.price + variantTotal) * item.quantity;
+                        }, 0);
+                
+                        message += `\n*Total:* Rp ${total.toLocaleString()}\n`;
+                        message += `Waktu Pengambilan: ${new Date(pickupTime).toLocaleString('id-ID')}`;
+                
+                        const phone = tenantWhatsAppNumbers[tenant];
+                        if (!phone) {
+                            console.warn(`Nomor WhatsApp untuk tenant ${tenant} tidak ditemukan.`);
+                            return;
+                        }
+                
+                        const encoded = encodeURIComponent(message);
+                        const waUrl = `https://wa.me/${phone}?text=${encoded}`;
+                
+                        const button = document.createElement('a');
+                        button.href = waUrl;
+                        button.target = '_blank';
+                        button.className = 'mt-2 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded';
+                        button.innerText = `Kirim ke ${tenant}`;
+                        container.appendChild(button);
                     });
-                    
-                    const total = cart.reduce((sum, item) => {
-                        const variantTotal = 
-                            (item.variantPrice1 || 0) +
-                            (item.variantPrice2 || 0) +
-                            (item.variantPrice3 || 0) +
-                            (item.variantPrice4 || 0) +
-                            (item.variantPrice5 || 0);
-                        return sum + (item.price + variantTotal) * item.quantity;
-                    }, 0);
-                    
-                    message += `*Total:* Rp ${total.toLocaleString()}\n\n`;
-                    message += `Waktu Pengambilan: ${new Date(pickupTime).toLocaleString('id-ID')}`;
-                    
-                    const encoded = encodeURIComponent(message);
-                    this.href = `https://wa.me/6285245498100?text=${encoded}`;
                 });
+
             
                 // Clear cart button
                 document.getElementById('clear-cart').addEventListener('click', function() {
