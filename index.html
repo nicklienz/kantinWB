@@ -187,7 +187,7 @@
                         .then(tenants => {
                             let tenantListHtml = '';
                 
-                            tenants.forEach(tenant => {
+                            let tenantWhatsappNumbers = '';                            tenants.forEach(tenant => {                               tenantWhatsappNumbers [tenant.name]=tenant.contact;
                                 tenantListHtml += `
                                     <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
                                         <div class="h-48 overflow-hidden">
@@ -1002,7 +1002,7 @@
                 
                         message += `\n*Total:* Rp ${total.toLocaleString()}\n`;
                         message += `Waktu Pengambilan: ${new Date(pickupTime).toLocaleString('id-ID')}`;
-                
+                        const contact = tenantWhatsappNumber[tenant];
                         if (!contact) {
                             console.warn(`Nomor WhatsApp untuk tenant ${tenant} tidak ditemukan.`);
                             return;
