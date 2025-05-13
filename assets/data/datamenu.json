@@ -171,13 +171,21 @@
         "id": "pm-3",
         "name": "Mie Instan",
         "description": "Tersedia pilihan goreng atau kuah dengan telur",
-        "price": 12000,
+        "price": 8000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_mieinstan.jpeg",
-        "variant1": [],
-        "variant2": [],
+        "variant1": [
+          { "item": "goreng", "harga": 0 },
+          { "item": "kuah kari ayam", "harga": 0 },
+          { "item": "kuah ayam bawang", "harga": 0 },
+          { "item": "kuah soto", "harga": 0 }
+        ],
+      "variant2": [
+          { "item": "telor ceplok", "harga": 5000 },
+          { "item": "telor dadar", "harga": 5000 }
+        ],
         "variant3": [],
         "variant4": [],
         "variant5": []
