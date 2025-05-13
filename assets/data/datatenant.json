@@ -6,7 +6,8 @@
     "hours": "06AM-14PM",
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_ayamsambelijo.jpeg",
     "logo": "DM",
-    "color": "bg-red-500"
+    "color": "bg-red-500",
+    "contact":"6283187977231"
   },
   {
     "id": "masakan-medan",
@@ -15,7 +16,8 @@
     "hours": "06AM-14PM",
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_ayamwijen.jpeg",
     "logo": "MM",
-    "color": "bg-yellow-500"
+    "color": "bg-yellow-500",
+    "contact":"6285921890886"
   },
   {
     "id": "pak-mul",
@@ -24,7 +26,8 @@
     "hours": "06AM-17PM",
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg",
     "logo": "PM",
-    "color": "bg-blue-500"
+    "color": "bg-blue-500",
+    "contact":"6281717714760"
   },
   {
     "id": "rasa-keluarga",
@@ -33,7 +36,8 @@
     "hours": "08AM-15PM",
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_steak.jpeg",
     "logo": "RK",
-    "color": "bg-pink-500"
+    "color": "bg-pink-500",
+    "contact":"6285245498100"
   },
   {
     "id": "mas-medi",
@@ -42,7 +46,8 @@
     "hours": "06AM-17PM",
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_kopi.jpeg",
     "logo": "MD",
-    "color": "bg-purple-500"
+    "color": "bg-purple-500",
+    "contact":""
   },
   {
     "id": "keno",
@@ -51,6 +56,7 @@
     "hours": "09AM-16PM",
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_mangga.jpeg",
     "logo": "KN",
-    "color": "bg-gray-500"
+    "color": "bg-gray-500",
+    "contact":"6287878540063"
   }
 ]
