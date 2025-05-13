@@ -591,7 +591,7 @@
                     
                     <div class="space-y-3">
                         <button id="whatsapp-order" type="button" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold w-full text-center block">
-                            <i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp
+                            <i class="fa-solid fa-handshake"></i> Lanjutkan
                         </button>
                         <!-- Container untuk link WhatsApp -->
                         <div id="whatsapp-links-container" class="mt-4 space-y-2"></div>
@@ -1017,8 +1017,8 @@
                         const button = document.createElement('a');
                         button.href = waUrl;
                         button.target = '_blank';
-                        button.className = 'mt-2 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded';
-                        button.innerText = `Kirim ke ${tenant}`;
+                        button.className = 'bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold w-full text-center block';
+                        button.innerText = `<i class="fab fa-whatsapp mr-2"></i> Kirim WA ke ${tenant}`;
                         container.appendChild(button);
                     });
                 });
