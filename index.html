@@ -1003,14 +1003,13 @@
                         message += `\n*Total:* Rp ${total.toLocaleString()}\n`;
                         message += `Waktu Pengambilan: ${new Date(pickupTime).toLocaleString('id-ID')}`;
                 
-                        const phone = tenantWhatsAppNumbers[tenant];
-                        if (!phone) {
+                        if (!contact) {
                             console.warn(`Nomor WhatsApp untuk tenant ${tenant} tidak ditemukan.`);
                             return;
                         }
                 
                         const encoded = encodeURIComponent(message);
-                        const waUrl = `https://wa.me/${phone}?text=${encoded}`;
+                        const waUrl = `https://wa.me/${contact}?text=${encoded}`;
                 
                         const button = document.createElement('a');
                         button.href = waUrl;
