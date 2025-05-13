@@ -189,6 +189,8 @@
                         
                             tenants.forEach(tenant => {                               
                                 tenantWhatsappNumbers[tenant.name]=tenant.contact;
+                                console.log(tenant.name);
+                                console.log(tenant.contact);
                                 console.log(tenantWhatsappNumbers);
                                 tenantListHtml += `
                                     <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
