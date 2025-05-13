@@ -612,6 +612,7 @@
         });
     
         // Shopping Cart Functionality
+clearWhatsAppLinks();
         let cart = [];
         // Add to cart buttons
         document.addEventListener('click', function(e) {
@@ -952,6 +953,7 @@
                 
                     if (cartLength === 0) {
                         alert('Keranjang masih kosong!');
+clearWhatsAppLinks();
                         return;
                     }
                 
@@ -962,6 +964,7 @@
                     if (!name || !pickupTime) {
                         e.preventDefault();
                         alert('Mohon isi nama dan waktu pengambilan!');
+clearWhatsAppLinks();
                         return;
                     }
 const pickupDate = new Date(pickupTime);
@@ -970,6 +973,7 @@ const now = new Date();
 // Validasi tanggal kemarin
 if (pickupDate < now.setHours(0, 0, 0, 0)) {
     alert('Tanggal pengambilan tidak boleh di hari kemarin!');
+clearWhatsAppLinks();
     return;
 }
 
@@ -978,6 +982,7 @@ const oneWeekLater = new Date();
 oneWeekLater.setDate(oneWeekLater.getDate() + 7);
 if (pickupDate > oneWeekLater) {
     alert('Tanggal pengambilan tidak boleh lebih dari 7 hari ke depan!');
+clearWhatsAppLinks():
     return;
 }
 
@@ -985,6 +990,7 @@ if (pickupDate > oneWeekLater) {
 const pickupHour = pickupDate.getHours();
 if (pickupHour < 8 || pickupHour > 18) {
     alert('Waktu pengambilan hanya boleh antara jam 08:00 sampai 18:00!');
+clearWhatsAppLinks();
     return;
 }                
                     const tenants = [...new Set(cart.map(item => item.tenant))];
@@ -1045,7 +1051,13 @@ if (pickupHour < 8 || pickupHour > 18) {
                     });
                 });
 
-            
+//clear wa container  
+function clearWhatsAppLinks() {
+    const container = document.getElementById('whatsapp-links-container');
+    if (container) {
+        container.innerHTML = '';
+    }
+}          
                 // Clear cart button
                 document.getElementById('clear-cart').addEventListener('click', function() {
                     cart = [];
