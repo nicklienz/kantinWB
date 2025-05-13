@@ -175,7 +175,7 @@
                 <script>
                   document.addEventListener('DOMContentLoaded', () => {
                     const jsonUrl = 'https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/data/datatenant.json';
-                    
+                    let tenantWhatsappNumbers = '';    
                     // Mengambil data JSON
                     fetch(jsonUrl)
                         .then(response => {
@@ -186,9 +186,10 @@
                         })
                         .then(tenants => {
                             let tenantListHtml = '';
-                            let tenantWhatsappNumbers = '';                            
+                        
                             tenants.forEach(tenant => {                               
                                 tenantWhatsappNumbers[tenant.name]=tenant.contact;
+                                console.log(tenantWhatsappNumbers);
                                 tenantListHtml += `
                                     <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
                                         <div class="h-48 overflow-hidden">
@@ -211,7 +212,6 @@
                                 `;
                             });
 
-                            console.log(tenantWhatsappNumbers);
                             // Menambahkan elemen-elemen tenant ke dalam div dengan id "tenant-list"
                             document.getElementById('tenant-list').innerHTML = tenantListHtml;
                 
