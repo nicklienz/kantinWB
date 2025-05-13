@@ -173,7 +173,7 @@
                 <script>
                   document.addEventListener('DOMContentLoaded', () => {
                     const jsonUrl = 'https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/data/datatenant.json';
-                    let tenantWhatsappNumbers = '';    
+                    let tenantWhatsappNumbers = {};    
                     // Mengambil data JSON
                     fetch(jsonUrl)
                         .then(response => {
