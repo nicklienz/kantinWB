@@ -184,7 +184,8 @@
         ],
       "variant2": [
           { "item": "telor ceplok", "harga": 5000 },
-          { "item": "telor dadar", "harga": 5000 }
+          { "item": "telor dadar", "harga": 5000 },
+          { "item": "ala carte", "harga": 0 }
         ],
         "variant3": [],
         "variant4": [],
@@ -194,7 +195,7 @@
         "id": "pm-4",
         "name": "Nasi Goreng",
         "description": "Nasi gurih diorak-arik dengan ayam, sayuran, bumbu lezat meresap sempurna.",
-        "price": 15000,
+        "price": 17000,
         "day":[
           "all"
         ],
@@ -209,12 +210,15 @@
         "id": "pm-5",
         "name": "Soto Betawi",
         "description": "Soto Betawi gurih creamy, daging empuk, kuah susu kaya rempah",
-        "price": 12000,
+        "price": 18000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_soto%20betawi.jpeg",
-        "variant1": [],
+        "variant1": [
+          { "item": "nasi", "harga": 5000 },
+          { "item": "ala carte", "harga": 0 }
+        ],
         "variant2": [],
         "variant3": [],
         "variant4": [],
