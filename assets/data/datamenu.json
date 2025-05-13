@@ -200,7 +200,11 @@
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg",
-        "variant1": [],
+        "variant1": [
+          { "item": "tidak pedas", "harga": 0 },
+          { "item": "sedang", "harga": 0 },
+          { "item": "pedas", "harga": 0 }
+        ],
         "variant2": [],
         "variant3": [],
         "variant4": [],
@@ -218,6 +222,24 @@
         "variant1": [
           { "item": "nasi", "harga": 5000 },
           { "item": "ala carte", "harga": 0 }
+        ],
+        "variant2": [],
+        "variant3": [],
+        "variant4": [],
+        "variant5": []
+      },
+      {
+        "id": "pm-6",
+        "name": "Bakmi Jawa",
+        "description": "tes",
+        "price": 18000,
+        "day":[
+          "all"
+        ],
+        "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_soto%20betawi.jpeg",
+        "variant1": [
+          { "item": "goreng", "harga": 0 },
+          { "item": "kuah", "harga": 0 }
         ],
         "variant2": [],
         "variant3": [],
