@@ -1002,7 +1002,7 @@
                 
                         message += `\n*Total:* Rp ${total.toLocaleString()}\n`;
                         message += `Waktu Pengambilan: ${new Date(pickupTime).toLocaleString('id-ID')}`;
-                        const contact = tenantWhatsappNumber[tenant];
+                        const contact = tenantWhatsappNumbers[tenant];
                         if (!contact) {
                             console.warn(`Nomor WhatsApp untuk tenant ${tenant} tidak ditemukan.`);
                             return;
