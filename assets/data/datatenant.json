@@ -7,7 +7,8 @@
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_ayamsambelijo.jpeg",
     "logo": "DM",
     "color": "bg-red-500",
-    "contact":"6283187977231"
+    "contact":"6283187977231",
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_qris.jpeg"
   },
   {
     "id": "masakan-medan",
@@ -17,7 +18,8 @@
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_ayamwijen.jpeg",
     "logo": "MM",
     "color": "bg-yellow-500",
-    "contact":"6285921890886"
+    "contact":"6285921890886",
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_qris.jpeg"
   },
   {
     "id": "pak-mul",
@@ -27,7 +29,8 @@
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg",
     "logo": "PM",
     "color": "bg-blue-500",
-    "contact":"6281717714760"
+    "contact":"6281717714760",
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_qris.jpeg"
   },
   {
     "id": "rasa-keluarga",
@@ -37,7 +40,8 @@
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_steak.jpeg",
     "logo": "RK",
     "color": "bg-pink-500",
-    "contact":"6285245498100"
+    "contact":"6285245498100",
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_qris.jpeg"
   },
   {
     "id": "mas-medi",
@@ -47,7 +51,8 @@
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_kopi.jpeg",
     "logo": "MD",
     "color": "bg-purple-500",
-    "contact":""
+    "contact":"",
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_qris.jpeg"
   },
   {
     "id": "keno",
@@ -57,6 +62,7 @@
     "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_mangga.jpeg",
     "logo": "KN",
     "color": "bg-gray-500",
-    "contact":"6287878540063"
+    "contact":"6287878540063",
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_qris.jpeg"
   }
 ]
