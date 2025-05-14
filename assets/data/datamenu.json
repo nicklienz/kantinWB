@@ -10,7 +10,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_ayamsambelijo.jpeg",
         "price": 20000,
         "day":[
-          "5"
+          ""
         ],
         "variant1": [],
         "variant2": [],
@@ -25,7 +25,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_rawon.jpeg",
         "price": 25000,        
         "day":[
-          "4"
+          ""
         ],
         "variant1": [],
         "variant2": [],
@@ -40,7 +40,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_sopiga.jpeg",
         "price": 30000,
         "day":[
-          "6"
+          ""
         ],
         "variant1": [],
         "variant2": [],
@@ -55,7 +55,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_terong.jpeg",
         "price": 30000,
         "day":[
-          "all"
+          ""
         ],
         "variant1": [],
         "variant2": [],
@@ -70,7 +70,7 @@
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_tahutempe.jpeg",
         "price": 2000,
         "day":[
-          "all"
+          ""
         ],
         "variant1": [],
         "variant2": [],
@@ -90,7 +90,7 @@
         "description": "Ayam goreng renyah, taburan wijen gurih, saus manis lezat",
         "price": 25000,
         "day":[
-          "all"
+          ""
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_ayamwijen.jpeg",
         "variant1": [],
@@ -105,8 +105,7 @@
         "description": "Daun pepaya gurih ditumis bumbu, nikmat disantap",
         "price": 38000,
         "day":[
-          "1",
-          "2"
+          ""
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_daunpepaya.jpeg",
         "variant1": [],
@@ -121,8 +120,7 @@
         "description": "Tauge renyah segar ditumis dengan bumbu sederhana yang menggugah selera",
         "price": 15000,
         "day":[
-          "3",
-          "4"
+          ""
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_tauge.jpeg",
         "variant1": [],
