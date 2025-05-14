@@ -481,14 +481,14 @@
         "id": "md-3",
         "name": "Jeruk Peras",
         "description": "Jeruk segar diperas, rasa manis asam menyegarkan, vitamin C alami.",
-        "price": 5000,
+        "price": 10000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_jeruk.jpeg",
         "variant1": [
-          { "item": "panas", "harga": 1000 },
-          { "item": "dingin", "harga": 500 }
+          { "item": "panas", "harga": 0 },
+          { "item": "dingin", "harga": 0 }
         ],
         "variant2": [],
         "variant3": [],
@@ -505,7 +505,7 @@
         "id": "kn-1",
         "name": "Jus Alpukat",
         "description": "Alpukat lembut diblender halus, manis alami, creamy, sehat dan mengenyangkan.",
-        "price": 12000,
+        "price": 15000,
         "day":[
           "all"
         ],
@@ -520,7 +520,7 @@
         "id": "kn-2",
         "name": "Jus Belimbing",
         "description": "Belimbing segar diblender, rasa manis asam unik, segar dan kaya manfaat",
-        "price": 15000,
+        "price": 10000,
         "day":[
           "all"
         ],
@@ -535,7 +535,7 @@
         "id": "kn-3",
         "name": "Jus Buah Naga",
         "description": "Buah naga segar diblender, warna merah/putih cerah, rasa manis segar alami.",
-        "price": 12000,
+        "price": 15000,
         "day":[
           "all"
         ],
@@ -550,7 +550,7 @@
         "id": "kn-4",
         "name": "Jus Sirsak",
         "description": "Sirsak segar diblender, rasa manis asam menyegarkan, tekstur lembut creamy.",
-        "price": 12000,
+        "price": 15000,
         "day":[
           "all"
         ],
@@ -565,7 +565,7 @@
         "id": "kn-5",
         "name": "Jus Wortel",
         "description": "Wortel segar diblender, rasa manis alami, sehat untuk mata dan tubuh.",
-        "price": 12000,
+        "price": 10000,
         "day":[
           "all"
         ],
@@ -580,7 +580,7 @@
         "id": "kn-6",
         "name": "Jus Mangga",
         "description": "Mangga matang diblender halus, manis legit menyegarkan, warna kuning cerah memikat.",
-        "price": 12000,
+        "price": 15000,
         "day":[
           "all"
         ],
@@ -595,7 +595,7 @@
         "id": "kn-7",
         "name": "Jus Pisang",
         "description": "Pisang matang lembut diblender, manis alami, tekstur kental mengenyangkan, sehat bernutrisi.",
-        "price": 12000,
+        "price": 10000,
         "day":[
           "all"
         ],
@@ -610,12 +610,16 @@
         "id": "kn-8",
         "name": "Buah Potong",
         "description": "Aneka buah segar dipotong dadu, manis alami, warna-warni menggoda selera",
-        "price": 12000,
+        "price": 10000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_buahpotong.jpeg",
-        "variant1": [],
+        "variant1": [
+         { "item": "pepaya", "harga": 0 },
+          { "item": "melon", "harga": 0 },
+          { "item": "semangka", "harga": 0 }
+        ],
         "variant2": [],
         "variant3": [],
         "variant4": [],
