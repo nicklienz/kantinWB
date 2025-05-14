@@ -8,7 +8,7 @@
     "logo": "DM",
     "color": "bg-red-500",
     "contact":"6283187977231",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_qris.jpeg"
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_qris.png"
   },
   {
     "id": "masakan-medan",
@@ -19,7 +19,7 @@
     "logo": "MM",
     "color": "bg-yellow-500",
     "contact":"6285921890886",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_qris.jpeg"
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_qris.png"
   },
   {
     "id": "pak-mul",
@@ -30,7 +30,7 @@
     "logo": "PM",
     "color": "bg-blue-500",
     "contact":"6281717714760",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_qris.jpeg"
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_qris.png"
   },
   {
     "id": "rasa-keluarga",
@@ -41,7 +41,7 @@
     "logo": "RK",
     "color": "bg-pink-500",
     "contact":"6285245498100",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_qris.jpg"
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_qris.png"
   },
   {
     "id": "mas-medi",
@@ -52,7 +52,7 @@
     "logo": "MD",
     "color": "bg-purple-500",
     "contact":"",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_qris.jpeg"
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_qris.png"
   },
   {
     "id": "keno",
@@ -63,6 +63,6 @@
     "logo": "KN",
     "color": "bg-gray-500",
     "contact":"6287878540063",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_qris.jpeg"
+    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_qris.png"
   }
 ]
