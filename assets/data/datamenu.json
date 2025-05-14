@@ -141,7 +141,7 @@
         "id": "pm-1",
         "name": "Bubur Ayam",
         "description": "Bubur ayam gurih lembut, topping melimpah, sarapan nikmat khas Pekalongan",
-        "price": 12000,
+        "price": 13000,
         "day":[
           "all"
         ],
@@ -156,12 +156,15 @@
         "id": "pm-2",
         "name": "Kwetiau",
         "description": "Tersedia dalam pilihan goreng atau kuah",
-        "price": 15000,
+        "price": 17000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_kwetiau.jpeg",
-        "variant1": [],
+        "variant1": [
+          { "item": "goreng", "harga": 0 },
+          { "item": "kuah", "harga": 0 }
+        ],
         "variant2": [],
         "variant3": [],
         "variant4": [],
@@ -232,7 +235,7 @@
         "id": "pm-6",
         "name": "Mie Jawa",
         "description": "tes",
-        "price": 18000,
+        "price": 17000,
         "day":[
           "all"
         ],
@@ -250,7 +253,7 @@
         "id": "pm-7",
         "name": "Bihun",
         "description": "tes",
-        "price": 18000,
+        "price": 17000,
         "day":[
           "all"
         ],
@@ -268,17 +271,20 @@
         "id": "pm-8",
         "name": "Pecel Ayam",
         "description": "tes",
-        "price": 18000,
+        "price": 15000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_pecelayam.jpeg",
         "variant1": [
+          { "item": "nasi", "harga": 5000 },
+          { "item": "ala carte", "harga": 0 }
+        ],
+        "variant2": [
           { "item": "tahu", "harga": 2000 },
           { "item": "tempe", "harga": 2000 },
           { "item": "ala carte", "harga": 0 }
         ],
-        "variant2": [],
         "variant3": [],
         "variant4": [],
         "variant5": []
@@ -287,12 +293,16 @@
         "id": "pm-9",
         "name": "Pecel Lele",
         "description": "tes",
-        "price": 18000,
+        "price": 13000,
         "day":[
           "all"
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_pecellele.jpeg",
-        "variant1": [
+       "variant1": [
+          { "item": "nasi", "harga": 5000 },
+          { "item": "ala carte", "harga": 0 }
+        ],
+        "variant2": [
           { "item": "tahu", "harga": 2000 },
           { "item": "tempe", "harga": 2000 },
           { "item": "ala carte", "harga": 0 }
