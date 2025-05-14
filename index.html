@@ -664,19 +664,40 @@
     </div>
 
     <!-- Modal QR Code Pembayaran -->
+    <!-- Overlay -->
     <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
       <!-- Modal Content -->
       <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md text-center relative">
+        <!-- Close Button -->
         <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
           <i class="fas fa-times"></i>
         </button>
-        <h2 class="text-lg font-bold mb-4">Scan QRIS untuk Bayar</h2>
-        <img id="qris-image" src="" alt="QRIS" class="w-64 h-85 mx-auto mb-4 rounded-lg border border-gray-200">
+    
+        <!-- Title -->
+        <h2 class="text-xl font-bold mb-4">Pembayaran via QRIS</h2>
+    
+        <!-- QR Code -->
+        <img id="qris-image" src="" alt="QRIS" class="w-64 h-64 mx-auto mb-4 rounded-lg border border-gray-200">
+    <!-- Tombol Download QR -->
+        <a id="download-qris" href="#" download="qris.png" class="inline-block mb-4 text-blue-600 hover:underline text-sm">
+          <i class="fas fa-download mr-1"></i> Unduh Gambar QRIS
+        </a
+        <!-- Cara Pembayaran -->
+        <div class="text-left text-sm text-gray-700 mb-4 space-y-2">
+          <p><strong>1.</strong> Unduh gambar QRIS di atas.</p>
+          <p><strong>2.</strong> Buka aplikasi bank, e-wallet (GoPay, OVO, DANA, dsb).</p>
+          <p><strong>3.</strong> Pilih menu *Scan QR* atau *Bayar via Galeri*, lalu unggah gambar QRIS.</p>
+          <p><strong>4.</strong> Masukkan nominal sesuai total pesanan, lakukan pembayaran, lalu screenshot bukti pembayaran.</p>
+          <p><strong>5.</strong> Klik <em>Konfirmasi Pembayaran</em> di bawah untuk lanjut kirim bukti ke WhatsApp tenant.</p>
+        </div>
+    
+        <!-- Confirm Button -->
         <button id="confirm-payment" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full font-bold w-full">
-          Saya Sudah Screenshot Bukti Pembayaran
+          Konfirmasi Pembayaran
         </button>
       </div>
     </div>
+
     
     <script>
         // Mobile Menu Toggle
@@ -1139,7 +1160,11 @@
                             // Ganti gambar QR berdasarkan tenant
                             const qrisImage = document.getElementById('qris-image');
                             qrisImage.src = tenantQrisImages[tenant] 
-                                                        
+                            
+                            // Set link download QRIS sesuai tenant
+                            const downloadLink = document.getElementById('download-qris');
+                            downloadLink.href = qrisImage.src;
+                            downloadLink.download = `qris-${tenant}.png`;                     
                             // Tampilkan modal QRIS
                             document.getElementById('payment-modal').classList.remove('hidden');
                         });
