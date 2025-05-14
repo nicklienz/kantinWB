@@ -42,6 +42,9 @@
     </script>
     <script>
         window.tenantWhatsappNumbers = {};
+        window.tenantQrisImages = {};
+        window.selectedTenant = '';
+        window.waUrlToSend = '';
     </script>
 
     <style>
@@ -193,6 +196,7 @@
                         
                             tenants.forEach(tenant => {                               
                                 window.tenantWhatsappNumbers[tenant.name]=tenant.contact;
+                                tenantQrisImages[tenant.name] = tenant.qris;
                                 tenantListHtml += `
                                     <div class="tenant-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300">
                                         <div class="h-48 overflow-hidden">
@@ -658,6 +662,19 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal QR Code Pembayaran -->
+    <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden justify-center items-center">
+      <div class="bg-white rounded-lg p-6 max-w-sm w-full relative">
+        <h3 class="text-lg font-semibold mb-2 text-center">Scan QRIS Pembayaran</h3>
+        <img id="qris-image" src="" alt="QRIS" class="w-full h-auto rounded shadow mb-4">
+        <p class="text-sm text-gray-600 text-center mb-4">Setelah transfer, klik tombol di bawah untuk konfirmasi dan mengirim pesanan ke tenant.</p>
+        <button id="confirm-payment" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          Konfirmasi Pembayaran
+        </button>
+        <button id="close-modal" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl">&times;</button>
+      </div>
+    </div>
     
     <script>
         // Mobile Menu Toggle
@@ -1107,15 +1124,38 @@
                         const encoded = encodeURIComponent(message);
                         const waUrl = `https://wa.me/${contact}?text=${encoded}`;
                 
-                        const button = document.createElement('a');
-                        button.href = waUrl;
-                        button.target = '_blank';
+                        const button = document.createElement('button');
+                        button.type = 'button';
                         button.className = 'bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold w-full text-center block';
                         button.innerHTML = `<i class="fab fa-whatsapp mr-2"></i> Kirim WA ke ${tenant}`;
-                        container.appendChild(button);
+
+
+                        button.addEventListener('click', function () {
+                            selectedTenant = tenant;
+                            waUrlToSend = waUrl;
+                    
+                            // Ganti gambar QR berdasarkan tenant
+                            const qrisImage = document.getElementById('qris-image');
+                            qrisImage.src = tenantQrisImages[tenant] 
+                                                        
+                            // Tampilkan modal QRIS
+                            document.getElementById('payment-modal').classList.remove('hidden');
+                        });
                     });
+                 });
+                
+                document.getElementById('confirm-payment').addEventListener('click', () => {
+                if (waUrlToSend) {
+                    window.open(waUrlToSend, '_blank');
+                }
+                document.getElementById('payment-modal').classList.add('hidden');
                 });
-         
+        
+                document.getElementById('close-modal').addEventListener('click', () => {
+                    document.getElementById('payment-modal').classList.add('hidden');
+                });
+
+                
                 // Clear cart button
                 document.getElementById('clear-cart').addEventListener('click', function() {
                     cart = [];
