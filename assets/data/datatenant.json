@@ -26,11 +26,11 @@
     "name": "Pak Mul",
     "description": "Ingin nasi goreng spesial atau bubur ayam hangat? Manjakan perutmu juga dengan gurihnya soto betawi, mie instan telur, pecel ayam, mie godog, kwetiau kuah atau bihun goreng, yang disajikan dengan bahan-bahan pilihan.",
     "hours": "06AM-17PM",
-    "image": "https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/PM_qris.png",
+    "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_bubur.png",
     "logo": "PM",
     "color": "bg-blue-500",
     "contact":"6281717714760",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_qris.png"
+    "qris":"https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/PM_qris.png"
   },
   {
     "id": "rasa-keluarga",
