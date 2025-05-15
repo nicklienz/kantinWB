@@ -8,7 +8,7 @@
     "logo": "DM",
     "color": "bg-red-500",
     "contact":"6283187977231",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/DM_qris.png"
+    "qris":"https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/DM_qris.png"
   },
   {
     "id": "masakan-medan",
@@ -19,14 +19,14 @@
     "logo": "MM",
     "color": "bg-yellow-500",
     "contact":"6285921890886",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MM_qris.png"
+    "qris":"https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/MM_qris.png"
   },
   {
     "id": "pak-mul",
     "name": "Pak Mul",
     "description": "Ingin nasi goreng spesial atau bubur ayam hangat? Manjakan perutmu juga dengan gurihnya soto betawi, mie instan telur, pecel ayam, mie godog, kwetiau kuah atau bihun goreng, yang disajikan dengan bahan-bahan pilihan.",
     "hours": "06AM-17PM",
-    "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/PM_nasgor.jpeg",
+    "image": "https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/PM_qris.png",
     "logo": "PM",
     "color": "bg-blue-500",
     "contact":"6281717714760",
@@ -41,7 +41,7 @@
     "logo": "RK",
     "color": "bg-pink-500",
     "contact":"6285245498100",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_qris.png"
+    "qris":"https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/RK_qris.png"
   },
   {
     "id": "mas-medi",
@@ -52,7 +52,7 @@
     "logo": "MD",
     "color": "bg-purple-500",
     "contact":"",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/MD_qris.png"
+    "qris":"https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/MD_qris.png"
   },
   {
     "id": "keno",
@@ -63,6 +63,6 @@
     "logo": "KN",
     "color": "bg-gray-500",
     "contact":"6287878540063",
-    "qris":"https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/KN_qris.png"
+    "qris":"https://ahobjsjjbhdgcddmiwyp.supabase.co/storage/v1/object/public/kantinwbassets/assets/images/KN_qris.png"
   }
 ]
