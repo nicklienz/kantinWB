@@ -1087,6 +1087,15 @@
                         return;
                     }
                     
+// Validasi: jika tanggalnya hari ini, waktu pengambilan minimal 1 jam dari sekarang
+if (pickupDate.toDateString() === now.toDateString()) {
+    const oneHourLater = new Date(now.getTime() + 60 * 60 * 1000);
+    if (pickupDate <= oneHourLater) {
+        alert('Waktu pengambilan hari ini harus minimal 1 jam dari sekarang!');
+        clearWhatsAppLinks();
+        return;
+    }
+}
                     // Validasi lebih dari 7 hari ke depan
                     const oneWeekLater = new Date();
                     oneWeekLater.setDate(oneWeekLater.getDate() + 7);
