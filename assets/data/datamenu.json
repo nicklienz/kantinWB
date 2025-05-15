@@ -110,7 +110,7 @@
       {
         "id": "pm-6",
         "name": "Mie Jawa",
-        "description": "tes",
+        "description": "mie dimasak dengan ala Pak Mul, favorit banget",
         "price": 17000,
         "day":[
           "all"
@@ -128,7 +128,7 @@
       {
         "id": "pm-7",
         "name": "Bihun",
-        "description": "tes",
+        "description": "bihun dengan piluhan goreng atau kuah dengan campuran sayur dan bumbu yang lezat",
         "price": 17000,
         "day":[
           "all"
@@ -146,7 +146,7 @@
       {
         "id": "pm-8",
         "name": "Pecel Ayam",
-        "description": "tes",
+        "description": "Ayam goreng gurih, sambal pedas nendang, lalapan segar, nasi hangat nikmat",
         "price": 15000,
         "day":[
           "all"
@@ -158,7 +158,8 @@
         ],
         "variant2": [
           { "item": "tahu", "harga": 2000 },
-          { "item": "tempe", "harga": 2000 },
+          { "item": "tempe", "harga": 2000 },                
+          { "item": "tahu tempe", "harga": 4000 },
           { "item": "ala carte", "harga": 0 }
         ],
         "variant3": [],
@@ -168,7 +169,7 @@
       {
         "id": "pm-9",
         "name": "Pecel Lele",
-        "description": "tes",
+        "description": "Lele goreng renyah, sambal pedas menggigit, lalapan segar, nasi hangat istimewa",
         "price": 13000,
         "day":[
           "all"
@@ -181,6 +182,7 @@
         "variant2": [
           { "item": "tahu", "harga": 2000 },
           { "item": "tempe", "harga": 2000 },
+          { "item": "tahu tempe", "harga": 4000 },
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [],
