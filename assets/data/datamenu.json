@@ -204,8 +204,8 @@
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_friedchicken.jpeg",
         "variant1": [
-          { "item": "nasi", "harga": 0 },
           { "item": "kentang", "harga": 0 },
+          { "item": "nasi", "harga": 0 },
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [
@@ -222,12 +222,15 @@
           { "item": "teriyaki", "harga": 0 },
           { "item": "padang", "harga": 0 }
         ],
-        "variant4": [],
+        "variant4": [
+          { "item": "sayur", "harga": 0 },
+          { "item": "tanpa sayur", "harga": 0 }
+        ],
         "variant5": []
       },
       {
         "id": "rk-2",
-        "name": "Ayam Katsu",
+        "name": "Ayam Goreng Katsu",
         "description": "Ayam fillet berlapis tepung roti renyah, saus katsu gurih manis",
         "price": 20000,
         "day":[
@@ -235,8 +238,8 @@
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_katsu.jpeg",
         "variant1": [
-          { "item": "nasi", "harga": 0 },
           { "item": "kentang", "harga": 0 },
+          { "item": "nasi", "harga": 0 },
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [
@@ -253,7 +256,10 @@
           { "item": "teriyaki", "harga": 0 },
           { "item": "padang", "harga": 0 }
         ],
-        "variant4": [],
+        "variant4": [
+          { "item": "sayur", "harga": 0 },
+          { "item": "tanpa sayur", "harga": 0 }
+        ],
         "variant5": []
       },
       {
@@ -266,8 +272,8 @@
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_steak.jpeg",
         "variant1": [
-          { "item": "nasi", "harga": 0 },
           { "item": "kentang", "harga": 0 },
+          { "item": "nasi", "harga": 0 },
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [
@@ -284,7 +290,10 @@
           { "item": "teriyaki", "harga": 0 },
           { "item": "padang", "harga": 0 }
         ],
-        "variant4": [],
+        "variant4": [
+          { "item": "sayur", "harga": 0 },
+          { "item": "tanpa sayur", "harga": 0 }
+        ],
         "variant5": []
       },
       {
@@ -297,8 +306,8 @@
         ],
         "image": "https://raw.githubusercontent.com/nicklienz/kantinWB/main/assets/images/RK_taiwan.jpeg",
         "variant1": [
-          { "item": "nasi", "harga": 0 },
           { "item": "kentang", "harga": 0 },
+          { "item": "nasi", "harga": 0 },
           { "item": "ala carte", "harga": 0 }
         ],
         "variant2": [
@@ -311,7 +320,10 @@
           { "item": "jagung bakar", "harga": 0 },
           { "item": "barbeque", "harga": 0 }
         ],
-        "variant4": [],
+        "variant4": [
+          { "item": "sayur", "harga": 0 },
+          { "item": "tanpa sayur", "harga": 0 }
+        ],
         "variant5": []
       }
     ]
