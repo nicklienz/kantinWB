@@ -1,5 +1,6 @@
+"use client";
+
 import { useState } from "react";
-import Image from "next/image";
 import { useSupabase } from "@/app/auth/provider";
 import LoadingIndicator from "@/components/ui/LoadingIndicator";
 
