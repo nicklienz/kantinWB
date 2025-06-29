@@ -15,7 +15,7 @@ const TenantNavbar = () => {
       } = await supabase.auth.getUser();
       if (!user) return;
       // Asumsi ada tabel 'tenant' dengan kolom 'email' dan 'name'
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("tenant")
         .select("name")
         .eq("email", user.email)

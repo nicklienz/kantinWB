@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { MenuVariant } from "@/types/menu.types";
-import { MenuItem } from "@/types/menu.types";
 
 interface MenuItemSearch {
   id: string;

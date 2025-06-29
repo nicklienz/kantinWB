@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 
 const THEME_KEY = "daisyui-theme";
 const THEMES = [
-  { value: "light", icon: "sun", label: "Light" },
+  { value: "greenlight", icon: "sun", label: "Light" },
   { value: "greendark", icon: "moon", label: "Dark" },
 ];
 
 export default function ThemeController({ className = "" }: { className?: string }) {
   const [theme, setTheme] = useState<string>(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem(THEME_KEY) || "light";
+      return localStorage.getItem(THEME_KEY) || THEMES[0].value;
     }
     return "light";
   });

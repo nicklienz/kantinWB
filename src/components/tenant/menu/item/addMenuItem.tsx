@@ -56,7 +56,7 @@ export default function AddMenuItem() {
     const fetchTenantName = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("tenant")
         .select("name")
         .eq("email", user.email)
@@ -94,7 +94,7 @@ export default function AddMenuItem() {
     if (form.imageFile) {
       const ext = form.imageFile.name.split(".").pop();
       const fileName = `${Date.now()}.${ext}`;
-      const { data: imgData, error: imgErr } = await supabase.storage.from("menu-images").upload(`images/${fileName}`, form.imageFile, { upsert: true });
+      const { error: imgErr } = await supabase.storage.from("menu-images").upload(`images/${fileName}`, form.imageFile, { upsert: true });
       if (imgErr) {
         setError("Gagal upload gambar: " + imgErr.message);
         setLoading(false);

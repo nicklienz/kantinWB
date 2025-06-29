@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSupabase } from "@/app/auth/provider";
-import type { MenuBundle, MenuItem } from "@/types/menu.types";
+import type { MenuItem } from "@/types/menu.types";
 
 export default function AddMenuBundle() {
   const supabase = useSupabase();
@@ -45,7 +45,7 @@ export default function AddMenuBundle() {
   }, [tenantName, supabase]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, files, type, checked } = e.target as any;
+    const { name, value, files, checked } = e.target as any;
     if (name === "imageFile") {
       setForm({ ...form, imageFile: files[0] });
     } else if (name === "items") {
