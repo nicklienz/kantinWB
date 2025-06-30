@@ -57,8 +57,12 @@ export default function AddMenuBundle() {
   }, [tenantName, supabase]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, files, checked } = e.target as any;
-    if (name === "imageFile") {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    const files = (target as HTMLInputElement).files;
+    const checked = (target as HTMLInputElement).checked;
+    if (name === "imageFile" && files) {
       setForm({ ...form, imageFile: files[0] });
     } else if (name === "items") {
       if (checked) setForm({ ...form, items: [...form.items, value] });

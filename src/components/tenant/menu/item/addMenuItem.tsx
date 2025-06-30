@@ -90,8 +90,11 @@ export default function AddMenuItem() {
   }, [tenantName]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, files } = e.target as any;
-    if (name === "imageFile") {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    const files = (target as HTMLInputElement).files;
+    if (name === "imageFile" && files) {
       setForm({ ...form, imageFile: files[0] });
     } else {
       setForm({ ...form, [name]: value });

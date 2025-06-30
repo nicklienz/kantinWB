@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import { MenuVariant } from "@/types/menu.types";
 
@@ -45,7 +45,7 @@ export default function AddMenuVariant({ menuItemId: initialMenuItemId }: { menu
     if (initialMenuItemId) setMenuItemId(initialMenuItemId);
   }, [initialMenuItemId]);
 
-  const fetchVariants = async () => {
+  const fetchVariants = useCallback(async () => {
     if (!menuItemId) return; // Cegah query jika menuItemId kosong
     setLoading(true);
     setError(null);
@@ -57,7 +57,7 @@ export default function AddMenuVariant({ menuItemId: initialMenuItemId }: { menu
     if (error) setError(error.message);
     setVariants(data || []);
     setLoading(false);
-  };
+  }, [menuItemId]);
 
   useEffect(() => {
     if (menuItemId) fetchVariants();
