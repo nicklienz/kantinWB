@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSupabase } from "@/app/auth/provider";
 import type { MenuItem, MenuVariant } from "@/types/menu.types";
@@ -29,12 +30,12 @@ export default function AddMenuItem() {
     setError(null);
     const { data, error } = await supabase
       .from("menu_items")
-      .select("id, name, price, category, uom, uom_value, stock, image_url")
+      .select("id, name, price, category, uom, uom_value, stock, image_url, isAvailable")
       .eq("tenant_name", tenantName)
       .order("name");
     if (error) setError(error.message);
     setItems(
-      (data || []).map((item: any) => ({
+      (data || []).map((item): MenuItem => ({
         id: item.id,
         name: item.name,
         price: item.price,
@@ -43,7 +44,7 @@ export default function AddMenuItem() {
         uomValue: item.uom_value,
         stock: item.stock,
         imageUrl: item.image_url,
-        isAvailable: item.is_available !== undefined ? item.is_available : true,
+        isAvailable: item.isAvailable !== undefined ? item.isAvailable : true,
       }))
     );
     setLoading(false);
@@ -55,9 +56,14 @@ export default function AddMenuItem() {
           .from("menu_variants")
           .select("id, name, price, menu_item_id");
         const grouped: Record<string, MenuVariant[]> = {};
-        (vdata || []).forEach((v: any) => {
+        (vdata || []).forEach((v) => {
+          const variant: MenuVariant = {
+            id: v.id,
+            name: v.name,
+            price: v.price
+          };
           if (!grouped[v.menu_item_id]) grouped[v.menu_item_id] = [];
-          grouped[v.menu_item_id].push({ id: v.id, name: v.name, price: v.price });
+          grouped[v.menu_item_id].push(variant);
         });
         setVariants(grouped);
       }
@@ -234,7 +240,7 @@ export default function AddMenuItem() {
                   <td>{item.category}</td>
                   <td>{item.uom} ({item.uomValue})</td>
                   <td>{item.stock}</td>
-                  <td>{item.imageUrl ? <img src={item.imageUrl} alt="menu" className="w-12 h-12 rounded object-cover" /> : <span className="text-xs">-</span>}</td>
+                  <td>{item.imageUrl ? <Image src={item.imageUrl} alt="menu" className="w-12 h-12 rounded object-cover" /> : <span className="text-xs">-</span>}</td>
                   <td>
                     {variants[item.id]?.length ? (
                       <ul className="list">

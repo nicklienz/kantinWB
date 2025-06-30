@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { Tenant } from "@/types/tenant";
 import AddTenant from "./addTenant";
@@ -41,11 +42,19 @@ const TenantList = () => {
 				setError("Gagal mengambil data tenant: " + error.message);
 			} else {
 				setTenants(
-					(data || []).map((t: any) => ({
-						...t,
+					(data || []).map((t): Tenant => ({
+						id: t.id,
+						name: t.name,
+						owner: t.owner,
+						phone: t.phone,
+						email: t.email,
+						address: t.address,
+						openhour: t.openhour,
+						closehour: t.closehour,
+						description: t.description,
 						imageUrl: t.image_url,
 						qrisUrl: t.qris_url,
-						tenantCategory: t.tenant_category,
+						tenantCategory: Array.isArray(t.tenant_category) ? t.tenant_category[0] : t.tenant_category,
 						status: t.status,
 					}))
 				);
@@ -130,7 +139,7 @@ const TenantList = () => {
 											<td className="flex items-center gap-2">
 												<div className="avatar">
 													<div className="w-10 h-10 mask mask-squircle">
-														<img
+														<Image
 															src={tenant.imageUrl || 'https://picsum.photos/40/40'}
 															alt={tenant.name}
 															className="object-cover"
@@ -159,7 +168,7 @@ const TenantList = () => {
 											<td>
 												<div className="avatar">
 													<div className="w-10 h-10 mask mask-squircle">
-														<img
+														<Image
 															src={tenant.imageUrl || 'https://picsum.photos/40/40'}
 															alt="thumbnail"
 															className="object-cover"
@@ -171,7 +180,7 @@ const TenantList = () => {
 												<div className="avatar">
 													<div className="w-10 h-10 mask mask-squircle bg-base-200 flex items-center justify-center">
 														{tenant.qrisUrl ? (
-															<img
+															<Image
 																src={tenant.qrisUrl}
 																alt="QRIS"
 																className="object-cover"

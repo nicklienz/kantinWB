@@ -36,14 +36,20 @@ export default function AddMenuBundle() {
     const fetchItems = async () => {
       const { data } = await supabase
         .from("menu_items")
-        .select("id, name, price, category, uom, uom_value, stock, image_url")
+        .select("id, name, price, category, uom, uom_value, stock, image_url, isAvailable")
         .eq("tenant_name", tenantName)
         .order("name");
       setItems(
-        (data || []).map((item: any) => ({
-          ...item,
+        (data || []).map((item): MenuItem => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          category: item.category,
+          uom: item.uom,
           uomValue: item.uom_value,
-          isAvailable: item.isAvailable ?? true, // or set your default
+          stock: item.stock,
+          imageUrl: item.image_url,
+          isAvailable: item.isAvailable ?? true,
         }))
       );
     };

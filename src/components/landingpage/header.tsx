@@ -1,5 +1,6 @@
 import ThemeController from "@/components/ui/ThemeController";
 import Link from "next/link";
+import Image from "next/image";
 
 const Header = () => {
   return (
@@ -18,7 +19,7 @@ const Header = () => {
         </div>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <img src="/favicon_barito.png" alt="Kantin Barito Logo" className="w-6 h-6" />
+          <Image src="/favicon_barito.png" alt="Kantin Barito Logo" className="w-6 h-6" />
           <span className="text-sm font-bold md:text-xl">Kantin Wisma Barito Pacific</span>
         </Link>
       </div>

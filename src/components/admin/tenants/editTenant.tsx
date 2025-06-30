@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import type { Tenant } from "@/types/tenant";
 import type { TenantCategory } from "@/types/tenantCategory";
 import LoadingIndicator from "@/components/ui/LoadingIndicator";
+import Image from "next/image";
 
 const EditTenant = ({ tenant }: { tenant: Tenant }) => {
   const [form, setForm] = useState({ ...tenant, tenantCategoryId: tenant.tenantCategory?.id?.toString() || "" });
@@ -87,7 +88,7 @@ const EditTenant = ({ tenant }: { tenant: Tenant }) => {
     if (imageFile) {
       const ext = imageFile.name.split(".").pop();
       const fileName = `${tenant.id}.${ext}`;
-      const { data: imgData, error: imgErr } = await supabase.storage.from("tenant-images").upload(`images/${fileName}`, imageFile, { upsert: true });
+      const { error: imgErr } = await supabase.storage.from("tenant-images").upload(`images/${fileName}`, imageFile, { upsert: true });
       if (imgErr) {
         setError("Gagal upload gambar tenant: " + imgErr.message);
         setLoading(false);
@@ -100,7 +101,7 @@ const EditTenant = ({ tenant }: { tenant: Tenant }) => {
     if (qrisFile) {
       const ext = qrisFile.name.split(".").pop();
       const fileName = `${tenant.id}.${ext}`;
-      const { data: qrisData, error: qrisErr } = await supabase.storage.from("tenant-qris").upload(`qris/${fileName}`, qrisFile, { upsert: true });
+      const { error: qrisErr } = await supabase.storage.from("tenant-qris").upload(`qris/${fileName}`, qrisFile, { upsert: true });
       if (qrisErr) {
         setError("Gagal upload gambar QRIS: " + qrisErr.message);
         setLoading(false);
@@ -185,7 +186,7 @@ const EditTenant = ({ tenant }: { tenant: Tenant }) => {
       <div className="form-control">
         <label className="label"><span className="label-text">Foto Tenant Saat Ini</span></label>
         {form.imageUrl && (
-          <img src={form.imageUrl} alt="foto tenant" className="w-20 h-20 rounded mb-2 object-cover" />
+          <Image src={form.imageUrl} alt="foto tenant" className="w-20 h-20 rounded mb-2 object-cover" />
         )}
         {imageFile && (
           <span className="text-xs">File baru: {imageFile.name}</span>
@@ -195,7 +196,7 @@ const EditTenant = ({ tenant }: { tenant: Tenant }) => {
       <div className="form-control">
         <label className="label"><span className="label-text">QRIS Saat Ini</span></label>
         {form.qrisUrl && (
-          <img src={form.qrisUrl} alt="QRIS" className="w-20 h-20 rounded mb-2 object-cover" />
+          <Image src={form.qrisUrl} alt="QRIS" className="w-20 h-20 rounded mb-2 object-cover" />
         )}
         {qrisFile && (
           <span className="text-xs">File baru: {qrisFile.name}</span>

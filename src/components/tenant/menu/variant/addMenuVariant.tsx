@@ -61,7 +61,7 @@ export default function AddMenuVariant({ menuItemId: initialMenuItemId }: { menu
 
   useEffect(() => {
     if (menuItemId) fetchVariants();
-  }, [menuItemId]);
+  }, [menuItemId, fetchVariants]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });

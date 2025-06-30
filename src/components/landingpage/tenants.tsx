@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { Tenant } from "@/types/tenant";
 import { supabase } from "@/lib/supabase";
@@ -21,24 +22,35 @@ const Tenants = () => {
           name,
           owner,
           phone,
+		  email,
           address,
           openhour,
           closehour,
           description,
           image_url,
           qris_url,
-          tenant_category ( id, name )
+          tenant_category ( id, name ),
+		  status
         `)
 				.order("id", { ascending: true });
 			if (error) {
 				setError("Gagal mengambil data tenant: " + error.message);
 			} else {
 				setTenants(
-					(data || []).map((t: any) => ({
-						...t,
+					(data || []).map((t): Tenant => ({
+						id: t.id,
+						name: t.name,
+						owner: t.owner,
+						phone: t.phone,
+						email: t.email,
+						address: t.address,
+						openhour: t.openhour,
+						closehour: t.closehour,
+						description: t.description,
 						imageUrl: t.image_url,
 						qrisUrl: t.qris_url,
-						tenantCategory: t.tenant_category,
+						tenantCategory: Array.isArray(t.tenant_category) ? t.tenant_category[0] : t.tenant_category,
+						status: t.status,
 					}))
 				);
 			}
@@ -67,8 +79,8 @@ const Tenants = () => {
 								</span>
 							</span>
 							<figure>
-								<img
-									src={tenant.imageUrl}
+								<Image 
+									src={tenant.imageUrl || "https://picsum.photos/400/200?blur=2"}
 									alt={tenant.name}
 									className="w-full h-40 object-cover"
 								/>

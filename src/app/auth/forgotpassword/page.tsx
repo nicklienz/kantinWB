@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSupabase } from "@/app/auth/provider";
 import LoadingIndicator from "@/components/ui/LoadingIndicator";
 import Link from "next/link";
+import Image from "next/image";
 
 const ForgotPassword = () => {
   const supabase = useSupabase();
@@ -30,7 +31,7 @@ const ForgotPassword = () => {
         {/* Form */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center order-2 md:order-1">
           <div className="flex flex-col items-center mb-6">
-            <img src="/favicon_barito.png" alt="Kantin Barito Logo" width={48} height={48} className="mb-2" />
+            <Image src="/favicon_barito.png" alt="Kantin Barito Logo" width={48} height={48} className="mb-2" />
             <h1 className="text-2xl font-bold mb-1">Lupa Password</h1>
             <p className="text-base-content/70 text-sm text-center">Masukkan email Anda dan kami akan mengirimkan link untuk reset password.</p>
           </div>
@@ -50,7 +51,7 @@ const ForgotPassword = () => {
         </div>
         {/* Placeholder image */}
         <div className="hidden md:block md:w-1/2 h-80 md:h-auto order-1 md:order-2">
-          <img
+          <Image
             src="https://picsum.photos/400/500?grayscale&blur=2"
             alt="Forgot Password Illustration"
             className="object-cover w-full h-full"

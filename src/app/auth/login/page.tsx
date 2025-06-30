@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSupabase } from "@/app/auth/provider";
 import LoadingIndicator from "@/components/ui/LoadingIndicator";
 import Link from "next/link";
+import Image from "next/image";
 
 const Login = () => {
   const supabase = useSupabase();
@@ -36,7 +37,7 @@ const Login = () => {
       <div className="card w-full max-w-3xl bg-base-100 shadow-xl p-0 flex flex-col md:flex-row overflow-hidden">
         {/* Placeholder image */}
         <div className="hidden md:block md:w-1/2 h-80 md:h-auto">
-          <img
+          <Image
             src="https://picsum.photos/400/500?grayscale&blur=2"
             alt="Login Illustration"
             className="object-cover w-full h-full"
@@ -45,7 +46,7 @@ const Login = () => {
         {/* Form */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
           <div className="flex flex-col items-center mb-6">
-            <img src="/favicon_barito.png" alt="Kantin Barito Logo" width={48} height={48} className="mb-2" />
+            <Image src="/favicon_barito.png" alt="Kantin Barito Logo" width={48} height={48} className="mb-2" />
             <h1 className="text-2xl font-bold mb-1">Masuk</h1>
             <p className="text-base-content/70 text-sm">Lanjutkan dengan akun Google Anda</p>
           </div>
@@ -65,7 +66,7 @@ const Login = () => {
             <Link href="/auth/register" className="btn btn-outline btn-primary btn-xs">Daftar Akun Baru</Link>
           </div>
           <div className="text-center mt-2">
-            <a href="/" className="link text-sm">&larr; Kembali ke Beranda</a>
+            <Link href="/" className="link text-sm">&larr; Kembali ke Beranda</Link>
           </div>
         </div>
       </div>
