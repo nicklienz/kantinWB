@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSupabase } from "@/app/auth/provider";
 import LoadingIndicator from "@/components/ui/LoadingIndicator";
+import Link from "next/link";
 
 const Register = () => {
   const supabase = useSupabase();
@@ -48,7 +49,7 @@ const Register = () => {
           {error && <div className="alert alert-error mt-2 py-2 px-4 text-sm">{error}</div>}
           {success && <div className="alert alert-success mt-2 py-2 px-4 text-sm">{success}</div>}
           <div className="flex justify-between items-center mt-4 gap-2">
-            <a href="/auth/login" className="link link-primary text-sm">Sudah punya akun? Login</a>
+            <Link href="/auth/login" className="link link-primary text-sm">Sudah punya akun? Login</Link>
           </div>
           <div className="text-center mt-2">
             <a href="/" className="link text-sm">&larr; Kembali ke Landing Page</a>

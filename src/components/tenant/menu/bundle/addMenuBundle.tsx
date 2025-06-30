@@ -39,7 +39,13 @@ export default function AddMenuBundle() {
         .select("id, name, price, category, uom, uom_value, stock, image_url")
         .eq("tenant_name", tenantName)
         .order("name");
-      setItems(data || []);
+      setItems(
+        (data || []).map((item: any) => ({
+          ...item,
+          uomValue: item.uom_value,
+          isAvailable: item.isAvailable ?? true, // or set your default
+        }))
+      );
     };
     fetchItems();
   }, [tenantName, supabase]);

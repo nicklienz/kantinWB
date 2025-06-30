@@ -1,6 +1,4 @@
 import AdminNavbar from "@/components/admin/ui/navbar";
-import Link from "next/link";
-
 import RequireRole from "@/app/auth/RequireRole";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {

@@ -23,7 +23,7 @@ export const TenantProvider = ({ children }: { children: ReactNode }) => {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         // Asumsi ada table 'tenants' dengan kolom 'email' dan 'name'
-        const { data, error } = await supabase
+        const { data } = await supabase
           .from("tenants")
           .select("name")
           .eq("email", user.email)

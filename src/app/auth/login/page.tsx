@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSupabase } from "@/app/auth/provider";
 import LoadingIndicator from "@/components/ui/LoadingIndicator";
+import Link from "next/link";
 
 const Login = () => {
   const supabase = useSupabase();
@@ -60,8 +61,8 @@ const Login = () => {
           </form>
           {error && <div className="alert alert-error mt-2 py-2 px-4 text-sm">{error}</div>}
           <div className="flex justify-between items-center mt-4 gap-2">
-            <a href="/auth/forgotpassword" className="link link-primary text-sm">Lupa password?</a>
-            <a href="/auth/register" className="btn btn-outline btn-primary btn-xs">Daftar Akun Baru</a>
+            <Link href="/auth/forgotpassword" className="link link-primary text-sm">Lupa password?</Link>
+            <Link href="/auth/register" className="btn btn-outline btn-primary btn-xs">Daftar Akun Baru</Link>
           </div>
           <div className="text-center mt-2">
             <a href="/" className="link text-sm">&larr; Kembali ke Beranda</a>

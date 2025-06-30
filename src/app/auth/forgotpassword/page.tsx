@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSupabase } from "@/app/auth/provider";
 import LoadingIndicator from "@/components/ui/LoadingIndicator";
+import Link from "next/link";
 
 const ForgotPassword = () => {
   const supabase = useSupabase();
@@ -43,7 +44,8 @@ const ForgotPassword = () => {
             <a href="/auth/login" className="link link-primary text-sm">Kembali ke Login</a>
           </div>
           <div className="text-center mt-2">
-            <a href="/" className="link text-sm">&larr; Kembali ke Beranda</a>
+            
+            <Link href="/" className="link text-sm">&larr; Kembali ke Beranda</Link>
           </div>
         </div>
         {/* Placeholder image */}

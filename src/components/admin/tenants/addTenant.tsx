@@ -136,7 +136,7 @@ const AddTenant = () => {
     if (imageFile) {
       const ext = imageFile.name.split(".").pop();
       const fileName = `${tenantId}.${ext}`;
-      const { data: imgData, error: imgErr } = await supabase.storage.from("tenant-images").upload(`images/${fileName}`, imageFile, { upsert: true });
+      const { error: imgErr } = await supabase.storage.from("tenant-images").upload(`images/${fileName}`, imageFile, { upsert: true });
       if (imgErr) {
         setError("Gagal upload gambar tenant: " + imgErr.message);
         setLoading(false);
@@ -149,7 +149,7 @@ const AddTenant = () => {
     if (qrisFile) {
       const ext = qrisFile.name.split(".").pop();
       const fileName = `${tenantId}.${ext}`;
-      const { data: qrisData, error: qrisErr } = await supabase.storage.from("tenant-qris").upload(`qris/${fileName}`, qrisFile, { upsert: true });
+      const { error: qrisErr } = await supabase.storage.from("tenant-qris").upload(`qris/${fileName}`, qrisFile, { upsert: true });
       if (qrisErr) {
         setError("Gagal upload gambar QRIS: " + qrisErr.message);
         setLoading(false);

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ForbiddenPage() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-base-200 p-4">
@@ -7,7 +9,7 @@ export default function ForbiddenPage() {
           <h2 className="card-title mb-2">Akses Ditolak</h2>
           <p className="mb-4">Anda tidak memiliki izin untuk mengakses halaman ini.</p>
           <div className="card-actions justify-center">
-            <a href="/" className="btn btn-primary">Kembali ke Beranda</a>
+            <Link href="/" className="btn btn-primary">Kembali ke Beranda</Link>
           </div>
         </div>
       </div>

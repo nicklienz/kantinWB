@@ -33,11 +33,23 @@ export default function AddMenuItem() {
       .eq("tenant_name", tenantName)
       .order("name");
     if (error) setError(error.message);
-    setItems(data || []);
+    setItems(
+      (data || []).map((item: any) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        category: item.category,
+        uom: item.uom,
+        uomValue: item.uom_value,
+        stock: item.stock,
+        imageUrl: item.image_url,
+        isAvailable: item.is_available !== undefined ? item.is_available : true,
+      }))
+    );
     setLoading(false);
     // Fetch variants for all items
     if (data) {
-      const ids = data.map((item: MenuItem) => item.id);
+      const ids = data.map((item) => item.id);
       if (ids.length > 0) {
         const { data: vdata } = await supabase
           .from("menu_variants")

@@ -1,4 +1,5 @@
 import ThemeController from "@/components/ui/ThemeController";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -16,10 +17,10 @@ const Header = () => {
           </ul>
         </div>
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <img src="/favicon_barito.png" alt="Kantin Barito Logo" className="w-6 h-6" />
           <span className="text-sm font-bold md:text-xl">Kantin Wisma Barito Pacific</span>
-        </a>
+        </Link>
       </div>
       {/* Center menu for large screen */}
       <div className="navbar-center hidden md:flex">
@@ -31,8 +32,8 @@ const Header = () => {
       </div>
       {/* End buttons for large screen */}
       <div className="navbar-end md:flex gap-2 items-center">
-        <a href="/auth/register" className="btn btn-primary btn-xs md:btn-sm">Daftar</a>
-        <a href="/auth/login" className="btn btn-outline btn-xs md:btn-sm">Masuk</a>
+        <Link href="/auth/register" className="btn btn-primary btn-xs md:btn-sm">Daftar</Link>
+        <Link href="/auth/login" className="btn btn-outline btn-xs md:btn-sm">Masuk</Link>
         <ThemeController />
       </div>
     </header>
